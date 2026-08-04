@@ -1,0 +1,15 @@
+.pagina-login {
+    min-height: 100vh;
+    background-image: url("imagens/fundo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container-logo {
+    text-align: center;
+}
+
+.container-logo img {
+    width: 150px;
+}
