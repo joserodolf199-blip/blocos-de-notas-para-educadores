@@ -1,0 +1,81 @@
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Digital</title>
+    <link rel="stylesheet" href=""> 
+</head>
+<body>
+    
+    <main class="pagina-cadastro">
+
+        <div class="container-logo">
+            <img src="imagens/logo.jpeg" alt="Logo da empresa">
+        </div>
+
+        <form class="formulario-cadastro">
+
+            <div class="campo-cadastro">
+                <!-- Coloquei um class no label para que o css TIRE, pois nós só queremos ele como acessibilidade. @Rodolfo, vai nos ajudando aí -->
+                <label class="ocultar-label" for="email">E-mail</label>
+
+                <input 
+                    class="campo-entrada" 
+                    id="email" 
+                    type="email" 
+                    placeholder="E-mail" 
+                    required
+                >
+            </div>
+            <div class="campo-cadastro">
+                <!-- A mesma coisa com esse class -->
+                <label class="ocultar-label" for="senha">Senha</label>
+
+                <input 
+                    class="campo-entrada" 
+                    id="senha" 
+                    type="password" 
+                    placeholder="Senha" 
+                    required
+                >
+            </div>
+
+            <div class="campo-cadastro">
+                <!-- A mesma coisa com esse class -->
+                <label class="ocultar-label" for="confirmar-senha">Digite novamente sua senha</label>
+
+                <input 
+                    class="campo-entrada" 
+                    id="confirmar-senha" 
+                    type="password" 
+                    placeholder="Digite novamente sua senha" 
+                    required
+                >
+            </div>
+
+            <button class="botao-cadastre-se" type="submit">
+                Cadastre-se
+            </button>
+        </form>
+
+
+
+        <div class="divisor-cadastro">
+            <hr>
+            <p>OU</p>
+            <hr>
+        </div>
+
+        <div class="login-google">
+            <button class="botao-google" type="button">
+                Entrar com Google
+            </button>
+        </div>
+ 
+        
+    </main>
+
+</body>
+
+</html>
