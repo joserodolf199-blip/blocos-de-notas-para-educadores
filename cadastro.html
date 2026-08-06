@@ -1,88 +1,148 @@
-    <!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Digital</title>
-    <link rel="stylesheet" href=""> 
+
+    <title>Atlas Digital - Cadastro</title>
+
+    <link rel="stylesheet" href="cadastro.css">
+
 </head>
+
 <body>
-    
-    <main class="pagina-cadastro">
 
-        <div class="container-logo">
-            <img src="imagens/logo.jpeg" alt="Logo da empresa">
+<main class="pagina-cadastro">
+
+    <!-- LOGO -->
+
+    <div class="container-logo">
+        <img src="imagens/logo.jpeg" alt="Logo Atlas Digital">
+
+        <h1>Atlas Digital</h1>
+
+        <p class="subtitulo">
+            Crie sua conta para continuar
+        </p>
+    </div>
+
+    <form id="formCadastro" class="formulario-cadastro">
+
+        <div class="campo-cadastro">
+
+            <!-- Coloquei um class no label para que o css TIRE, pois nós só queremos ele como acessibilidade. @Rodolfo, vai nos ajudando aí -->
+            <label class="ocultar-label" for="email">
+                E-mail
+            </label>
+
+            <input
+                class="campo-entrada"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Digite seu e-mail"
+                autocomplete="email"
+                required>
+
+            <small
+                id="erroEmail"
+                class="mensagem-erro">
+            </small>
+
         </div>
 
-        <form class="formulario-cadastro">
+        <div class="campo-cadastro">
 
-            <div class="campo-cadastro">
-                <!-- Coloquei um class no label para que o css TIRE, pois nós só queremos ele como acessibilidade. @Rodolfo, vai nos ajudando aí -->
-                <label class="ocultar-label" for="email">E-mail</label>
+            <!-- A mesma coisa com esse class -->
+            <label class="ocultar-label" for="senha">
+                Senha
+            </label>
 
-                <input 
-                    class="campo-entrada" 
-                    id="email" 
-                    type="email" 
-                    placeholder="E-mail" 
-                    required
-                >
-            </div>
-            <div class="campo-cadastro">
-                <!-- A mesma coisa com esse class -->
-                <label class="ocultar-label" for="senha">Senha</label>
+            <input
+                class="campo-entrada"
+                id="senha"
+                name="senha"
+                type="password"
+                placeholder="Digite sua senha"
+                autocomplete="new-password"
+                required>
 
-                <input 
-                    class="campo-entrada" 
-                    id="senha" 
-                    type="password" 
-                    placeholder="Senha" 
-                    required
-                >
-            </div>
+            <small
+                id="erroSenha"
+                class="mensagem-erro">
+            </small>
 
-            <div class="campo-cadastro">
-                <!-- A mesma coisa com esse class -->
-                <label class="ocultar-label" for="confirmar-senha">Digite novamente sua senha</label>
-
-                <input 
-                    class="campo-entrada" 
-                    id="confirmar-senha" 
-                    type="password" 
-                    placeholder="Digite novamente sua senha" 
-                    required
-                >
-            </div>
-
-            <button class="botao-cadastre-se" type="submit">
-                Cadastre-se
-            </button>
-        </form>
-
-
-
-        <div class="divisor-cadastro">
-            <hr>
-            <p>OU</p>
-            <hr>
         </div>
 
-        <div class="login-google">
-            <button class="botao-google" type="button">
-                Entrar com Google
-            </button>
+        <div class="campo-cadastro">
+
+            <!-- A mesma coisa com esse class -->
+            <label class="ocultar-label" for="confirmar-senha">
+                Digite novamente sua senha
+            </label>
+
+            <input
+                class="campo-entrada"
+                id="confirmar-senha"
+                name="confirmarSenha"
+                type="password"
+                placeholder="Confirme sua senha"
+                autocomplete="new-password"
+                required>
+
+            <small
+                id="erroConfirmarSenha"
+                class="mensagem-erro">
+            </small>
+
         </div>
 
-        <div class="login">
-            <p>Já possui uma conta? <a href="index.html">Faça login</a></p>
-        </div>  
+        <button
+            id="btnCadastrar"
+            class="botao-cadastre-se"
+            type="submit">
 
-        <div class="frase">
-            <p>"O conhecimento é a única ferramenta capaz de transformar sonhos em realidade. Continue aprendendo sempre."</p>
-        </div>
- 
-        
-    </main>
+            Cadastre-se
+
+        </button>
+
+    </form>
+
+    <div class="divisor-cadastro">
+        <hr>
+        <span>OU</span>
+        <hr>
+    </div>
+
+    <div class="login-google">
+        <button
+            id="btnGoogle"
+            class="botao-google"
+            type="button">
+
+            Entrar com Google
+
+        </button>
+    </div>
+
+    <div class="login">
+        <p>
+            Já possui uma conta?
+            <a href="index.html">Faça login</a>
+        </p>
+    </div>
+
+    <div class="frase">
+        <p>
+            "O conhecimento é a única ferramenta capaz de transformar sonhos em realidade. Continue aprendendo sempre."
+        </p>
+    </div>
+
+</main>
+
+<script src="cadastro.js"></script>
 
 </body>
 
