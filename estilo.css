@@ -1,0 +1,204 @@
+:root {
+    --bg-verde: #3a6b5c;          /* Tom de verde do fundo das telas */
+    --card-bg: rgba(255, 255, 255, 0.15); /* Fundo semi-transparente do painel */
+    --input-bg: #b0c2bc;         /* Cor cinza-esverdeada dos campos */
+    --btn-azul: #0055ff;         /* Azul do botão principal */
+    --btn-celeste: #00ccff;      /* Azul claro do botão Google */
+    --texto-branco: #ffffff;
+    --texto-erro: #ff3333;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-verde);
+    /* Se tiver a imagem com símbolos matemáticos de fundo, descomente a linha abaixo: */
+    /* background-image: url('caminho-da-sua-imagem.png'); */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Esconde as labels mantendo a acessibilidade para leitores de tela */
+.ocultar-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO DA PÁGINA DE CADASTRO
+   ========================================================================== */
+
+.pagina-cadastro {
+    background: var(--card-bg);
+    border-radius: 25px;
+    padding: 35px 25px;
+    width: 340px;
+    box-sizing: border-box;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Container do Logo */
+.container-logo {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 25px;
+    display: inline-block;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.container-logo img {
+    max-width: 60px;
+    height: auto;
+    display: block;
+    margin: 0 auto 5px auto;
+}
+
+.container-logo h1 {
+    color: #1a3a30; /* Tom escuro para contrastar no fundo branco */
+    font-size: 20px;
+    margin: 0;
+}
+
+.container-logo .subtitulo {
+    color: #666666;
+    font-size: 12px;
+    margin: 5px 0 0 0;
+}
+
+/* Formulário e Campos de Entrada */
+.formulario-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.campo-cadastro {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.campo-entrada {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--input-bg);
+    color: #1a3a30;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.campo-entrada::placeholder {
+    color: #556a63;
+}
+
+.mensagem-erro {
+    color: var(--texto-erro);
+    font-size: 11px;
+    margin-top: 3px;
+    margin-left: 15px;
+}
+
+/* Botão Cadastre-se */
+.botao-cadastre-se {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--btn-azul);
+    color: var(--texto-branco);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.botao-cadastre-se:hover {
+    background-color: #0044cc;
+}
+
+/* Divisor "OU" */
+.divisor-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.divisor-cadastro hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.divisor-cadastro span {
+    color: var(--texto-branco);
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+/* Botão Google */
+.botao-google {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--btn-celeste);
+    color: var(--texto-branco);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.botao-google:hover {
+    background-color: #00b3e6;
+}
+
+/* Link de Login Inferior */
+.login p {
+    color: var(--texto-branco);
+    font-size: 13px;
+    margin: 20px 0 15px 0;
+}
+
+.login a {
+    color: var(--texto-branco);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Frase Motivacional de Rodapé */
+.frase p {
+    color: var(--texto-branco);
+    font-size: 10px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin: 15px 0 0 0;
+    padding: 0 10px;
+    opacity: 0.9;
+}
