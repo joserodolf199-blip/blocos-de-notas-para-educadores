@@ -1,21 +1,31 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+:root {
+    --bg-verde: #3a6b5c;          /* Tom de verde do fundo das telas */
+    --card-bg: rgba(255, 255, 255, 0.15); /* Fundo semi-transparente do painel */
+    --input-bg: #b0c2bc;         /* Cor cinza-esverdeada dos campos */
+    --btn-azul: #0055ff;         /* Azul do botão principal */
+    --btn-celeste: #00ccff;      /* Azul claro do botão Google */
+    --texto-branco: #ffffff;
 }
 
 body {
-    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-verde);
+    /* Se tiver a imagem com símbolos matemáticos de fundo, descomente a linha abaixo: */
+    /* background-image: url('caminho-da-sua-imagem.png'); */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    background-image: url("imagens (1)/fundo.png");
+    background-size: cover;
 }
 
-/* 2. ACESSIBILIDADE ( Oculta visualmente, mas mantém para leitores de tela) */
-
+/* Esconde as labels mantendo a acessibilidade para leitores de tela */
 .ocultar-label {
     position: absolute;
     width: 1px;
@@ -24,145 +34,142 @@ body {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
     border: 0;
 }
 
-/* 
-   /3. ESTRUTURA DO CARD DE LOGIN*/
-   
+/* ==========================================================================
+   ESTILIZAÇÃO DA PÁGINA DE LOGIN (HOME)
+   ========================================================================== */
+
 .pagina-login {
-    background-color: #ffffff;
-    width: 100%;
-    max-width: 400px;
-    padding: 40px 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: var(--card-bg);
+    border-radius: 25px;
+    padding: 35px 25px;
+    width: 340px;
+    box-sizing: border-box;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* Logo */
+/* Container do Logo */
 .container-logo {
-    margin-bottom: 30px;
-    text-align: center;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 25px;
+    display: inline-block;
+    width: 80%;
+    box-sizing: border-box;
 }
 
 .container-logo img {
-    max-width: 150px;
+    max-width: 140px; /* Tamanho proporcional para a logo esticada horizontalmente */
+    width: 100%;
     height: auto;
-    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
-/* Formulário e Campos */
+/* Formulário e Campos de Entrada */
 .formulario-login {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
+}
+
+.campo-login {
+    display: flex;
+    flex-direction: column;
 }
 
 .campo-entrada {
     width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #dcdcdc;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #fafafa;
-    transition: all 0.3s ease;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--input-bg);
+    color: #1a3a30;
+    font-size: 14px;
+    box-sizing: border-box;
     outline: none;
 }
 
-.campo-entrada:focus {
-    border-color: #0066cc;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+.campo-entrada::placeholder {
+    color: #556a63;
 }
 
-/* Botão Entrar */
+/* Botão Entrar (Principal) */
 .entrar {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     border: none;
-    border-radius: 8px;
-    background-color: #0066cc;
-    color: #ffffff;
+    border-radius: 25px;
+    background-color: var(--btn-azul);
+    color: var(--texto-branco);
     font-size: 16px;
-    font-weight: 600;
+    font-weight: bold;
     cursor: pointer;
+    margin-top: 5px;
     transition: background-color 0.2s ease;
 }
 
 .entrar:hover {
-    background-color: #0052a3;
+    background-color: #0044cc;
 }
 
-   /* 4. DIVISOR E ALTERNATIVAS DE LOGIN*/
-
+/* Divisor "OU" */
 .divisor-login {
     display: flex;
     align-items: center;
-    width: 100%;
-    margin: 25px 0;
+    justify-content: center;
+    margin: 15px 0;
 }
 
 .divisor-login hr {
     flex: 1;
     border: none;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .divisor-login p {
-    padding: 0 15px;
-    color: #8c8c8c;
-    font-size: 14px;
-    font-weight: 500;
+    color: var(--texto-branco);
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 10px;
 }
 
 /* Botão Google */
-.login-google {
-    width: 100%;
-    margin-bottom: 25px;
-}
-
 .botao-google {
     width: 100%;
     padding: 12px;
-    border: 1px solid #dcdcdc;
-    border-radius: 8px;
-    background-color: #ffffff;
-    color: #4a4a4a;
-    font-size: 15px;
-    font-weight: 500;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--btn-celeste);
+    color: var(--texto-branco);
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
     transition: background-color 0.2s ease;
 }
 
 .botao-google:hover {
-    background-color: #f7f9fa;
-    border-color: #c4c4c4;
+    background-color: #00b3e6;
 }
 
-/* Recuperação de Senha */
+/* Link Esqueci minha senha */
 .recuperacao-senha {
-    text-align: center;
+    margin-top: 20px;
 }
 
 .recuperacao-senha a {
-    color: #0066cc;
-    font-size: 14px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.recuperacao-senha a:hover {
+    color: var(--texto-branco);
+    font-size: 13px;
     text-decoration: underline;
-    color: #004080;
 }
 
+/* Correção para o botão extra de login duplicado no HTML original */
+div.botao-login {
+    display: none; 
+}
