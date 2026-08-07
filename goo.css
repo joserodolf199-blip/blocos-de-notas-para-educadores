@@ -1,0 +1,318 @@
+:root {
+    --verde-principal: #3a6b5c;   /* Verde identidade do Atlas Digital */
+    --verde-escuro: #1d352e;      /* Para textos principais e destaques */
+    --verde-claro: #f0f4f2;       /* Fundo de seções e contraste */
+    --texto-escuro: #333333;
+    --texto-mutado: #666666;
+    --branco: #ffffff;
+    --borda: #dddddd;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: var(--texto-escuro);
+    background-color: var(--branco);
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "nav main"
+        "footer footer";
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+    background-image: url("imagens (1)/fundo.png");
+    background-size: cover;
+}
+
+/* ==========================================================================
+   HEADER (CABEÇALHO)
+   ========================================================================== */
+.cabecalho {
+    grid-area: header;
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-bottom: 3px solid var(--verde-escuro);
+}
+
+.cabecalho .container-logo img {
+    max-height: 50px;
+    border-radius: 8px;
+    display: block;
+}
+
+.cabecalho .slogan {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin: 0;
+    max-width: 60%;
+    text-align: right;
+}
+
+/* ==========================================================================
+   ASIDE (MENU LATERAL)
+   ========================================================================== */
+.menu-lateral {
+    grid-area: nav;
+    background-color: var(--verde-escuro);
+    padding: 30px 0;
+}
+
+.menu-lateral nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-lateral nav a {
+    color: #b0c2bc;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 15px;
+    font-weight: 500;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.menu-lateral nav a:hover {
+    color: var(--branco);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left-color: var(--verde-principal);
+    padding-left: 30px;
+}
+
+/* ==========================================================================
+   MAIN (CONTEÚDO PRINCIPAL)
+   ========================================================================== */
+.conteudo-principal {
+    grid-area: main;
+    padding: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Banner Superior */
+.banner {
+    width: 100%;
+    height: 250px;
+    background-color: var(--verde-claro); /* Fundo reserva caso falte a imagem */
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Seção Título */
+.titulo-site h1 {
+    color: var(--verde-escuro);
+    font-size: 36px;
+    margin: 0 0 30px 0;
+    border-bottom: 2px solid var(--verde-principal);
+    padding-bottom: 10px;
+}
+
+/* Seção Sobre o Projeto */
+.sobre-projeto {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.texto-projeto {
+    flex: 1;
+}
+
+.texto-projeto h2 {
+    color: var(--verde-principal);
+    font-size: 22px;
+    margin-top: 0;
+}
+
+.texto-projeto p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--texto-escuro);
+}
+
+.imagem-projeto {
+    flex: 1;
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--verde-claro);
+}
+
+.imagem-projeto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Seção Funcionalidades */
+.principais-funcionalidades {
+    margin-bottom: 50px;
+}
+
+.principais-funcionalidades h3 {
+    color: var(--verde-escuro);
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.funcionalidade {
+    background-color: var(--verde-claro);
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--verde-principal);
+}
+
+.funcionalidade h4 {
+    color: var(--verde-escuro);
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+
+.funcionalidade ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.funcionalidade li {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--texto-escuro);
+    margin-bottom: 5px;
+}
+
+/* Seção FAQ (Perguntas Frequentes) */
+.perguntas-frequentes {
+    margin-bottom: 30px;
+}
+
+.perguntas-frequentes h2 {
+    color: var(--verde-escuro);
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.pergunta {
+    display: inline-block;
+    width: calc(100% - 50px);
+    vertical-align: middle;
+}
+
+.texto-pergunta {
+    font-weight: bold;
+    color: var(--verde-escuro);
+    margin: 20px 0 10px 0;
+    font-size: 16px;
+}
+
+.botao-pergunta {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid var(--verde-principal);
+    background-color: transparent;
+    color: var(--verde-principal);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.botao-pergunta:hover {
+    background-color: var(--verde-principal);
+    color: var(--branco);
+}
+
+.resposta-pergunta {
+    background-color: #fafafa;
+    padding: 1px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--borda);
+    margin-bottom: 20px;
+}
+
+.resposta-pergunta p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--texto-mutado);
+}
+
+/* ==========================================================================
+   FOOTER (RODAPÉ)
+   ========================================================================== */
+.rodape {
+    grid-area: footer;
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+    border-top: 3px solid var(--verde-principal);
+}
+
+.contato h2 {
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    color: var(--branco);
+}
+
+.contato p {
+    margin: 5px 0;
+}
+
+.contato a {
+    color: #b0c2bc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.contato a:hover {
+    color: var(--branco);
+    text-decoration: underline;
+}
+
+.logo-rodape img {
+    max-height: 60px;
+    border-radius: 8px;
+}
+
+/* Responsive Grid para telas menores */
+@media (max-width: 768px) {
+    body {
+        grid-template-areas: 
+            "header"
+            "nav"
+            "main"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-lateral nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sobre-projeto {
+        flex-direction: column;
+    }
+}
