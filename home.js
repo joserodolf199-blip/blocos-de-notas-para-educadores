@@ -25,8 +25,21 @@ botaoPergunta.addEventListener("click", () => {
 
         const outraResposta = 
             outraPergunta.querySelector(".resposta-pergunta");
+        
         const outroBotao = 
             outraPergunta.querySelecctor(".botao-pergunta");
-    }
- }
-}
+
+        outraResposta.style.display = "none";
+        
+        outroBotao.textContent = "+";
+    });
+
+
+    // Se estava fechada, abre
+    if (!respostaAberta) {
+        repostaPergunta.style.display = "block";
+
+        botaoPergunta.textContent = "−";
+        }
+    });
+});    
