@@ -14,7 +14,7 @@
 
     <link
         rel="stylesheet"
-        href="../css/recuperação.css"
+        href="../css/recuperacao.css"
     >
 
 </head>
@@ -41,7 +41,7 @@
         <form class="formulario-recuperacao">
 
 
-            <!-- Etapa do e-mail -->
+            <!-- Etapa 1: E-mail -->
 
             <div
                 class="etapa-recuperacao"
@@ -62,6 +62,7 @@
                         id="email"
                         type="email"
                         placeholder="E-mail"
+                        autocomplete="email"
                         required
                     >
 
@@ -79,11 +80,12 @@
             </div>
 
 
-            <!-- Etapa do código -->
+            <!-- Etapa 2: Código -->
 
             <div
                 class="etapa-recuperacao"
                 id="etapa-codigo"
+                hidden
             >
 
                 <div class="campo-recuperacao">
@@ -100,6 +102,9 @@
                         id="codigo"
                         type="text"
                         placeholder="Digite seu código"
+                        maxlength="6"
+                        inputmode="numeric"
+                        autocomplete="one-time-code"
                         required
                     >
 
@@ -111,7 +116,70 @@
                     id="botao-enviar-codigo"
                     type="submit"
                 >
-                    Enviar
+                    Confirmar código
+                </button>
+
+            </div>
+
+
+            <!-- Etapa 3: Nova senha -->
+
+            <div
+                class="etapa-recuperacao"
+                id="etapa-nova-senha"
+                hidden
+            >
+
+                <div class="campo-recuperacao">
+
+                    <label
+                        class="ocultar-label"
+                        for="nova-senha"
+                    >
+                        Nova senha
+                    </label>
+
+                    <input
+                        class="campo-entrada"
+                        id="nova-senha"
+                        type="password"
+                        placeholder="Nova senha"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo-recuperacao">
+
+                    <label
+                        class="ocultar-label"
+                        for="confirmar-nova-senha"
+                    >
+                        Confirmar nova senha
+                    </label>
+
+                    <input
+                        class="campo-entrada"
+                        id="confirmar-nova-senha"
+                        type="password"
+                        placeholder="Confirmar nova senha"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    class="botao-recuperar-senha"
+                    id="botao-alterar-senha"
+                    type="submit"
+                >
+                    Alterar senha
                 </button>
 
             </div>
