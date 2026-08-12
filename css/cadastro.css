@@ -20,7 +20,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url: ("imagens/fundo.png");
+    background-image: url: ("../imagens/fundo.png");
     background-size: cover;
 }
 
