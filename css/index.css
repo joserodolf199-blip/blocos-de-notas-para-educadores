@@ -1,16 +1,25 @@
 :root {
-    --verde-principal: #3a6b5c;   /* Verde identidade do Atlas Digital */
-    --verde-escuro: #1d352e;      /* Para textos principais e destaques */
-    --verde-claro: #f0f4f2;       /* Fundo de seções e contraste */
+    --azul-topo-rodape: #3b4b71;   /* Azul escuro do cabeçalho e rodapé */
+    --fundo-gradiente-topo: #283153; /* Início do degradê no cabeçalho/fundo */
+    --fundo-gradiente-fim: #4c327d;  /* Tom roxo secundário */
+    --verde-turquesa: #26a69a;      /* Destaque nos títulos internos */
+    
     --texto-escuro: #333333;
     --texto-mutado: #666666;
     --branco: #ffffff;
-    --borda: #dddddd;
+    --borda: #e0e0e0;
+}
+
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E LAYOUT DASHBOARD (TELA CHEIA)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
     font-family: 'Arial', sans-serif;
     color: var(--texto-escuro);
     background-color: var(--branco);
@@ -19,10 +28,9 @@ body {
         "header header"
         "nav main"
         "footer footer";
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 200px 1fr; 
     min-height: 100vh;
-    background-image: url("imagens (1)/fundo.png");
-    background-size: cover;
+    width: 100%; 
 }
 
 /* ==========================================================================
@@ -30,28 +38,28 @@ body {
    ========================================================================== */
 .cabecalho {
     grid-area: header;
-    background-color: var(--verde-principal);
+    background-color: var(--azul-topo-rodape);
     color: var(--branco);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 30px;
-    border-bottom: 3px solid var(--verde-escuro);
+    padding: 10px 25px;
+    border-bottom: 2px solid #2d3b58;
 }
 
 .cabecalho .container-logo img {
-    max-height: 50px;
-    border-radius: 8px;
-    display: block;
+    max-height: 18px; 
+    width: auto;
+    border-radius: 2px;
 }
 
 .cabecalho .slogan {
-    font-size: 12px;
+    font-size: 11px; 
     font-weight: bold;
     letter-spacing: 0.5px;
-    margin: 0;
-    max-width: 60%;
+    max-width: 70%;
     text-align: right;
+    line-height: 1.3;
 }
 
 /* ==========================================================================
@@ -59,51 +67,56 @@ body {
    ========================================================================== */
 .menu-lateral {
     grid-area: nav;
-    background-color: var(--verde-escuro);
-    padding: 30px 0;
+    background-color: var(--azul-topo-rodape);
+    padding: 15px 0;
 }
 
 .menu-lateral nav {
     display: flex;
     flex-direction: column;
+    background-color: var(--branco);
+    border-radius: 0 12px 12px 0;
+    padding: 10px 5px;
+    gap: 6px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
 .menu-lateral nav a {
-    color: #b0c2bc;
+    color: var(--texto-escuro);
     text-decoration: none;
-    padding: 15px 25px;
-    font-size: 15px;
-    font-weight: 500;
+    padding: 8px 12px;
+    font-size: 12px; 
+    font-weight: bold;
     border-left: 4px solid transparent;
     transition: all 0.2s ease;
 }
 
 .menu-lateral nav a:hover {
-    color: var(--branco);
-    background-color: rgba(255, 255, 255, 0.05);
-    border-left-color: var(--verde-principal);
-    padding-left: 30px;
+    color: var(--azul-topo-rodape);
+    background-color: #f0f2f5;
+    border-left-color: var(--azul-topo-rodape);
+    padding-left: 16px;
 }
 
 /* ==========================================================================
-   MAIN (CONTEÚDO PRINCIPAL)
+   MAIN (CONTEÚDO PRINCIPAL CONFORME NOVA IMAGEM)
    ========================================================================== */
 .conteudo-principal {
     grid-area: main;
-    padding: 40px;
-    max-width: 1100px;
+    padding: 30px;
+    max-width: 1200px;
     margin: 0 auto;
-    box-sizing: border-box;
+    width: 100%;
 }
 
 /* Banner Superior */
 .banner {
     width: 100%;
-    height: 250px;
-    background-color: var(--verde-claro); /* Fundo reserva caso falte a imagem */
-    border-radius: 15px;
+    height: 200px;
+    border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .banner img {
@@ -112,146 +125,137 @@ body {
     object-fit: cover;
 }
 
-/* Seção Título */
+/* Título Principal Alinhado à Esquerda */
 .titulo-site h1 {
-    color: var(--verde-escuro);
-    font-size: 36px;
-    margin: 0 0 30px 0;
-    border-bottom: 2px solid var(--verde-principal);
-    padding-bottom: 10px;
+    color: var(--fundo-gradiente-topo);
+    font-size: 24px;
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid var(--verde-turquesa);
+    padding-bottom: 8px;
+    text-align: left;
 }
 
-/* Seção Sobre o Projeto */
+/* Seção Sobre o Projeto (Lado a Lado) */
 .sobre-projeto {
     display: flex;
-    gap: 40px;
+    gap: 30px;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .texto-projeto {
-    flex: 1;
+    flex: 1.4;
 }
 
 .texto-projeto h2 {
-    color: var(--verde-principal);
-    font-size: 22px;
-    margin-top: 0;
+    color: var(--verde-turquesa);
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
 }
 
 .texto-projeto p {
-    font-size: 16px;
+    font-size: 13px;
     line-height: 1.6;
     color: var(--texto-escuro);
 }
 
+/* Container da Imagem à Direita Reduzido */
 .imagem-projeto {
-    flex: 1;
-    height: 250px;
-    border-radius: 15px;
-    overflow: hidden;
-    background-color: var(--verde-claro);
+    flex: 0.6;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .imagem-projeto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 /* Seção Funcionalidades */
 .principais-funcionalidades {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .principais-funcionalidades h3 {
-    color: var(--verde-escuro);
-    font-size: 22px;
-    margin-bottom: 25px;
+    color: var(--fundo-gradiente-topo);
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
+/* Blocos Individuais das Funcionalidades */
 .funcionalidade {
-    background-color: var(--verde-claro);
-    padding: 20px 25px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    border-left: 5px solid var(--verde-principal);
+    background-color: #f7f9fa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--azul-topo-rodape);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .funcionalidade h4 {
-    color: var(--verde-escuro);
-    margin: 0 0 10px 0;
-    font-size: 16px;
+    color: var(--azul-topo-rodape);
+    margin: 0 0 6px 0;
+    font-size: 13px;
 }
 
 .funcionalidade ul {
-    margin: 0;
-    padding-left: 20px;
+    padding-left: 15px;
 }
 
 .funcionalidade li {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.5;
-    color: var(--texto-escuro);
-    margin-bottom: 5px;
+    color: var(--texto-mutado);
+    margin-bottom: 4px;
 }
 
-/* Seção FAQ (Perguntas Frequentes) */
+/* Seção FAQ */
 .perguntas-frequentes {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .perguntas-frequentes h2 {
-    color: var(--verde-escuro);
-    font-size: 24px;
-    margin-bottom: 25px;
+    color: var(--fundo-gradiente-topo);
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .pergunta {
-    display: inline-block;
-    width: calc(100% - 50px);
-    vertical-align: middle;
+    width: 100%;
+    border: 1px solid var(--borda);
+    border-radius: 30px; 
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.cabecalho-pergunta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .texto-pergunta {
     font-weight: bold;
-    color: var(--verde-escuro);
-    margin: 20px 0 10px 0;
-    font-size: 16px;
+    color: var(--texto-mutado);
+    font-size: 12px; 
 }
 
 .botao-pergunta {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 2px solid var(--verde-principal);
-    background-color: transparent;
-    color: var(--verde-principal);
-    font-size: 20px;
-    font-weight: bold;
+    background: none;
+    border: none;
+    color: #999999;
+    font-size: 15px; 
     cursor: pointer;
-    vertical-align: middle;
-    margin-top: 10px;
-    transition: all 0.2s ease;
-}
-
-.botao-pergunta:hover {
-    background-color: var(--verde-principal);
-    color: var(--branco);
 }
 
 .resposta-pergunta {
-    background-color: #fafafa;
-    padding: 1px 20px;
-    border-radius: 8px;
-    border: 1px solid var(--borda);
-    margin-bottom: 20px;
-}
-
-.resposta-pergunta p {
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--texto-mutado);
+    display: none !important;
 }
 
 /* ==========================================================================
@@ -259,60 +263,29 @@ body {
    ========================================================================== */
 .rodape {
     grid-area: footer;
-    background-color: var(--verde-escuro);
+    background-color: var(--azul-topo-rodape);
     color: var(--branco);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 40px;
-    border-top: 3px solid var(--verde-principal);
+    padding: 12px 30px;
+    border-top: 2px solid #2d3b58;
 }
 
 .contato h2 {
-    font-size: 18px;
-    margin: 0 0 15px 0;
+    font-size: 13px; 
+    margin: 0 0 4px 0;
+}
+
+.contato p a {
     color: var(--branco);
-}
-
-.contato p {
-    margin: 5px 0;
-}
-
-.contato a {
-    color: #b0c2bc;
     text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s ease;
-}
-
-.contato a:hover {
-    color: var(--branco);
-    text-decoration: underline;
+    font-size: 11px; 
+    opacity: 0.9;
 }
 
 .logo-rodape img {
-    max-height: 60px;
-    border-radius: 8px;
-}
-
-/* Responsive Grid para telas menores */
-@media (max-width: 768px) {
-    body {
-        grid-template-areas: 
-            "header"
-            "nav"
-            "main"
-            "footer";
-        grid-template-columns: 1fr;
-    }
-    
-    .menu-lateral nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .sobre-projeto {
-        flex-direction: column;
-    }
+    max-height: 18px; 
+    width: auto;
+    border-radius: 2px;
 }
