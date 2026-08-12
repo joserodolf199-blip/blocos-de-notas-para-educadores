@@ -13,8 +13,6 @@ body {
     padding: 0;
     font-family: 'Arial', sans-serif;
     background-color: var(--bg-verde);
-    /* Se tiver a imagem com símbolos matemáticos de fundo, descomente a linha abaixo: */
-    /* background-image: url('caminho-da-sua-imagem.png'); */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -22,6 +20,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-image: url: ("imagens/fundo.png");
+    background-size: cover;
 }
 
 /* Esconde as labels mantendo a acessibilidade para leitores de tela */
