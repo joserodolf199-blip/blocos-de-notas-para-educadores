@@ -1,0 +1,416 @@
+/* ==========================================================================
+   VARIÁVEIS DE ESTILO (PALETA VERDE ATLAS DIGITAL)
+   ========================================================================== */
+:root {
+    --verde-principal: #3a6b5c;   /* Verde identidade do Atlas Digital */
+    --verde-escuro: #1d352e;      /* Para textos principais e destaques */
+    --verde-claro: #f0f4f2;       /* Fundo de seções e contraste */
+    --texto-escuro: #333333;
+    --texto-mutado: #666666;
+    --branco: #ffffff;
+    --borda: #dddddd;
+}
+
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E LAYOUT DASHBOARD
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--texto-escuro);
+    background-color: var(--branco);
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "nav main"
+        "footer footer";
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   HEADER (CABEÇALHO)
+   ========================================================================== */
+.cabecalho {
+    grid-area: header;
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-bottom: 3px solid var(--verde-escuro);
+}
+
+.cabecalho .container-logo img {
+    max-height: 50px;
+    border-radius: 8px;
+    display: block;
+}
+
+.cabecalho .slogan {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin: 0;
+    max-width: 60%;
+    text-align: right;
+}
+
+/* ==========================================================================
+   ASIDE (MENU LATERAL)
+   ========================================================================== */
+.menu-lateral {
+    grid-area: nav;
+    background-color: var(--verde-escuro);
+    padding: 30px 0;
+}
+
+.menu-lateral nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-lateral nav a {
+    color: #b0c2bc;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 15px;
+    font-weight: 500;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.menu-lateral nav a:hover,
+.menu-lateral nav a:first-child { /* Deixa o primeiro link ativo por padrão */
+    color: var(--branco);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left-color: var(--verde-principal);
+    padding-left: 30px;
+}
+
+/* ==========================================================================
+   MAIN (CONTEÚDO PRINCIPAL)
+   ========================================================================== */
+.conteudo-principal {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Seção 1: Controle de Turma (Seção dos Cards com Degradê) */
+.titulo-pagina, 
+.lista-turmas {
+    background: linear-gradient(135deg, #25443a, #13221d); /* Degradê baseado no seu verde escuro */
+    padding: 10px 40px;
+}
+
+.titulo-pagina {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.titulo-pagina h1 {
+    color: var(--branco);
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Grid das Turmas */
+.lista-turmas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+/* Cards de Turma Individuais */
+.turma {
+    background-color: var(--branco);
+    color: var(--texto-escuro);
+    border-radius: 15px;
+    padding: 25px;
+    width: 280px;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.cabecalho-turma {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--verde-claro);
+    padding-bottom: 8px;
+}
+
+.cabecalho-turma h2 {
+    color: var(--verde-escuro);
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Transforma o ponto (●) do HTML no ícone de perfil em vetor CSS */
+.icone-turma {
+    background-color: #7a9c8f;
+    color: var(--branco);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0px; /* Oculta o caractere de texto */
+    position: relative;
+}
+
+.icone-turma::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--branco);
+    border-radius: 50%;
+    top: 5px;
+}
+
+.icone-turma::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 8px;
+    background: var(--branco);
+    border-radius: 8px 8px 0 0;
+    bottom: 4px;
+}
+
+.lista-alunos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+    flex-grow: 1;
+}
+
+.lista-alunos p {
+    font-size: 14px;
+    color: var(--texto-escuro);
+    border-bottom: 1px solid var(--verde-claro);
+    padding-bottom: 4px;
+    margin: 0;
+}
+
+.numero-turma {
+    text-align: right;
+    font-size: 13px;
+    color: var(--texto-mutado);
+    font-weight: bold;
+    margin: 15px 0 0 0;
+}
+
+/* Botão Adicionar Turma */
+.botao-adicionar-turma {
+    width: 100%;
+    max-width: 250px;
+    margin: 20px auto 0 auto;
+    background-color: var(--verde-principal);
+    color: var(--branco);
+    border: none;
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+}
+
+.botao-adicionar-turma:hover {
+    background-color: var(--verde-escuro);
+}
+
+/* Seção 2: Sobre o Controle (Bloco Central Verde Claro) */
+.sobre-controle {
+    background-color: var(--verde-claro);
+    padding: 40px 50px;
+    border-left: 5px solid var(--verde-principal);
+}
+
+.sobre-controle h2 {
+    color: var(--verde-escuro);
+    font-size: 22px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--borda);
+    padding-bottom: 8px;
+}
+
+.sobre-controle h3 {
+    color: var(--verde-escuro);
+    font-size: 16px;
+    margin: 20px 0 10px 0;
+}
+
+.sobre-controle ul {
+    margin: 0 0 20px 0;
+    padding-left: 20px;
+}
+
+.sobre-controle li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--texto-escuro);
+    margin-bottom: 6px;
+}
+
+/* Seção 3: FAQ (Perguntas Frequentes) */
+.perguntas-frequentes {
+    padding: 50px;
+    background-color: var(--branco);
+}
+
+.perguntas-frequentes h2 {
+    color: var(--verde-escuro);
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.pergunta {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+.cabecalho-pergunta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.texto-pergunta {
+    font-weight: bold;
+    color: var(--verde-escuro);
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Botão do FAQ Arredondado conforme seu padrão */
+.botao-pergunta {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid var(--verde-principal);
+    background-color: transparent;
+    color: var(--verde-principal);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.botao-pergunta:hover {
+    background-color: var(--verde-principal);
+    color: var(--branco);
+}
+
+.resposta-pergunta {
+    background-color: #fafafa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--borda);
+}
+
+.resposta-pergunta p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--texto-mutado);
+    margin: 0;
+}
+
+/* ==========================================================================
+   FOOTER (RODAPÉ)
+   ========================================================================== */
+.rodape {
+    grid-area: footer;
+    background-color: var(--verde-escuro);
+    color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+    border-top: 3px solid var(--verde-principal);
+}
+
+.contato h2 {
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    color: var(--branco);
+}
+
+.contato p {
+    margin: 5px 0;
+}
+
+.contato a {
+    color: #b0c2bc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.contato a:hover {
+    color: var(--branco);
+    text-decoration: underline;
+}
+
+.logo-rodape img {
+    max-height: 60px;
+    border-radius: 8px;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    body {
+        grid-template-areas: 
+            "header"
+            "nav"
+            "main"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-lateral nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .menu-lateral nav a {
+        padding: 10px 15px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+    
+    .menu-lateral nav a:hover {
+        border-bottom-color: var(--verde-principal);
+        padding-left: 15px;
+    }
+
+    .sobre-controle, .perguntas-frequentes {
+        padding: 30px 20px;
+    }
+}
