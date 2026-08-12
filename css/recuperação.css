@@ -1,155 +1,136 @@
-/* Configurações Globais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+:root {
+  --bg-verde: #3a6b5c;       /* Tom de verde do fundo das telas */
+  --card-bg: rgba(255, 255, 255, 0.15); /* Fundo semi-transparente do painel */
+  --input-bg: #b0c2bc;      /* Cor cinza-esverdeada dos campos */
+  --btn-azul: #0055ff;      /* Azul do botão principal */
+  --texto-branco: #ffffff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #727272; /* Fundo cinza externo da imagem */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-image: url("../imagens/fundo.png");
-    background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-verde);
+  background-image: url("../imagens/fundo.png"); /* Ajustado caminho relativo */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-/* Container Principal (Tela do Celular) */
-.pagina-recuperacao {
-    background-color: #4b7e72; /* Verde estilo quadro-negro */
-    width: 360px;
-    height: 740px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    overflow: hidden;
-}
-
-/* Acessibilidade: Esconde os labels visualmente, mantendo para leitores de tela */
+/* Esconde as labels mantendo a acessibilidade para leitores de tela */
 .ocultar-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
-/* Título Superior */
-.titulo-recuperacao {
-    color: #a8b8b3;
-    font-size: 1rem;
-    font-weight: normal;
-    letter-spacing: 1px;
-    margin-top: 10px;
+/* Classe utilitária para o JavaScript alternar as etapas de recuperação */
+.etapa-recuperacao.escondido {
+  display: none;
 }
 
-/* Container do Logo */
+/* ==========================================================================
+   ESTILIZAÇÃO DA PÁGINA DE RECUPERAÇÃO
+   ========================================================================== */
+.pagina-recuperacao {
+  background: var(--card-bg);
+  border-radius: 25px;
+  padding: 35px 25px;
+  width: 340px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Container do Logo (Variante compacta para recuperação) */
 .container-logo {
-    background-color: #ffffff;
-    width: 80%;
-    padding: 15px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 25px;
+  display: inline-block;
+  width: 80%;
 }
 
 .container-logo img {
-    max-width: 100%;
-    height: auto;
+  max-width: 60px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* Formulário e Campos de Entrada */
+/* Formulário e Estrutura de Etapas */
 .formulario-recuperacao {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .etapa-recuperacao {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaçamento ideal entre o input e o botão da etapa */
 }
 
 .campo-recuperacao {
-    width: 85%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
 .campo-entrada {
-    width: 100%;
-    padding: 12px 15px;
-    background-color: #c4cdc7;
-    border: none;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: #4a4a4a;
-    outline: none;
-    text-align: left;
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--input-bg);
+  color: #1a3a30;
+  font-size: 14px;
+  outline: none;
 }
 
 .campo-entrada::placeholder {
-    color: #6d7570;
+  color: #556a63;
 }
 
-/* Botão Azul */
+/* Botão de Ação */
 .botao-recuperar-senha {
-    width: 85%;
-    padding: 12px;
-    background-color: #1e6fff;
-    color: #ffffff;
-    border: none;
-    border-radius: 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background 0.2s ease;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--btn-azul);
+  color: var(--texto-branco);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .botao-recuperar-senha:hover {
-    background-color: #1557cc;
+  background-color: #0044cc;
 }
 
-/* Frase de Inspiração */
-.frase {
-    width: 85%;
-    text-align: center;
-    margin: 15px 0;
-}
-
+/* Frase Motivacional de Rodapé */
 .frase p {
-    color: #ffffff;
-    font-size: 0.65rem;
-    line-height: 1.4;
-    letter-spacing: 0.5px;
-}
-
-/* Rodapé com a Imagem dos Estudantes */
-.container-rodape {
-    width: calc(100% + 40px); /* Expande para encostar nas bordas laterais */
-    margin-bottom: -20px; /* Encosta totalmente na borda inferior */
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    overflow: hidden;
-}
-
-.imagem-rodape {
-    width: 100%;
-    display: block;
-    object-fit: cover;
+  color: var(--texto-branco);
+  font-size: 10px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  margin: 25px 0 0 0;
+  padding: 0 10px;
+  opacity: 0.9;
 }
