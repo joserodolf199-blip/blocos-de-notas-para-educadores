@@ -1,0 +1,256 @@
+:root {
+    /* Cores das faixas dos alunos vistas no protótipo */
+    --cor-aluno-1: #1e294b;       /* Azul escuro da primeira faixa */
+    --cor-aluno-2: #3db2b2;       /* Verde turquesa/ciano da segunda faixa */
+    --azul-topo-rodape: #3b4b71;  /* Tom azulado do cabeçalho e rodapé */
+    --fundo-geral: #78909c;       /* Tom cinza-azulado do fundo geral */
+    
+    --texto-branco: #ffffff;
+    --borda-linha: rgba(255, 255, 255, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--fundo-geral);
+    color: var(--texto-branco);
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "nav main"
+        "footer footer";
+    grid-template-columns: 200px 1fr; 
+    min-height: 100vh;
+    width: 100%; 
+}
+
+/* ==========================================================================
+   CABEÇALHO (HEADER)
+   ========================================================================= */
+.cabecalho {
+    grid-area: header;
+    background-color: var(--azul-topo-rodape);
+    color: var(--texto-branco);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 25px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.cabecalho .container-logo img {
+    max-height: 35px; 
+    width: auto;
+    border-radius: 4px;
+}
+
+.cabecalho .slogan {
+    font-size: 11px; 
+    font-weight: bold;
+    letter-spacing: 0.8px;
+    max-width: 75%;
+    text-align: right;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   ASIDE (MENU LATERAL COMPACTO EM CÁPSULA BRANCA)
+   ========================================================================= */
+.menu-lateral {
+    grid-area: nav;
+    background-color: var(--azul-topo-rodape);
+    padding: 20px 10px;
+}
+
+.menu-lateral nav {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--texto-branco);
+    border-radius: 20px; /* Bordas arredondadas idênticas ao Figma */
+    padding: 15px 5px;
+    gap: 6px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+}
+
+.menu-lateral nav a {
+    color: #333333;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 11px; 
+    font-weight: bold;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+}
+
+.menu-lateral nav a:hover {
+    color: var(--texto-branco);
+    background-color: var(--cor-aluno-2);
+    border-left-color: var(--azul-topo-rodape);
+    padding-left: 16px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* ==========================================================================
+   MAIN (ÁREA DE CONTEÚDO SEM GRID INTERNO - FAIXAS COMPLETAS)
+   ========================================================================= */
+.conteudo-principal {
+    grid-area: main;
+    background-color: #ffffff; /* Fundo branco base da página */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Título superior interno da página */
+.titulo-pagina {
+    padding: 20px 30px;
+    background-color: #ffffff;
+}
+
+.titulo-pagina h1 {
+    font-size: 22px;
+    color: #333333;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO DAS FAIXAS DE PERFIL DE CADA ALUNO (IGUAL À FOTO)
+   ========================================================================= */
+.perfil-aluno {
+    width: 100%;
+    padding: 40px 50px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Customização Individual das Cores de Fundo de cada bloco */
+.perfil-aluno:nth-of-type(1) {
+    background-color: var(--cor-aluno-1);
+}
+
+.perfil-aluno:nth-of-type(2) {
+    background-color: var(--cor-aluno-2);
+}
+
+.perfil-aluno:nth-of-type(3) {
+    /* Terceira faixa usa a imagem de paisagem/vetor ao fundo */
+    background-image: url("../imagens/fundo-paisagem.png"); 
+    background-size: cover;
+    background-position: center;
+    background-color: #512da8; /* Fallback caso a imagem não carregue */
+}
+
+/* Foto do Aluno redonda e centralizada com borda branca proeminente */
+.foto-aluno {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto-aluno img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--texto-branco); /* Borda branca grossa do Figma */
+    background-color: #ffffff;
+}
+
+/* Bloco das informações com linhas contínuas */
+.informacoes-aluno {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Título "ALUNO: NOME" expandido horizontalmente com linha inferior */
+.informacoes-aluno h2 {
+    font-size: 24px;
+    font-weight: normal;
+    color: var(--texto-branco);
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--borda-linha); /* Linha horizontal contínua */
+    letter-spacing: 1px;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+/* Estilização dos parágrafos como campos sublinhados inline */
+.informacoes-aluno p {
+    font-size: 14px;
+    color: var(--texto-branco);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--borda-linha); /* Linha contínua simulando input preenchido */
+    width: 100%;
+    text-transform: uppercase;
+    display: flex;
+    gap: 5px;
+}
+
+.informacoes-aluno p strong {
+    font-weight: bold;
+}
+
+/* Opcional: Ajuste para os pequenos ícones ilustrativos nos cantos das faixas */
+.perfil-aluno::after {
+    content: "";
+    position: absolute;
+    right: 40px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   RODAPÉ (FOOTER)
+   ========================================================================= */
+.rodape {
+    grid-area: footer;
+    background-color: var(--azul-topo-rodape);
+    color: var(--texto-branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.contato h2 {
+    font-size: 12px; 
+    margin: 0 0 4px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contato p {
+    margin: 2px 0;
+}
+
+.contato p a {
+    color: var(--texto-branco);
+    text-decoration: none;
+    font-size: 11px; 
+    opacity: 0.8;
+}
+
+.logo-rodape img {
+    max-height: 30px; 
+    width: auto;
+    border-radius: 4px;
+}
