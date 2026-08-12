@@ -1,0 +1,158 @@
+/* Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #727272; /* Fundo cinza externo da imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("../imagens/fundo.png");
+    background-size: cover;
+}
+
+/* Container Principal (Tela do Celular) */
+.pagina-recuperacao {
+    background-color: #4b7e72; /* Verde estilo quadro-negro */
+    /* Para adicionar os desenhos de matemática de fundo, você pode usar uma imagem real:
+       background-image: url('../imagens/fundo-matematica.png'); 
+       background-size: cover; */
+    width: 360px;
+    height: 740px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* Acessibilidade: Esconde os labels visualmente, mantendo para leitores de tela */
+.ocultar-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Título Superior */
+.titulo-recuperacao {
+    color: #a8b8b3;
+    font-size: 1rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+/* Container do Logo */
+.container-logo {
+    background-color: #ffffff;
+    width: 80%;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.container-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Formulário e Campos de Entrada */
+.formulario-recuperacao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.etapa-recuperacao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.campo-recuperacao {
+    width: 85%;
+}
+
+.campo-entrada {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #c4cdc7;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #4a4a4a;
+    outline: none;
+    text-align: left;
+}
+
+.campo-entrada::placeholder {
+    color: #6d7570;
+}
+
+/* Botão Azul */
+.botao-recuperar-senha {
+    width: 85%;
+    padding: 12px;
+    background-color: #1e6fff;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s ease;
+}
+
+.botao-recuperar-senha:hover {
+    background-color: #1557cc;
+}
+
+/* Frase de Inspiração */
+.frase {
+    width: 85%;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.frase p {
+    color: #ffffff;
+    font-size: 0.65rem;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+}
+
+/* Rodapé com a Imagem dos Estudantes */
+.container-rodape {
+    width: calc(100% + 40px); /* Expande para encostar nas bordas laterais */
+    margin-bottom: -20px; /* Encosta totalmente na borda inferior */
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    overflow: hidden;
+}
+
+.imagem-rodape {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
