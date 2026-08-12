@@ -1,64 +1,116 @@
-    <!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Digital</title>
-    <link rel="stylesheet" href="../css/recuperação.css"> 
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Atlas Digital - Recuperação de Senha</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/recuperação.css"
+    >
+
 </head>
+
 <body>
-    
+
     <main class="pagina-recuperacao">
 
+
+        <!-- Logo -->
+
         <div class="container-logo">
-            <img src="../imagens/logo.jpeg" alt="Logo da empresa">
+
+            <img
+                src="../imagens/logo.jpeg"
+                alt="Logo Atlas Digital"
+            >
+
         </div>
+
+
+        <!-- Formulário de recuperação -->
 
         <form class="formulario-recuperacao">
 
-            <div class="etapa-recuperacao" id="etapa-email">
+
+            <!-- Etapa do e-mail -->
+
+            <div
+                class="etapa-recuperacao"
+                id="etapa-email"
+            >
 
                 <div class="campo-recuperacao">
-                    <!-- Coloquei um class no label para que o css TIRE, pois nós só queremos ele como acessibilidade. @Rodolfo, vai nos ajudando aí -->
-                    <label class="ocultar-label" for="email">
+
+                    <label
+                        class="ocultar-label"
+                        for="email"
+                    >
                         E-mail
                     </label>
 
-                    <input 
-                        class="campo-entrada" 
-                        id="email" 
-                        type="email" 
-                        placeholder="E-mail" 
+                    <input
+                        class="campo-entrada"
+                        id="email"
+                        type="email"
+                        placeholder="E-mail"
                         required
                     >
 
                 </div>
 
-                <button class="botao-recuperar-senha" id="botao-receber-codigo" type="submit">
+
+                <button
+                    class="botao-recuperar-senha"
+                    id="botao-receber-codigo"
+                    type="submit"
+                >
                     Receber código
                 </button>
 
             </div>
 
-            <div class="etapa-recuperacao" id="etapa-codigo">
+
+            <!-- Etapa do código -->
+
+            <div
+                class="etapa-recuperacao"
+                id="etapa-codigo"
+            >
 
                 <div class="campo-recuperacao">
 
-                    <label class="ocultar-label" for="codigo">
+                    <label
+                        class="ocultar-label"
+                        for="codigo"
+                    >
                         Digite seu código
                     </label>
 
-                    <input 
-                        class="campo-entrada" 
-                        id="codigo" 
-                        type="text" 
-                        placeholder="Digite seu código" 
+                    <input
+                        class="campo-entrada"
+                        id="codigo"
+                        type="text"
+                        placeholder="Digite seu código"
                         required
                     >
 
                 </div>
 
-                <button class="botao-recuperar-senha" id="botao-enviar-codigo" type="submit">
+
+                <button
+                    class="botao-recuperar-senha"
+                    id="botao-enviar-codigo"
+                    type="submit"
+                >
                     Enviar
                 </button>
 
@@ -67,12 +119,22 @@
         </form>
 
 
+        <!-- Frase -->
+
         <div class="frase">
-            <p>"Cada página lida é um degrau a mais na construção do seu próprio sucesso."</p>
+
+            <p>
+                "Cada página lida é um degrau a mais na construção do seu próprio sucesso."
+            </p>
+
         </div>
- 
-        
+
     </main>
+
+
+    <!-- JavaScript -->
+
+    <script src="../js/recuperacao.js"></script>
 
 </body>
 
