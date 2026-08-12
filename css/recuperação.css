@@ -19,9 +19,6 @@ body {
 /* Container Principal (Tela do Celular) */
 .pagina-recuperacao {
     background-color: #4b7e72; /* Verde estilo quadro-negro */
-    /* Para adicionar os desenhos de matemática de fundo, você pode usar uma imagem real:
-       background-image: url('../imagens/fundo-matematica.png'); 
-       background-size: cover; */
     width: 360px;
     height: 740px;
     padding: 20px;
