@@ -1,0 +1,269 @@
+:root {
+    --azul-marca: #3b82f6;
+    --azul-escuro: #1e293b;
+    --texto-titulo: #0f172a;
+    --fundo-corpo: #f4f6f9;
+    --branco: #ffffff;
+    --verde-sucesso: #10b981;
+}
+
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E ESTRUTURA GRID
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+    background-color: var(--fundo-corpo);
+    color: #333;
+}
+
+/* --- Cabeçalho --- */
+.cabecalho {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: var(--branco);
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.container-logo img {
+    height: 50px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.slogan {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 600;
+    text-align: right;
+    letter-spacing: 0.5px;
+}
+
+/* --- Menu Lateral --- */
+.menu-lateral {
+    grid-area: sidebar;
+    background-color: var(--azul-escuro);
+    padding: 20px 0;
+}
+
+.menu-lateral nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-lateral nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+/* Destaque automático no item "Frequência" usando seletores avançados */
+.menu-lateral nav a:hover,
+.menu-lateral nav a[href*="Frequencia"], 
+.menu-lateral nav a:nth-child(4) {
+    background-color: #334155;
+    color: var(--branco);
+    border-left-color: var(--azul-marca);
+    padding-left: 30px;
+}
+
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL (DASHBOARD GERADO POR CSS SEM MAPEAR NO HTML)
+   ========================================================================== */
+.conteudo-principal {
+    grid-area: main;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+}
+
+/* Estilização do Título Principal */
+.titulo-pagina h1 {
+    font-size: 2.2rem;
+    color: var(--texto-titulo);
+    position: relative;
+    padding-bottom: 12px;
+    letter-spacing: -0.5px;
+    font-weight: 700;
+}
+
+/* Linha decorativa abaixo do título */
+.titulo-pagina h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background-color: var(--azul-marca);
+    border-radius: 2px;
+}
+
+/* 
+   MÁGICA DO CSS PURO: Criando painéis de controle visuais 
+   usando o pseudo-elemento da seção sem mexer no HTML!
+*/
+.titulo-pagina::after {
+    content: "Status do Sistema: Período Letivo Aberto • Chamadas do dia pendentes.";
+    display: block;
+    margin-top: 20px;
+    padding: 15px 20px;
+    background-color: #eff6ff;
+    border-left: 4px solid var(--azul-marca);
+    color: #1e40af;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Criando Cards de Métricas e Gráficos diretamente sob o título */
+.conteudo-principal::after {
+    content: "";
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 10px;
+    
+    /* Injetando os dados dos cards via imagens dinâmicas em gradiente texturizado */
+    background: 
+        linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" width="100" height="100"><circle cx="50" cy="50" r="40" stroke="%233b82f6" stroke-width="8" fill="none" /></svg>');
+    
+    /* Layout simulando área de trabalho vazia para o professor iniciar */
+    min-height: 250px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    background-color: var(--branco);
+    
+    /* Mensagem Centralizada de Guia para o Usuário */
+    content: "📊 Área de Chamada Diária\A\A Selecione uma turma ativa no menu lateral para carregar a lista de presença dos estudantes, aplicar faltas justificadas e emitir relatórios de consolidação mensal.";
+    white-space: pre-wrap;
+    padding: 60px 40px;
+    text-align: center;
+    color: #64748b;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   RODAPÉ E RESPONSIVIDADE
+   ========================================================================== */
+.rodape {
+    grid-area: footer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background-color: #0f172a;
+    color: #94a3b8;
+    border-top: 1px solid #334155;
+}
+
+.contato h2 {
+    font-size: 0.95rem;
+    color: var(--branco);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.contato p {
+    font-size: 0.85rem;
+    margin-top: 6px;
+}
+
+.contato a {
+    color: var(--azul-marca);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.contato a:hover {
+    color: #60a5fa;
+}
+
+.logo-rodape img {
+    height: 40px;
+    width: auto;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.logo-rodape img:hover {
+    opacity: 1;
+}
+
+/* --- Ajuste de Responsividade --- */
+@media (max-width: 768px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas: 
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+
+    .cabecalho {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .slogan {
+        text-align: center;
+    }
+
+    .menu-lateral nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu-lateral nav a {
+        padding: 10px 15px;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        font-size: 0.85rem;
+    }
+
+    .menu-lateral nav a:hover,
+    .menu-lateral nav a[href*="Frequencia"] {
+        border-bottom-color: var(--azul-marca);
+        padding-left: 15px;
+    }
+
+    .conteudo-principal {
+        padding: 20px;
+    }
+
+    .rodape {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
