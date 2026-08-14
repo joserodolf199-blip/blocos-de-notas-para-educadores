@@ -1,315 +1,209 @@
 :root {
-    --azul-topo-rodape: #2e3d62;     /* Azul escuro sólido do cabeçalho, rodapé e menu */
-    --fundo-geral: #90a4ae;          /* Tom cinza-azulado de fundo visto nas bordas */
-    --fundo-secao-azul: #3db2b2;     /* Azul turquesa/ciano das caixas de conteúdo */
-    --fundo-secao-claro: #eceff1;    /* Cinza claro de fundo de algumas seções */
-    
-    --texto-escuro: #212121;
-    --texto-mutado: #4a4a4a;
+    --azul-marca: #3b82f6;
+    --azul-escuro: #1e293b;
+    --texto-titulo: #0f172a;
+    --fundo-corpo: #f4f6f9;
     --branco: #ffffff;
-    --borda: #b0bec5;
+    --cinza-borda: #cbd5e1;
+    --cinza-texto: #64748b;
 }
 
 /* ==========================================================================
-   ESTRUTURA GRID MANTER IGUAL (TELA CHEIA)
+   CONFIGURAÇÕES GERAIS E LAYOUT DA PÁGINA
    ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    color: var(--texto-escuro);
-    background-color: var(--fundo-geral); /* Aplicado o fundo cinza-azulado do Figma */
-    display: grid;
-    grid-template-areas: 
-        "header header"
-        "nav main"
-        "footer footer";
-    grid-template-columns: 200px 1fr; 
+    background-color: var(--fundo-corpo);
     min-height: 100vh;
-    width: 100%; 
-}
-
-/* ==========================================================================
-   HEADER (CABEÇALHO)
-   ========================================================================== */
-.cabecalho {
-    grid-area: header;
-    background-color: var(--azul-topo-rodape);
-    color: var(--branco);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 15px 25px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    justify-content: center;
+    padding: 20px;
+    background-image: url("../imagens/fundo.png");
+    background-size: cover;
 }
 
-.cabecalho .container-logo img {
-    max-height: 40px; /* Aumentado para dar destaque ao logo branco */
-    width: auto;
-    border-radius: 4px;
-}
-
-.cabecalho .slogan {
-    font-size: 11px; 
-    font-weight: bold;
-    letter-spacing: 0.8px;
-    max-width: 70%;
-    text-align: right;
-    line-height: 1.4;
-    text-transform: uppercase;
-}
-
-/* ==========================================================================
-   ASIDE (MENU LATERAL COM BORDAS ARREDONDADAS DO FIGMA)
-   ========================================================================== */
-.menu-lateral {
-    grid-area: nav;
-    background-color: var(--azul-topo-rodape);
-    padding: 20px 10px;
-}
-
-.menu-lateral nav {
+/* Bloco Central do Card de Login */
+.pagina-login {
+    background-color: var(--branco);
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 10px 15px -3px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    background-color: var(--branco);
-    border-radius: 20px; /* Bordas bem redondas como na imagem */
-    padding: 15px 5px;
-    gap: 8px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
-}
-
-.menu-lateral nav a {
-    color: var(--texto-escuro);
-    text-decoration: none;
-    padding: 10px 12px;
-    font-size: 11px; 
-    font-weight: bold;
-    border-left: 4px solid transparent;
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-}
-
-.menu-lateral nav a:hover {
-    color: var(--branco);
-    background-color: var(--fundo-secao-azul); /* Hover com o azul turquesa */
-    border-left-color: var(--azul-topo-rodape);
-    padding-left: 16px;
-    border-radius: 0 10px 10px 0;
+    align-items: center;
 }
 
 /* ==========================================================================
-   MAIN (CONTEÚDO PRINCIPAL)
+   ELEMENTOS DE IDENTIDADE E ACESSIBILIDADE
    ========================================================================== */
-.conteudo-principal {
-    grid-area: main;
-    padding: 40px;
-    background-color: var(--branco); /* Fundo branco da folha central */
-    width: 100%;
+.container-logo {
+    margin-bottom: 30px;
 }
 
-/* Banner Superior */
-.banner {
-    width: 100%;
-    height: 280px; /* Altura ajustada para visualização ampla */
-    border-radius: 0; /* Na foto o banner corta a folha de ponta a ponta */
+.container-logo img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Rodolfo: Esta classe oculta o texto visualmente mas mantém a leitura dos softwares de acessibilidade perfeita! */
+.ocultar-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
     overflow: hidden;
-    margin-bottom: 35px;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
-.banner img {
+/* ==========================================================================
+   FORMULÁRIO E ENTRADAS DE DADOS
+   ========================================================================== */
+.formulario-login {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Título Principal Centralizado e Estilizado */
-.titulo-site h1 {
-    color: var(--texto-escuro);
-    font-size: 26px;
-    font-weight: 900;
-    margin: 0 0 35px 0;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-/* Seção Sobre o Projeto (Bloco Turquesa da Imagem) */
-.sobre-projeto {
     display: flex;
-    gap: 30px;
-    align-items: center;
-    margin-bottom: 40px;
-    background-color: var(--fundo-secao-azul); /* Fundo azul turquesa */
-    padding: 30px;
-    border-radius: 12px;
-    color: var(--branco);
+    flex-direction: column;
+    gap: 16px;
 }
 
-.texto-projeto h2 {
-    color: var(--branco);
-    font-size: 15px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
+.campo-login {
+    width: 100%;
 }
 
-.texto-projeto p {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--branco);
-}
-
-/* Container da Imagem à Direita */
-.imagem-projeto {
-    flex: 0.7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.campo-entrada {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--cinza-borda);
     border-radius: 8px;
-    overflow: hidden;
+    font-size: 0.95rem;
+    color: var(--texto-titulo);
+    background-color: #f8fafc;
+    outline: none;
+    transition: all 0.2s ease;
 }
 
-.imagem-projeto img {
+.campo-entrada:focus {
+    border-color: var(--azul-marca);
+    background-color: var(--branco);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Botão Entrar (Submit Principal) */
+.entrar {
     width: 100%;
-    object-fit: cover;
-}
-
-/* Seção Funcionalidades */
-.principais-funcionalidades {
-    margin-bottom: 45px;
-    background-color: var(--fundo-secao-claro); /* Fundo cinza claro da faixa */
-    padding: 35px 30px;
-    border-radius: 12px;
-}
-
-.principais-funcionalidades h3 {
-    color: var(--texto-escuro);
-    font-size: 20px;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-/* Blocos Individuais das Funcionalidades Adaptados */
-.funcionalidade {
-    background-color: var(--fundo-secao-azul); /* Lista fica dentro do bloco turquesa */
-    padding: 25px 30px;
-    border-radius: 12px;
-    margin-bottom: 15px;
+    padding: 12px;
+    background-color: var(--azul-marca);
     color: var(--branco);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-.funcionalidade h4 {
-    color: var(--branco);
-    margin: 0;               /* Corrigido aqui (removido o "-size") */
-    margin-bottom: 15px;
-    font-size: 15px;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding-bottom: 6px;
-}
-
-.funcionalidade ul {
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-.funcionalidade li {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--branco);
-    margin-bottom: 8px;
-}
-
-/* Seção FAQ (Perguntas Frequentes) */
-.perguntas-frequentes {
-    margin-bottom: 20px;
-}
-
-.perguntas-frequentes h2 {
-    color: var(--texto-escuro);
-    font-size: 18px;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-.pergunta {
-    width: 100%;
-    max-width: 850px;
-    margin: 0 auto 12px auto;
-    border: 1px solid var(--borda);
-    border-radius: 30px; 
-    padding: 12px 25px;
-    background-color: var(--fundo-secao-claro); /* Fundo cinza claro dos balões */
-}
-
-.cabecalho-pergunta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.texto-pergunta {
-    font-weight: bold;
-    color: var(--texto-mutado);
-    font-size: 12px; 
-}
-
-.botao-pergunta {
-    background: none;
     border: none;
-    color: var(--texto-mutado);
-    font-size: 14px; 
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 4px;
 }
 
-.resposta-pergunta {
-    display: none !important;
+.entrar:hover {
+    background-color: #2563eb;
+}
+
+/* Oculta o botão duplicado de Login fora do escopo do formulário */
+div.botao-login {
+    display: none;
 }
 
 /* ==========================================================================
-   FOOTER (RODAPÉ)
+   SEÇÕES COMPLEMENTARES (GOOGLE E RECUPERAÇÃO)
    ========================================================================== */
-.rodape {
-    grid-area: footer;
-    background-color: var(--azul-topo-rodape);
-    color: var(--branco);
+/* Divisor Visual "OU" */
+.divisor-login {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
-    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    justify-content: center;
+    margin: 24px 0;
+    gap: 15px;
 }
 
-.contato h2 {
-    font-size: 13px; 
-    margin: 0 0 6px 0;
-    text-transform: uppercase;
+.divisor-login hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid var(--cinza-borda);
+}
+
+.divisor-login p {
+    font-size: 0.8rem;
+    color: var(--cinza-texto);
+    font-weight: 700;
     letter-spacing: 0.5px;
 }
 
-.contato p a {
-    color: var(--branco);
+/* Botão de Autenticação Google */
+.login-google {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.botao-google {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--branco);
+    color: #475569;
+    border: 1px solid var(--cinza-borda);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.botao-google:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+/* Ícone estilizado do Google criado via CSS puro */
+.botao-google::before {
+    content: "G";
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1.1rem;
+    background: linear-gradient(45deg, #4285F4 25%, #EA4335 25% 50%, #FBBC05 50% 75%, #34A853 75%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Link de Recuperação de Senha */
+.recuperacao-senha {
+    text-align: center;
+}
+
+.recuperacao-senha a {
+    color: var(--azul-marca);
+    font-size: 0.9rem;
     text-decoration: none;
-    font-size: 11px; 
-    opacity: 0.8;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-.contato p a:hover {
+.recuperacao-senha a:hover {
+    color: #2563eb;
     text-decoration: underline;
-}
-
-.logo-rodape img {
-    max-height: 35px; 
-    width: auto;
-    border-radius: 4px;
 }
