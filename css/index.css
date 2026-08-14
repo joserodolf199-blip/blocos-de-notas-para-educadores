@@ -1,209 +1,436 @@
 :root {
-    --azul-marca: #3b82f6;
-    --azul-escuro: #1e293b;
-    --texto-titulo: #0f172a;
-    --fundo-corpo: #f4f6f9;
-    --branco: #ffffff;
-    --cinza-borda: #cbd5e1;
-    --cinza-texto: #64748b;
+  --fundo-input: #d9d9d9;
+  --borda-input: #130303;
+  --azul-login: #146eff;
+  --ciano-google: #14c8ff;
+  --vermelho-excluir: #ff0004;
+  --cinza-moldura-logo: #c4c4c4;
+  --texto-escuro: #000000;
+  --branco: #ffffff;
+
+  --largura-mobile: 727px;
+  --altura-mobile: 1552px;
 }
 
-/* ==========================================================================
-   CONFIGURAÇÕES GERAIS E LAYOUT DA PÁGINA
-   ========================================================================== */
+/* Reset basico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
-    background-color: var(--fundo-corpo);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-image: url("../imagens/fundo.png");
-    background-size: cover;
+  font-family: "Inter", "Arial", sans-serif;
+  color: var(--texto-escuro);
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 16px;
 }
 
-/* Bloco Central do Card de Login */
+/* Fundo cobrindo toda a tela */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../imagens/fundo.png") center center / cover no-repeat;
+  opacity: 0.35;
+  z-index: -1;
+}
+
+/* Tela de login */
 .pagina-login {
-    background-color: var(--branco);
-    width: 100%;
-    max-width: 400px;
-    padding: 40px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
-                0 10px 15px -3px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: var(--largura-mobile);
+  min-height: auto;
+  background: transparent;
 }
 
-/* ==========================================================================
-   ELEMENTOS DE IDENTIDADE E ACESSIBILIDADE
-   ========================================================================== */
+/* Logo */
 .container-logo {
-    margin-bottom: 30px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
 }
 
 .container-logo img {
-    height: 60px;
-    width: auto;
-    object-fit: contain;
+  width: auto;
+  height: clamp(160px, 22vh, 220px);
+  aspect-ratio: 412 / 275;
+  object-fit: contain;
+  background-color: var(--cinza-moldura-logo);
+  border-radius: 30px;
 }
 
-/* Rodolfo: Esta classe oculta o texto visualmente mas mantém a leitura dos softwares de acessibilidade perfeita! */
-.ocultar-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* ==========================================================================
-   FORMULÁRIO E ENTRADAS DE DADOS
-   ========================================================================== */
+/* forms */
 .formulario-login {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .campo-login {
-    width: 100%;
+  width: 420px;
+  max-width: 100%;
+}
+
+.ocultar-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .campo-entrada {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid var(--cinza-borda);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    color: var(--texto-titulo);
-    background-color: #f8fafc;
-    outline: none;
-    transition: all 0.2s ease;
+  width: 100%;
+  height: 60px;
+  padding: 0 22px;
+  background-color: var(--fundo-input);
+  opacity: 0.7;
+  border: 1px solid var(--borda-input);
+  border-radius: 22px;
+  transform: rotate(-0.25deg);
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--texto-escuro);
+  outline: none;
+}
+
+.campo-entrada::placeholder {
+  color: var(--texto-escuro);
+  opacity: 1;
 }
 
 .campo-entrada:focus {
-    border-color: var(--azul-marca);
-    background-color: var(--branco);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  opacity: 1;
+  border-width: 2px;
 }
 
-/* Botão Entrar (Submit Principal) */
-.entrar {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--azul-marca);
-    color: var(--branco);
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 4px;
+/* Botao de login */
+.botao-entrar {
+  width: 420px;
+  max-width: 100%;
+  height: 60px;
+  margin-top: 16px;
+  background-color: var(--azul-login);
+  border: none;
+  border-radius: 22px;
+  transform: rotate(-0.25deg);
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-transform: capitalize;
+  color: var(--branco);
+  cursor: pointer;
+  transition: filter 0.2s ease;
 }
 
-.entrar:hover {
-    background-color: #2563eb;
+.botao-entrar:hover {
+  filter: brightness(1.1);
 }
 
-/* Oculta o botão duplicado de Login fora do escopo do formulário */
-div.botao-login {
-    display: none;
+.botao-entrar:active {
+  filter: brightness(0.95);
 }
 
-/* ==========================================================================
-   SEÇÕES COMPLEMENTARES (GOOGLE E RECUPERAÇÃO)
-   ========================================================================== */
-/* Divisor Visual "OU" */
+/* Mensagem de erro de login */
+.mensagem-erro {
+  width: 420px;
+  max-width: 100%;
+  margin: 12px auto 0;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #c0392b;
+}
+
+.mensagem-erro:empty {
+  display: none;
+}
+
+/* Separador "OU" */
 .divisor-login {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 24px 0;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 420px;
+  max-width: 100%;
+  margin: 20px auto 16px;
 }
 
 .divisor-login hr {
-    flex: 1;
-    border: none;
-    border-top: 1px solid var(--cinza-borda);
+  flex: 1;
+  border: none;
+  border-top: 1px solid var(--texto-escuro);
 }
 
 .divisor-login p {
-    font-size: 0.8rem;
-    color: var(--cinza-texto);
-    font-weight: 700;
-    letter-spacing: 0.5px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+  color: var(--texto-escuro);
 }
 
-/* Botão de Autenticação Google */
+/* Botao de logar com google */
 .login-google {
-    width: 100%;
-    margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 420px;
+  max-width: 100%;
+  height: 60px;
+  margin: 0 auto;
+  background-color: var(--ciano-google);
+  border: none;
+  border-radius: 22px;
+  transform: rotate(-0.25deg);
+  gap: 16px;
+  padding: 0 24px;
+}
+
+.icone-google {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .botao-google {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--branco);
-    color: #475569;
-    border: 1px solid var(--cinza-borda);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all 0.2s ease;
+  flex: 1;
+  background: none;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  text-transform: uppercase;
+  color: var(--branco);
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
 }
 
-.botao-google:hover {
-    background-color: #f8fafc;
-    border-color: #94a3b8;
-}
-
-/* Ícone estilizado do Google criado via CSS puro */
-.botao-google::before {
-    content: "G";
-    font-family: 'Arial Black', sans-serif;
-    font-size: 1.1rem;
-    background: linear-gradient(45deg, #4285F4 25%, #EA4335 25% 50%, #FBBC05 50% 75%, #34A853 75%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Link de Recuperação de Senha */
+/* Botao de recuperacao de senha */
 .recuperacao-senha {
-    text-align: center;
+  width: 545px;
+  max-width: 100%;
+  margin: 20px auto 24px;
+  text-align: center;
 }
 
 .recuperacao-senha a {
-    color: var(--azul-marca);
-    font-size: 0.9rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration: underline;
+  color: var(--texto-escuro);
 }
 
 .recuperacao-senha a:hover {
-    color: #2563eb;
-    text-decoration: underline;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+/* Botao de excluir conta */
+.excluir-conta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.botao-excluir {
+  width: 420px;
+  max-width: 100%;
+  height: 60px;
+  background-color: var(--vermelho-excluir);
+  border: none;
+  border-radius: 22px;
+  transform: rotate(-0.25deg);
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  text-transform: uppercase;
+  color: var(--branco);
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.botao-excluir:hover {
+  filter: brightness(1.1);
+}
+
+.botao-excluir:active {
+  filter: brightness(0.95);
+}
+
+/* Responsividade mobile */
+@media (max-width: 600px) {
+  body {
+    padding: 8px;
+  }
+
+  .pagina-login {
+    min-height: auto;
+    padding-bottom: 48px;
+  }
+
+  .container-logo {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .container-logo img {
+    width: auto;
+    max-width: none;
+    height: clamp(140px, 30vh, 200px);
+    aspect-ratio: 412 / 275;
+  }
+
+  .formulario-login,
+  .divisor-login,
+  .login-google,
+  .recuperacao-senha,
+  .excluir-conta,
+  .botao-entrar,
+  .botao-excluir {
+    width: 90%;
+  }
+
+  .campo-entrada,
+  .botao-entrar,
+  .botao-excluir,
+  .login-google {
+    height: 50px;
+  }
+
+  .campo-entrada {
+    font-size: 20px;
+    padding: 0 20px;
+  }
+
+  .botao-entrar {
+    font-size: 24px;
+  }
+
+  .divisor-login p {
+    font-size: 24px;
+  }
+
+  .botao-google {
+    font-size: 22px;
+  }
+
+  .icone-google {
+    width: 32px;
+    height: 32px;
+  }
+
+  .recuperacao-senha a {
+    font-size: 15px;
+  }
+
+  .botao-excluir {
+    font-size: 22px;
+  }
+}
+
+/* Telas muito baixas (ex: mobile em paisagem) - compactação extra */
+@media (max-height: 700px) {
+  body {
+    padding: 8px;
+    align-items: center;
+  }
+
+  .container-logo {
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+
+  .container-logo img {
+    height: clamp(100px, 18vh, 160px);
+  }
+
+  .formulario-login {
+    gap: 8px;
+  }
+
+  .campo-entrada,
+  .botao-entrar,
+  .botao-excluir,
+  .login-google {
+    height: 46px;
+  }
+
+  .campo-entrada {
+    font-size: 18px;
+    padding: 0 18px;
+  }
+
+  .botao-entrar {
+    margin-top: 8px;
+    font-size: 22px;
+  }
+
+  .divisor-login {
+    margin: 10px auto 8px;
+  }
+
+  .divisor-login p {
+    font-size: 20px;
+  }
+
+  .recuperacao-senha {
+    margin: 10px auto 12px;
+  }
+
+  .excluir-conta {
+    margin-top: 8px;
+  }
+
+  .botao-google,
+  .botao-excluir {
+    font-size: 20px;
+  }
+
+  .icone-google {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Diminuir ou remover transições para usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }
