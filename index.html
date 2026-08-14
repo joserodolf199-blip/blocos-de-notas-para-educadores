@@ -1,72 +1,171 @@
 <!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atlas Digital</title>
+<html lang="pt-BR">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/index.css" />
-  </head>
-  <body>
-    <main class="pagina-login">
-      <div class="container-logo">
-        <img src="imagens/logo.jpeg" alt="Logo da empresa" />
+  <title>Atlas Digital</title>
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+  <main class="pagina-login">
+
+    <!-- LOGO -->
+    <div class="container-logo">
+      <img
+        src="imagens/logo.jpeg"
+        alt="Logo do Atlas Digital"
+      >
+    </div>
+
+
+    <!-- FORMULÁRIO DE LOGIN -->
+    <form
+      class="formulario-login"
+      id="formulario-login"
+    >
+
+      <!-- E-MAIL -->
+      <div class="campo-login">
+
+        <label
+          class="ocultar-label"
+          for="email"
+        >
+          E-mail
+        </label>
+
+        <input
+          class="campo-entrada"
+          id="email"
+          name="email"
+          type="email"
+          placeholder="E-mail"
+          autocomplete="email"
+          required
+        >
+
       </div>
 
-      <form class="formulario-login">
-        <div class="campo-login">
-          <label class="ocultar-label" for="email">E-mail</label>
-          <input
-            class="campo-entrada"
-            id="email"
-            type="email"
-            placeholder="E-mail"
-            required
-          />
-        </div>
 
-        <div class="campo-login">
-          <label class="ocultar-label" for="senha">Senha</label>
-          <input
-            class="campo-entrada"
-            id="senha"
-            type="password"
-            placeholder="Senha"
-            required
-          />
-        </div>
+      <!-- SENHA -->
+      <div class="campo-login">
 
-        <button class="botao-entrar" type="submit">LOGIN</button>
-      </form>
+        <label
+          class="ocultar-label"
+          for="senha"
+        >
+          Senha
+        </label>
 
-      <div class="mensagem-erro" role="alert"></div>
+        <input
+          class="campo-entrada"
+          id="senha"
+          name="senha"
+          type="password"
+          placeholder="Senha"
+          autocomplete="current-password"
+          required
+        >
 
-      <div class="divisor-login">
-        <hr />
-        <p>OU</p>
-        <hr />
       </div>
 
-      <div class="login-google">
-        <img src="imagens/google.svg" alt="Ícone do Google" class="icone-google" />
-        <button class="botao-google" type="button">LOGAR COM GOOGLE</button>
-      </div>
 
-      <div class="recuperacao-senha">
-        <a href="html/recuperacao.html">Esqueceu a senha? Clique aqui para recuperá-la</a>
-      </div>
+      <!-- BOTÃO LOGIN -->
+      <button
+        class="botao-entrar"
+        type="submit"
+      >
+        LOGIN
+      </button>
 
-      <div class="excluir-conta">
-        <button class="botao-excluir" type="button">EXCLUIR CONTA</button>
-      </div>
-    </main>
-    <script src="js/index.js"></script>
-  </body>
+    </form>
+
+
+    <!-- MENSAGEM DE ERRO -->
+    <div
+      class="mensagem-erro"
+      id="mensagem-erro"
+      role="alert"
+      aria-live="polite"
+    ></div>
+
+
+    <!-- DIVISOR -->
+    <div class="divisor-login">
+
+      <hr>
+
+      <p>OU</p>
+
+      <hr>
+
+    </div>
+
+
+    <!-- LOGIN COM GOOGLE -->
+    <div class="login-google">
+
+      <img
+        src="imagens/google.svg"
+        alt="Ícone do Google"
+        class="icone-google"
+      >
+
+      <button
+        class="botao-google"
+        id="botao-google"
+        type="button"
+      >
+        LOGAR COM GOOGLE
+      </button>
+
+    </div>
+
+
+    <!-- RECUPERAÇÃO DE SENHA -->
+    <div class="recuperacao-senha">
+
+      <a href="html/recuperacao.html">
+        Esqueceu a senha? Clique aqui para recuperá-la
+      </a>
+
+    </div>
+
+
+    <!-- EXCLUIR CONTA -->
+    <div class="excluir-conta">
+
+      <button
+        class="botao-excluir"
+        id="botao-excluir"
+        type="button"
+      >
+        EXCLUIR CONTA
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <!-- JAVASCRIPT -->
+  <script src="js/index.js"></script>
+
+</body>
+
 </html>
