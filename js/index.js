@@ -2,184 +2,203 @@
 // ATLAS DIGITAL - LOGIN
 // ==========================================
 
-const USUARIOS_MOCK = [
-  {
-    email: "admin@atlas.com",
-    senha: "123456"
-  },
-  {
-    email: "professor@atlas.com",
-    senha: "prof123"
-  }
-];
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Pega os elementos que vamos usar na tela de login
-  const formularioLogin =
-    document.getElementById("formulario-login");
+    // Pega os elementos que serão usados no login
+    const formularioLogin =
+        document.getElementById("formulario-login");
 
-  const emailInput =
-    document.getElementById("email");
+    const emailInput =
+        document.getElementById("email");
 
-  const senhaInput =
-    document.getElementById("senha");
+    const senhaInput =
+        document.getElementById("senha");
 
-  const mensagemErro =
-    document.getElementById("mensagem-erro");
+    const mensagemErro =
+        document.getElementById("mensagem-erro");
 
-  const botaoGoogle =
-    document.getElementById("botao-google");
+    const botaoGoogle =
+        document.getElementById("botao-google");
 
-  const botaoExcluir =
-    document.getElementById("botao-excluir");
+    const botaoExcluir =
+        document.getElementById("botao-excluir");
 
 
-  // Se algum elemento principal não existir, evita que o código continue
-  if (
-    !formularioLogin ||
-    !emailInput ||
-    !senhaInput
-  ) {
-    console.error(
-      "Erro: elementos do formulário de login não foram encontrados."
+    // Confere se os elementos principais estão disponíveis
+    if (
+        !formularioLogin ||
+        !emailInput ||
+        !senhaInput
+    ) {
+        console.error(
+            "Erro: elementos do formulário de login não foram encontrados."
+        );
+
+        return;
+    }
+
+
+    // Mostra uma mensagem de erro na tela
+    function mostrarErro(mensagem) {
+
+        if (!mensagemErro) {
+            return;
+        }
+
+        mensagemErro.textContent = mensagem;
+    }
+
+
+    // Limpa a mensagem de erro
+    function limparErro() {
+
+        if (!mensagemErro) {
+            return;
+        }
+
+        mensagemErro.textContent = "";
+    }
+
+
+    // Busca os usuários cadastrados no LocalStorage
+    function obterUsuarios() {
+
+        try {
+
+            return JSON.parse(
+                localStorage.getItem("usuarios")
+            ) || [];
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao carregar os usuários:",
+                erro
+            );
+
+            return [];
+        }
+    }
+
+
+    // Procura um usuário com o e-mail e a senha informados
+    function verificarLogin(email, senha) {
+
+        const usuarios = obterUsuarios();
+
+        return usuarios.find(
+            function(usuario) {
+
+                return (
+                    usuario.email === email &&
+                    usuario.senha === senha
+                );
+
+            }
+        );
+    }
+
+
+    // Verifica os dados quando o formulário é enviado
+    formularioLogin.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        limparErro();
+
+
+        // Pega os dados digitados no formulário
+        const emailDigitado = emailInput.value
+            .trim()
+            .toLowerCase();
+
+        const senhaDigitada = senhaInput.value;
+
+
+        // Confere se os campos foram preenchidos
+        if (!emailDigitado || !senhaDigitada) {
+
+            mostrarErro(
+                "Preencha o e-mail e a senha."
+            );
+
+            return;
+        }
+
+
+        // Procura o usuário cadastrado
+        const usuarioEncontrado =
+            verificarLogin(
+                emailDigitado,
+                senhaDigitada
+            );
+
+
+        // Se encontrou, salva o usuário logado
+        if (usuarioEncontrado) {
+
+            localStorage.setItem(
+                "usuarioLogado",
+                JSON.stringify(usuarioEncontrado)
+            );
+
+
+            // Abre a página inicial
+            window.location.href = "html/home.html";
+
+            return;
+        }
+
+
+        // Caso não encontre o usuário
+        mostrarErro(
+            "E-mail ou senha inválidos. Tente novamente."
+        );
+
+        senhaInput.value = "";
+
+        senhaInput.focus();
+
+    });
+
+
+    // Limpa o erro quando o usuário começa a digitar
+    emailInput.addEventListener(
+        "input",
+        limparErro
     );
 
-    return;
-  }
-
-
-  // Mostra uma mensagem quando acontece algum erro no login
-  function mostrarErro(mensagem) {
-
-    if (!mensagemErro) {
-      return;
-    }
-
-    mensagemErro.textContent = mensagem;
-  }
-
-
-  // Remove a mensagem de erro quando o usuário começa a digitar novamente
-  function limparErro() {
-
-    if (!mensagemErro) {
-      return;
-    }
-
-    mensagemErro.textContent = "";
-  }
-
-
-  // Confere se o e-mail e a senha correspondem a algum usuário cadastrado
-  function verificarLogin(email, senha) {
-
-    return USUARIOS_MOCK.some((usuario) => {
-
-      return (
-        usuario.email === email &&
-        usuario.senha === senha
-      );
-
-    });
-  }
-
-
-  // Faz a validação quando o formulário é enviado
-  formularioLogin.addEventListener("submit", (evento) => {
-
-    evento.preventDefault();
-
-    limparErro();
-
-
-    // Pega os valores digitados pelo usuário
-    const email =
-      emailInput.value.trim().toLowerCase();
-
-    const senha =
-      senhaInput.value;
-
-
-    // Verifica se os dois campos foram preenchidos
-    if (!email || !senha) {
-
-      mostrarErro(
-        "Preencha o e-mail e a senha."
-      );
-
-      return;
-    }
-
-
-    // Verifica se os dados estão corretos
-    const loginValido =
-      verificarLogin(email, senha);
-
-
-    // Se estiver tudo certo, salva o usuário e abre a página inicial
-    if (loginValido) {
-
-      localStorage.setItem(
-        "usuarioLogado",
-        email
-      );
-
-      window.location.href = "html/home.html";
-
-      return;
-    }
-
-
-    // Caso os dados estejam errados, mostra a mensagem e limpa a senha
-    mostrarErro(
-      "E-mail ou senha inválidos. Tente novamente."
+    senhaInput.addEventListener(
+        "input",
+        limparErro
     );
 
-    senhaInput.value = "";
 
-    senhaInput.focus();
+    // Login com Google ainda será implementado
+    if (botaoGoogle) {
 
-  });
+        botaoGoogle.addEventListener("click", function() {
 
+            alert(
+                "Login com Google será implementado em breve."
+            );
 
-  // Limpa a mensagem de erro enquanto o usuário digita
-  emailInput.addEventListener(
-    "input",
-    limparErro
-  );
+        });
 
-  senhaInput.addEventListener(
-    "input",
-    limparErro
-  );
+    }
 
 
-  // Ainda será implementado o login através do Google
-  if (botaoGoogle) {
+    // Exclusão de conta será implementada depois
+    if (botaoExcluir) {
 
-    botaoGoogle.addEventListener("click", () => {
+        botaoExcluir.addEventListener("click", function() {
 
-      alert(
-        "A funcionalidade de login com Google estará disponível em breve."
-      );
+            alert(
+                "A funcionalidade de exclusão de conta será implementada em breve."
+            );
 
-    });
+        });
 
-  }
-
-
-  // Ainda será implementada a exclusão da conta
-  if (botaoExcluir) {
-
-    botaoExcluir.addEventListener("click", () => {
-
-      alert(
-        "A funcionalidade de exclusão de conta estará disponível em breve."
-      );
-
-    });
-
-  }
+    }
 
 });
