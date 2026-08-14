@@ -5,6 +5,8 @@
     --fundo-corpo: #f4f6f9;
     --branco: #ffffff;
     --verde-sucesso: #10b981;
+    --vermelho-falta: #ef4444;
+    --laranja-alerta: #f59e0b;
 }
 
 /* ==========================================================================
@@ -38,18 +40,17 @@ body {
     justify-content: space-between;
     padding: 15px 30px;
     background-color: var(--branco);
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e2e8f0;
 }
 
 .container-logo img {
     height: 50px;
     width: auto;
-    border-radius: 8px;
 }
 
 .slogan {
     font-size: 0.85rem;
-    color: #666;
+    color: #64748b;
     font-weight: 600;
     text-align: right;
     letter-spacing: 0.5px;
@@ -76,9 +77,8 @@ body {
     border-left: 4px solid transparent;
 }
 
-/* Destaque automático no item "Frequência" usando seletores avançados */
+/* Destaque no item ativo (Frequência) e hover */
 .menu-lateral nav a:hover,
-.menu-lateral nav a[href*="Frequencia"], 
 .menu-lateral nav a:nth-child(4) {
     background-color: #334155;
     color: var(--branco);
@@ -87,89 +87,213 @@ body {
 }
 
 /* ==========================================================================
-   CONTEÚDO PRINCIPAL (DASHBOARD GERADO POR CSS SEM MAPEAR NO HTML)
+   CONTEÚDO PRINCIPAL E PAINEL DE FREQUÊNCIA
    ========================================================================== */
 .conteudo-principal {
     grid-area: main;
     padding: 40px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    position: relative;
+    gap: 25px;
 }
 
-/* Estilização do Título Principal */
+/* Título da Página */
 .titulo-pagina h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: var(--texto-titulo);
     position: relative;
     padding-bottom: 12px;
-    letter-spacing: -0.5px;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
-/* Linha decorativa abaixo do título */
 .titulo-pagina h1::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 50px;
+    width: 60px;
     height: 4px;
     background-color: var(--azul-marca);
     border-radius: 2px;
 }
 
-/* 
-   MÁGICA DO CSS PURO: Criando painéis de controle visuais 
-   usando o pseudo-elemento da seção sem mexer no HTML!
-*/
-.titulo-pagina::after {
-    content: "Status do Sistema: Período Letivo Aberto • Chamadas do dia pendentes.";
-    display: block;
-    margin-top: 20px;
-    padding: 15px 20px;
-    background-color: #eff6ff;
-    border-left: 4px solid var(--azul-marca);
-    color: #1e40af;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 0 8px 8px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+/* Painel Container */
+.painel-frequencia {
+    background-color: var(--branco);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-/* Criando Cards de Métricas e Gráficos diretamente sob o título */
-.conteudo-principal::after {
-    content: "";
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    width: 100%;
-    margin-top: 10px;
-    
-    /* Injetando os dados dos cards via imagens dinâmicas em gradiente texturizado */
-    background: 
-        linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
-        url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" width="100" height="100"><circle cx="50" cy="50" r="40" stroke="%233b82f6" stroke-width="8" fill="none" /></svg>');
-    
-    /* Layout simulando área de trabalho vazia para o professor iniciar */
-    min-height: 250px;
-    border: 2px dashed #cbd5e1;
-    border-radius: 12px;
-    background-color: var(--branco);
-    
-    /* Mensagem Centralizada de Guia para o Usuário */
-    content: "📊 Área de Chamada Diária\A\A Selecione uma turma ativa no menu lateral para carregar a lista de presença dos estudantes, aplicar faltas justificadas e emitir relatórios de consolidação mensal.";
-    white-space: pre-wrap;
-    padding: 60px 40px;
-    text-align: center;
-    color: #64748b;
-    font-size: 1rem;
-    line-height: 1.6;
+.painel-frequencia h2 {
+    font-size: 1.2rem;
+    color: #475569;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Bloco de Busca e Filtro */
+.pesquisa-aluno {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px;
+    margin-bottom: 20px;
+}
+
+.pesquisa-aluno input {
+    padding: 10px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px 0 0 6px;
+    width: 320px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.pesquisa-aluno button {
+    padding: 10px 15px;
+    border: 1px solid #cbd5e1;
+    border-left: none;
+    background-color: #f1f5f9;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+.botao-filtrar {
+    padding: 10px 20px;
+    background-color: var(--azul-marca);
+    color: var(--branco);
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.botao-filtrar:hover {
+    background-color: #2563eb;
 }
 
 /* ==========================================================================
-   RODAPÉ E RESPONSIVIDADE
+   ESTRUTURA DA LISTA DE ALUNOS (GRID ALINHADO)
+   ========================================================================== */
+.cabecalho-frequencia, 
+.aluno-frequencia {
+    display: grid;
+    /* Divide o espaço proporcionalmente: Foto/Cor, Nome(espaço maior), Status, Ações, Turma */
+    grid-template-columns: 80px 2fr 150px 120px 100px;
+    align-items: center;
+    text-align: center;
+}
+
+/* Linha de Títulos */
+.cabecalho-frequencia {
+    padding: 12px 20px;
+    background-color: #f1f5f9;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #475569;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.cabecalho-frequencia span:nth-child(2) {
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* Linha do Aluno Clonavél */
+.aluno-frequencia {
+    padding: 15px 20px;
+    background-color: var(--branco);
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+
+.aluno-frequencia:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+
+.foto-aluno img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+}
+
+.nome-aluno {
+    text-align: left;
+    padding-left: 20px;
+    font-weight: 600;
+    color: var(--texto-titulo);
+}
+
+/* Badges Dinâmicos de Status */
+.status-presenca {
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-block;
+    width: fit-content;
+    justify-self: center;
+}
+
+.presente {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.falta {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.confirmar {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+/* Ações e Ícones */
+.acoes-aluno {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.acoes-aluno button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.acoes-aluno button:hover {
+    transform: scale(1.2);
+}
+
+.acoes-aluno button[aria-label*="Editar"] {
+    color: var(--laranja-alerta);
+}
+
+.acoes-aluno button[aria-label*="Confirmar"] {
+    color: var(--verde-sucesso);
+}
+
+.turma-aluno {
+    font-weight: 700;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   RODAPÉ
    ========================================================================== */
 .rodape {
     grid-area: footer;
@@ -179,7 +303,7 @@ body {
     padding: 25px 30px;
     background-color: #0f172a;
     color: #94a3b8;
-    border-top: 1px solid #334155;
+    border-top: 1px solid #1e293b;
 }
 
 .contato h2 {
@@ -191,7 +315,7 @@ body {
 
 .contato p {
     font-size: 0.85rem;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
 .contato a {
@@ -209,18 +333,24 @@ body {
     height: 40px;
     width: auto;
     opacity: 0.8;
-    transition: opacity 0.2s;
 }
 
-.logo-rodape img:hover {
-    opacity: 1;
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVIDADE COMPLETA)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .cabecalho-frequencia, 
+    .aluno-frequencia {
+        grid-template-columns: 60px 1.5fr 120px 100px 70px;
+    }
+    .pesquisa-aluno input {
+        width: 220px;
+    }
 }
 
-/* --- Ajuste de Responsividade --- */
 @media (max-width: 768px) {
     body {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto 1fr auto;
         grid-template-areas: 
             "header"
             "sidebar"
@@ -230,8 +360,8 @@ body {
 
     .cabecalho {
         flex-direction: column;
+        gap: 10px;
         text-align: center;
-        gap: 12px;
     }
 
     .slogan {
@@ -247,18 +377,33 @@ body {
     .menu-lateral nav a {
         padding: 10px 15px;
         border-left: none;
-        border-bottom: 2px solid transparent;
-        font-size: 0.85rem;
+        border-bottom: 3px solid transparent;
     }
 
     .menu-lateral nav a:hover,
-    .menu-lateral nav a[href*="Frequencia"] {
+    .menu-lateral nav a:nth-child(4) {
         border-bottom-color: var(--azul-marca);
         padding-left: 15px;
     }
 
-    .conteudo-principal {
+    /* Transformando as linhas em "cards" individuais no mobile */
+    .cabecalho-frequencia {
+        display: none;
+    }
+
+    .aluno-frequencia {
+        grid-template-columns: 1fr;
+        gap: 12px;
         padding: 20px;
+    }
+
+    .foto-aluno img {
+        margin: 0 auto;
+    }
+
+    .nome-aluno {
+        text-align: center;
+        padding-left: 0;
     }
 
     .rodape {
