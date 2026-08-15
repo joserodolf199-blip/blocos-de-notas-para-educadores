@@ -1,175 +1,337 @@
-:root {
-    --bg-verde: #3a6b5c;          /* Tom de verde do fundo das telas */
-    --card-bg: rgba(255, 255, 255, 0.15); /* Fundo semi-transparente do painel */
-    --input-bg: #b0c2bc;         /* Cor cinza-esverdeada dos campos */
-    --btn-azul: #0055ff;         /* Azul do botão principal */
-    --btn-celeste: #00ccff;      /* Azul claro do botão Google */
-    --texto-branco: #ffffff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: var(--bg-verde);
-    /* Se tiver a imagem com símbolos matemáticos de fundo, descomente a linha abaixo: */
-    /* background-image: url('caminho-da-sua-imagem.png'); */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #CBD3E3; /* Fundo cinza-azulado claro do Figma */
+    color: #000000;
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "aside main"
+        "footer footer";
+    grid-template-columns: 240px 1fr; /* Largura padrão do menu lateral */
+    grid-template-rows: auto 1fr auto;
     min-height: 100vh;
-    background-image: url("imagens (1)/fundo.png");
-    background-size: cover;
-}
-
-/* Esconde as labels mantendo a acessibilidade para leitores de tela */
-.ocultar-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
 }
 
 /* ==========================================================================
-   ESTILIZAÇÃO DA PÁGINA DE LOGIN (HOME)
+   2. CABEÇALHO (HEADER)
    ========================================================================== */
-
-.pagina-login {
-    background: var(--card-bg);
-    border-radius: 25px;
-    padding: 35px 25px;
-    width: 340px;
-    box-sizing: border-box;
-    text-align: center;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+.cabecalho {
+    grid-area: header;
+    background-color: #7C93CD; /* Azul médio do topo */
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    gap: 20px;
 }
 
-/* Container do Logo */
 .container-logo {
-    background: #ffffff;
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 25px;
-    display: inline-block;
-    width: 80%;
-    box-sizing: border-box;
+    display: flex;
+    align-items: center;
 }
 
 .container-logo img {
-    max-width: 140px; /* Tamanho proporcional para a logo esticada horizontalmente */
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+    height: 42px; /* Tamanho proporcional e compacto do Figma */
+    width: auto;
+    border-radius: 12px; /* Cantos arredondados suavizados da caixinha da logo */
+    object-fit: contain;
 }
 
-/* Formulário e Campos de Entrada */
-.formulario-login {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.campo-login {
-    display: flex;
-    flex-direction: column;
-}
-
-.campo-entrada {
-    width: 100%;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 25px;
-    background-color: var(--input-bg);
-    color: #1a3a30;
-    font-size: 14px;
-    box-sizing: border-box;
-    outline: none;
-}
-
-.campo-entrada::placeholder {
-    color: #556a63;
-}
-
-/* Botão Entrar (Principal) */
-.entrar {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 25px;
-    background-color: var(--btn-azul);
-    color: var(--texto-branco);
-    font-size: 16px;
+.slogan {
+    color: #FFFFFF;
     font-weight: bold;
+    font-size: 0.75rem; /* Fonte pequena e em caixa alta como no protótipo */
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   3. MENU LATERAL (ASIDE)
+   ========================================================================== */
+.menu-lateral {
+    grid-area: aside;
+    background-color: #E2E7F4; /* Fundo azul claro acinzentado */
+    padding: 20px 12px;
+}
+
+.menu-lateral nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-lateral nav a {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    color: #555555;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 20px; /* Formato de pílula dos botões */
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+}
+
+.menu-lateral nav a:hover {
+    background-color: #7C93CD;
+    color: #FFFFFF;
+}
+
+/* Círculos verdes/indicadores antes do texto do menu */
+.menu-lateral nav a::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #52AA92; /* Tom de verde/ciano dos ícones redondos */
+    border-radius: 50%;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   4. CONTEÚDO PRINCIPAL (MAIN)
+   ========================================================================== */
+.conteudo-principal {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    background-color: #CBD3E3;
+}
+
+/* BANNER */
+.banner {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* TÍTULO CENTRAL */
+.titulo-site {
+    text-align: center;
+    padding: 30px 20px 15px 20px;
+}
+
+.titulo-site h1 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #000000;
+    font-weight: bold;
+}
+
+/* SEÇÃO SOBRE O PROJETO */
+.sobre-projeto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px 40px 40px;
+    gap: 40px;
+}
+
+.texto-projeto {
+    flex: 1.2;
+}
+
+.texto-projeto h2 {
+    font-size: 0.95rem;
+    color: #FFFFFF;
+    background-color: #4962A3; /* Fundo azul escuro do título interno */
+    padding: 8px 15px;
+    display: inline-block;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.texto-projeto p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #FFFFFF;
+    text-transform: uppercase; /* Textos em caixa alta conforme imagem */
+    font-weight: bold;
+}
+
+.imagem-projeto {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+.imagem-projeto img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 15px; /* Bordas arredondadas da foto da direita */
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   5. SEÇÃO FUNCIONALIDADES (BLOCO CIANO CENTRAL)
+   ========================================================================== */
+.principais-funcionalidades {
+    background-color: #3AAFA9; /* Verde-água/Ciano do Figma */
+    color: #FFFFFF;
+    padding: 40px;
+}
+
+.principais-funcionalidades h3 {
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: bold;
+}
+
+/* Layout em duas colunas interno (Foto na esquerda, lista na direita) */
+@media (min-width: 768px) {
+    .principais-funcionalidades {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        align-items: center;
+        gap: 40px;
+    }
+    .principais-funcionalidades h3 {
+        grid-column: 1 / -1;
+    }
+}
+
+.funcionalidade {
+    margin-bottom: 20px;
+}
+
+.funcionalidade h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.funcionalidade ul {
+    list-style: none;
+}
+
+.funcionalidade ul li {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 12px;
+}
+
+.funcionalidade ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #000000;
+}
+
+/* ==========================================================================
+   6. SEÇÃO PERGUNTAS FREQUENTES (FAQ)
+   ========================================================================== */
+.perguntas-frequentes {
+    padding: 40px;
+    width: 100%;
+}
+
+.perguntas-frequentes h2 {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.pergunta {
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #B0BCCF;
+}
+
+.cabecalho-pergunta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+}
+
+.texto-pergunta {
+    font-size: 0.85rem;
+    color: #333333;
+    text-transform: uppercase;
+}
+
+.botao-pergunta {
+    background-color: transparent;
+    color: #333333;
+    border: 1px solid #333333;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 0.9rem;
     cursor: pointer;
-    margin-top: 5px;
-    transition: background-color 0.2s ease;
-}
-
-.entrar:hover {
-    background-color: #0044cc;
-}
-
-/* Divisor "OU" */
-.divisor-login {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 15px 0;
 }
 
-.divisor-login hr {
-    flex: 1;
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.divisor-login p {
-    color: var(--texto-branco);
-    font-size: 12px;
-    font-weight: bold;
-    margin: 0 10px;
-}
-
-/* Botão Google */
-.botao-google {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 25px;
-    background-color: var(--btn-celeste);
-    color: var(--texto-branco);
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.botao-google:hover {
-    background-color: #00b3e6;
-}
-
-/* Link Esqueci minha senha */
-.recuperacao-senha {
-    margin-top: 20px;
-}
-
-.recuperacao-senha a {
-    color: var(--texto-branco);
-    font-size: 13px;
-    text-decoration: underline;
-}
-
-/* Correção para o botão extra de login duplicado no HTML original */
-div.botao-login {
+/* Esconde as respostas por padrão para focar no design limpo do Figma */
+.resposta-pergunta {
     display: none; 
+}
+
+/* ==========================================================================
+   7. RODAPÉ (FOOTER)
+   ========================================================================== */
+.rodape {
+    grid-area: footer;
+    background-color: #7C93CD; /* Mesmo azul do topo */
+    color: #FFFFFF;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contato h2 {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.contato p {
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+}
+
+.contato a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+/* Se você adicionar uma tag img dentro do seu <footer> no HTML posteriormente, 
+   ela já está configurada aqui com o tamanho reduzido e correto do Figma */
+.rodape img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
 }
