@@ -1,83 +1,86 @@
-// ==============================
+// ==========================================
 // ATLAS DIGITAL - CADASTRO
-// ==============================
+// ==========================================
 
 
-// ==============================
-// FORMULÁRIO
-// ==============================
+// Formulario
+const formCadastro =
+    document.getElementById("formCadastro");
 
-const formCadastro = document.getElementById("formCadastro");
+const inputEmail =
+    document.getElementById("email");
 
+const inputSenha =
+    document.getElementById("senha");
 
-// ==============================
-// CAMPOS DO FORMULÁRIO
-// ==============================
+const inputConfirmarSenha =
+    document.getElementById("confirmar-senha");
 
-const inputEmail = document.getElementById("email");
-const inputSenha = document.getElementById("senha");
-const inputConfirmarSenha = document.getElementById("confirmar-senha");
+const erroEmail =
+    document.getElementById("erroEmail");
 
+const erroSenha =
+    document.getElementById("erroSenha");
 
-// ==============================
-// MENSAGENS DE ERRO
-// ==============================
+const erroConfirmarSenha =
+    document.getElementById("erroConfirmarSenha");
 
-const erroEmail = document.getElementById("erroEmail");
-const erroSenha = document.getElementById("erroSenha");
-const erroConfirmarSenha = document.getElementById("erroConfirmarSenha");
-
-
-// ==============================
-// BOTÃO GOOGLE
-// ==============================
-
-const botaoGoogle = document.getElementById("btnGoogle");
+const botaoGoogle =
+    document.getElementById("btnGoogle");
 
 
-// ==============================
-// LIMPAR MENSAGENS
-// ==============================
-
+// Limpa as mensagens de erro antes de fazer uma nova validação
 function limparErros() {
 
-    erroEmail.textContent = "";
-    erroSenha.textContent = "";
-    erroConfirmarSenha.textContent = "";
+    if (erroEmail) {
+        erroEmail.textContent = "";
+    }
+
+    if (erroSenha) {
+        erroSenha.textContent = "";
+    }
+
+    if (erroConfirmarSenha) {
+        erroConfirmarSenha.textContent = "";
+    }
 
 }
 
 
-// ==============================
-// VALIDAR E-MAIL
-// ==============================
-
+// Verifica se o e-mail foi digitado em um formato válido
 function emailValido(emailDigitado) {
 
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regex =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     return regex.test(emailDigitado);
 
 }
 
 
-// ==============================
-// PEGAR USUÁRIOS
-// ==============================
-
+// Busca no LocalStorage os usuários que já foram cadastrados
 function obterUsuarios() {
 
-    return JSON.parse(
-        localStorage.getItem("usuarios")
-    ) || [];
+    try {
+
+        return JSON.parse(
+            localStorage.getItem("usuarios")
+        ) || [];
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao carregar os usuários:",
+            erro
+        );
+
+        return [];
+    }
 
 }
 
 
-// ==============================
-// SALVAR USUÁRIOS
-// ==============================
-
+// Salva novamente a lista atualizada de usuários
 function salvarUsuarios(listaUsuarios) {
 
     localStorage.setItem(
@@ -88,161 +91,146 @@ function salvarUsuarios(listaUsuarios) {
 }
 
 
-// ==============================
-// CADASTRO
-// ==============================
+// Só continua se o formulário realmente existir na página
+if (formCadastro) {
 
-formCadastro.addEventListener("submit", function(event) {
+    formCadastro.addEventListener(
+        "submit",
+        function(event) {
 
-    event.preventDefault();
+            event.preventDefault();
 
-
-    // Limpa as mensagens anteriores
-    limparErros();
-
-
-    // Pega os valores digitados
-    const emailDigitado = inputEmail.value
-        .trim()
-        .toLowerCase();
-
-    const senhaDigitada = inputSenha.value;
-
-    const senhaConfirmada = inputConfirmarSenha.value;
+            limparErros();
 
 
-    // Controla se o formulário está válido
-    let formularioValido = true;
+            // Pega os dados que o usuário digitou
+            const emailDigitado =
+                inputEmail.value
+                    .trim()
+                    .toLowerCase();
+
+            const senhaDigitada =
+                inputSenha.value;
+
+            const senhaConfirmada =
+                inputConfirmarSenha.value;
 
 
-    // ==============================
-    // VALIDAR E-MAIL
-    // ==============================
-
-    if (!emailValido(emailDigitado)) {
-
-        erroEmail.textContent =
-            "Digite um e-mail válido.";
-
-        formularioValido = false;
-
-    }
+            let formularioValido = true;
 
 
-    // ==============================
-    // VALIDAR SENHA
-    // ==============================
+            // Verifica se o e-mail está correto
+            if (!emailValido(emailDigitado)) {
 
-    if (senhaDigitada.length < 8) {
+                erroEmail.textContent =
+                    "Digite um e-mail válido.";
 
-        erroSenha.textContent =
-            "A senha deve possuir no mínimo 8 caracteres.";
+                formularioValido = false;
 
-        formularioValido = false;
-
-    }
+            }
 
 
-    // ==============================
-    // CONFIRMAR SENHA
-    // ==============================
+            // A senha precisa ter pelo menos 8 caracteres
+            if (senhaDigitada.length < 8) {
 
-    if (senhaDigitada !== senhaConfirmada) {
+                erroSenha.textContent =
+                    "A senha deve possuir no mínimo 8 caracteres.";
 
-        erroConfirmarSenha.textContent =
-            "As senhas não coincidem.";
+                formularioValido = false;
 
-        formularioValido = false;
-
-    }
+            }
 
 
-    // Para o cadastro caso exista algum erro
-    if (!formularioValido) {
+            // Confere se as duas senhas são iguais
+            if (senhaDigitada !== senhaConfirmada) {
 
-        return;
+                erroConfirmarSenha.textContent =
+                    "As senhas não coincidem.";
 
-    }
+                formularioValido = false;
 
-
-    // ==============================
-    // VERIFICAR USUÁRIOS
-    // ==============================
-
-    const usuarios = obterUsuarios();
+            }
 
 
-    const usuarioEncontrado = usuarios.find(
-        function(usuario) {
+            // Se houver algum erro, não continua com o cadastro
+            if (!formularioValido) {
+                return;
+            }
 
-            return usuario.email === emailDigitado;
+
+            // Busca os usuários que já estão salvos
+            const usuarios =
+                obterUsuarios();
+
+
+            // Verifica se esse e-mail já foi utilizado
+            const usuarioEncontrado =
+                usuarios.find(
+                    function(usuario) {
+
+                        return (
+                            usuario.email ===
+                            emailDigitado
+                        );
+
+                    }
+                );
+
+
+            if (usuarioEncontrado) {
+
+                erroEmail.textContent =
+                    "Este e-mail já está cadastrado.";
+
+                return;
+            }
+
+
+            // Adiciona o novo usuário à lista
+            usuarios.push({
+
+                email: emailDigitado,
+
+                senha: senhaDigitada
+
+            });
+
+
+            // Atualiza os usuários salvos no LocalStorage
+            salvarUsuarios(usuarios);
+
+
+            alert(
+                "Cadastro realizado com sucesso!"
+            );
+
+
+            formCadastro.reset();
+
+
+            // Como o cadastro está dentro da pasta html,
+            // precisamos voltar uma pasta para chegar ao index
+            window.location.href =
+                "../index.html";
 
         }
     );
 
-
-    // ==============================
-    // E-MAIL JÁ CADASTRADO
-    // ==============================
-
-    if (usuarioEncontrado) {
-
-        erroEmail.textContent =
-            "Este e-mail já está cadastrado.";
-
-        return;
-
-    }
+}
 
 
-    // ==============================
-    // ADICIONAR NOVO USUÁRIO
-    // ==============================
-
-    usuarios.push({
-
-        email: emailDigitado,
-
-        senha: senhaDigitada
-
-    });
-
-
-    // ==============================
-    // SALVAR NO LOCALSTORAGE
-    // ==============================
-
-    salvarUsuarios(usuarios);
-
-
-    // ==============================
-    // FINALIZAR CADASTRO
-    // ==============================
-
-    alert("Cadastro realizado com sucesso!");
-
-
-    formCadastro.reset();
-
-
-    // Vai para a tela de login
-    window.location.href = "index.html";
-
-});
-
-
-// ==============================
-// LOGIN COM GOOGLE
-// ==============================
-
+// O login com Google ainda será implementado
 if (botaoGoogle) {
 
-    botaoGoogle.addEventListener("click", function() {
+    botaoGoogle.addEventListener(
+        "click",
+        function() {
 
-        alert(
-            "Login com Google será implementado em breve."
-        );
+            alert(
+                "Login com Google será implementado em breve."
+            );
 
-    });
+        }
+    );
 
 }
