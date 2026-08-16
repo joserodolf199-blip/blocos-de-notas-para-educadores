@@ -17,12 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const mensagemErro =
         document.getElementById("mensagem-erro");
 
-    const botaoGoogle =
-        document.getElementById("botao-google");
-
-    const botaoExcluir =
-        document.getElementById("botao-excluir");
-
 
     // Confere se os elementos principais estão disponíveis
     if (
@@ -172,33 +166,5 @@ document.addEventListener("DOMContentLoaded", () => {
         "input",
         limparErro
     );
-
-
-    // Login com Google ainda será implementado
-    if (botaoGoogle) {
-
-        botaoGoogle.addEventListener("click", function() {
-
-            alert(
-                "Login com Google será implementado em breve."
-            );
-
-        });
-
-    }
-
-
-    // Exclusão de conta será implementada depois
-    if (botaoExcluir) {
-
-        botaoExcluir.addEventListener("click", function() {
-
-            alert(
-                "A funcionalidade de exclusão de conta será implementada em breve."
-            );
-
-        });
-
-    }
 
 });
