@@ -377,7 +377,7 @@ body {
 }
 
 .logo-rodape img {
-    height: 70px; /* Logo reduzida idêntica ao cabeçalho */
+    height: 70px; 
     width: auto;
     border-radius: 4px;
 }
