@@ -43,7 +43,7 @@ body {
 .pagina-cadastro {
     background: var(--card-bg);
     border-radius: 25px;
-    padding: 35px 25px;
+    padding: 40px 25px;       /* Aumentado o respiro superior e inferior do card */
     width: 340px;
     box-sizing: border-box;
     text-align: center;
@@ -56,37 +56,37 @@ body {
 .container-logo {
     background: #ffffff;
     border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 25px;
+    padding: 25px 20px;       /* Mais altura interna no bloco branco */
+    margin-bottom: 45px;      /* Maior distanciamento do cabeçalho para o formulário */
     display: inline-block;
-    width: 80%;
+    width: 95%;               /* Alargado para acomodar perfeitamente o novo tamanho do logo */
     box-sizing: border-box;
 }
 
 .container-logo img {
-    max-width: 60px;
+    max-width: 160px;         /* Logo ampliado ainda mais (era 130px) */
     height: auto;
     display: block;
-    margin: 0 auto 5px auto;
+    margin: 0 auto 12px auto; /* Mais espaço entre a imagem e o título H1 */
 }
 
 .container-logo h1 {
-    color: #1a3a30; /* Tom escuro para contrastar no fundo branco */
-    font-size: 20px;
+    color: #1a3a30; 
+    font-size: 22px;          /* Ajustado proporcionalmente ao tamanho do logo */
     margin: 0;
 }
 
 .container-logo .subtitulo {
     color: #666666;
-    font-size: 12px;
-    margin: 5px 0 0 0;
+    font-size: 13px;          /* Ajustado proporcionalmente */
+    margin: 6px 0 0 0;
 }
 
 /* Formulário e Campos de Entrada */
 .formulario-cadastro {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 18px;                /* Sutil aumento no vão vertical entre inputs */
 }
 
 .campo-cadastro {
@@ -97,7 +97,7 @@ body {
 
 .campo-entrada {
     width: 100%;
-    padding: 12px 20px;
+    padding: 14px 20px;       
     border: none;
     border-radius: 25px;
     background-color: var(--input-bg);
@@ -121,7 +121,7 @@ body {
 /* Botão Cadastre-se */
 .botao-cadastre-se {
     width: 100%;
-    padding: 12px;
+    padding: 18px;            /* Botão com mais presença e área de clique (era 16px) */
     border: none;
     border-radius: 25px;
     background-color: var(--btn-azul);
@@ -129,7 +129,7 @@ body {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 10px;         /* Mais espaço acima do botão principal */
     transition: background-color 0.2s ease;
 }
 
@@ -142,7 +142,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 15px 0;
+    margin: 25px 0;           /* Mais isolamento visual para a divisão */
 }
 
 .divisor-cadastro hr {
@@ -155,13 +155,13 @@ body {
     color: var(--texto-branco);
     font-size: 12px;
     font-weight: bold;
-    margin: 0 10px;
+    margin: 0 12px;
 }
 
 /* Botão Google */
 .botao-google {
     width: 100%;
-    padding: 12px;
+    padding: 18px;            /* Alinhado com a nova altura do botão principal (era 16px) */
     border: none;
     border-radius: 25px;
     background-color: var(--btn-celeste);
@@ -179,11 +179,40 @@ body {
     background-color: #00b3e6;
 }
 
+/* ==========================================================================
+   ADICIONADO: SEÇÃO DE PERGUNTAS FREQUENTES (FAQ)
+   ========================================================================== */
+.secao-faq {
+    margin-top: 35px;         /* Espaço confortável para separar do fluxo de cadastro */
+    margin-bottom: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Linha divisória sutil */
+    text-align: left;
+}
+
+.faq-item {
+    margin-bottom: 20px;      /* Distância generosa entre perguntas */
+}
+
+.faq-pergunta {
+    color: var(--texto-branco);
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 6px 0;
+}
+
+.faq-resposta {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+}
+
 /* Link de Login Inferior */
 .login p {
     color: var(--texto-branco);
     font-size: 13px;
-    margin: 20px 0 15px 0;
+    margin: 30px 0 15px 0;    /* Mais afastado dos botões/FAQ */
 }
 
 .login a {
@@ -198,7 +227,7 @@ body {
     font-size: 10px;
     line-height: 1.4;
     text-transform: uppercase;
-    margin: 15px 0 0 0;
+    margin: 40px 0 0 0;       /* Empurrado para o extremo inferior da interface */
     padding: 0 10px;
     opacity: 0.9;
 }
