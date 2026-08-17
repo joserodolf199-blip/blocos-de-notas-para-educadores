@@ -1,12 +1,19 @@
 :root {
-    --azul-marca: #3b82f6;
-    --azul-escuro: #1e293b;
-    --texto-titulo: #0f172a;
-    --fundo-corpo: #f4f6f9;
+    /* Cores extraídas diretamente da imagem original */
+    --azul-barra-superior: #4e6a8d;   /* Tom do cabeçalho de navegação */
+    --fundo-gradiente-topo: #1b213b; /* Azul-escuro profundo do início do painel */
+    --fundo-gradiente-fim: #392c68;  /* Roxo azulado da base */
+    --verde-turquesa: #29b6b9;       /* Verde-mar oficial das faixas de turma */
+    --cinza-rodape: #78909c;         /* Tom fosco do rodapé final */
+    
+    /* Cores de Status da Frequência */
+    --status-presente: #00e676;      /* Verde vibrante para PRESENTE */
+    --status-falta: #ff1744;         /* Vermelho vibrante para FALTA */
+    --status-confirmar: #00e5ff;     /* Azul/Turquesa claro para A CONFIRMAR */
+    
+    --texto-escuro: #2d3748;
     --branco: #ffffff;
-    --verde-sucesso: #10b981;
-    --vermelho-falta: #ef4444;
-    --laranja-alerta: #f59e0b;
+    --borda: #cbd5e0;
 }
 
 /* ==========================================================================
@@ -16,399 +23,347 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
+    font-family: 'Arial', sans-serif;
+    color: var(--texto-escuro);
+    background-color: var(--branco);
     display: grid;
-    grid-template-columns: 250px 1fr;
-    grid-template-rows: auto 1fr auto;
     grid-template-areas: 
         "header header"
-        "sidebar main"
+        "nav main"
         "footer footer";
+    grid-template-columns: 250px 1fr; /* Largura da coluna aumentada de 200px para 250px */
     min-height: 100vh;
-    background-color: var(--fundo-corpo);
-    color: #333;
+    width: 100%;
 }
 
-/* --- Cabeçalho --- */
+/* ==========================================================================
+   HEADER (CABEÇALHO)
+   ========================================================================== */
 .cabecalho {
     grid-area: header;
+    background-color: var(--azul-barra-superior);
+    color: var(--branco);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 30px;
-    background-color: var(--branco);
-    border-bottom: 2px solid #e2e8f0;
+    padding: 10px 40px;
+    height: 60px;
+    border-bottom: none;
 }
 
-.container-logo img {
-    height: 50px;
+.cabecalho .container-logo img {
+    height: 50px; 
     width: auto;
+    border-radius: 4px;
+    display: block;
+    object-fit: contain;
 }
 
-.slogan {
-    font-size: 0.85rem;
-    color: #64748b;
-    font-weight: 600;
-    text-align: right;
+.cabecalho .slogan {
+    font-size: 10px;
+    font-weight: normal;
     letter-spacing: 0.5px;
+    margin: 0;
+    max-width: 70%;
+    text-align: right;
+    opacity: 0.9;
 }
 
-/* --- Menu Lateral --- */
+/* ==========================================================================
+   ASIDE (MENU LATERAL COMPACTO E LARGO)
+   ========================================================================== */
 .menu-lateral {
-    grid-area: sidebar;
-    background-color: var(--azul-escuro);
-    padding: 20px 0;
+    grid-area: nav;
+    background-color: var(--azul-barra-superior);
+    padding: 20px 0 20px 20px;
 }
 
 .menu-lateral nav {
     display: flex;
     flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 20px 0 0 20px;
+    padding: 20px 15px; /* Ajuste leve no preenchimento lateral do menu */
+    gap: 12px;
+    box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
 }
 
 .menu-lateral nav a {
-    color: #cbd5e1;
+    color: var(--texto-escuro);
     text-decoration: none;
-    padding: 15px 25px;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
+    padding: 10px 14px; /* Aumentado o espaçamento dos botões para melhor toque */
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    border-radius: 6px;
 }
 
-/* Destaque no item ativo (Frequência) e hover */
 .menu-lateral nav a:hover,
-.menu-lateral nav a:nth-child(4) {
-    background-color: #334155;
-    color: var(--branco);
-    border-left-color: var(--azul-marca);
-    padding-left: 30px;
+.menu-lateral nav a:nth-child(4) { 
+    color: var(--branco) !important;
+    background-color: var(--verde-turquesa) !important;
+    padding-left: 14px;
 }
 
 /* ==========================================================================
-   CONTEÚDO PRINCIPAL E PAINEL DE FREQUÊNCIA
+   CONTEÚDO PRINCIPAL E GRADIENTE
    ========================================================================== */
 .conteudo-principal {
     grid-area: main;
-    padding: 40px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    background: linear-gradient(180deg, var(--fundo-gradiente-topo) 0%, var(--fundo-gradiente-fim) 100%);
+    padding: 30px 40px 40px 40px;
+    align-items: center;
 }
 
-/* Título da Página */
+.titulo-pagina {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
 .titulo-pagina h1 {
-    font-size: 2rem;
-    color: var(--texto-titulo);
-    position: relative;
-    padding-bottom: 12px;
-    font-weight: 700;
+    color: var(--branco);
+    font-size: 24px;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
 }
 
 .titulo-pagina h1::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 4px;
-    background-color: var(--azul-marca);
-    border-radius: 2px;
+    display: none;
 }
 
-/* Painel Container */
 .painel-frequencia {
-    background-color: var(--branco);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    width: 100%;
+    max-width: 1100px;
 }
 
 .painel-frequencia h2 {
-    font-size: 1.2rem;
-    color: #475569;
-    margin-bottom: 25px;
-    font-weight: 600;
+    display: none;
 }
 
-/* Bloco de Busca e Filtro */
+/* ==========================================================================
+   BARRA DE BUSCA E FILTRO
+   ========================================================================== */
 .pesquisa-aluno {
-    display: inline-flex;
-    align-items: center;
-    margin-right: 15px;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 .pesquisa-aluno input {
-    padding: 10px 15px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px 0 0 6px;
-    width: 320px;
-    font-size: 0.9rem;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    width: 450px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--texto-escuro);
+    background-color: #e2e8f0;
     outline: none;
 }
 
 .pesquisa-aluno button {
-    padding: 10px 15px;
-    border: 1px solid #cbd5e1;
-    border-left: none;
-    background-color: #f1f5f9;
-    border-radius: 0 6px 6px 0;
+    padding: 10px 25px;
+    border: none;
+    background-color: #e2e8f0;
+    border-radius: 0 30px 30px 0;
     cursor: pointer;
+    font-size: 14px;
+    color: var(--texto-escuro);
 }
 
 .botao-filtrar {
-    padding: 10px 20px;
-    background-color: var(--azul-marca);
-    color: var(--branco);
+    display: block;
+    margin: 0 auto 30px auto;
+    padding: 8px 30px;
+    background-color: #e2e8f0;
+    color: var(--texto-escuro);
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 11px;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
 }
 
 .botao-filtrar:hover {
-    background-color: #2563eb;
+    background-color: var(--branco);
 }
 
 /* ==========================================================================
-   ESTRUTURA DA LISTA DE ALUNOS (GRID ALINHADO)
+   TABELA E LINHAS DE ALUNOS
    ========================================================================== */
 .cabecalho-frequencia, 
 .aluno-frequencia {
     display: grid;
-    /* Divide o espaço proporcionalmente: Foto/Cor, Nome(espaço maior), Status, Ações, Turma */
-    grid-template-columns: 80px 2fr 150px 120px 100px;
+    grid-template-columns: 80px 2.5fr 150px 120px 80px;
     align-items: center;
-    text-align: center;
+    padding: 6px 25px;
+    width: 100%;
 }
 
-/* Linha de Títulos */
 .cabecalho-frequencia {
-    padding: 12px 20px;
-    background-color: #f1f5f9;
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: #475569;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.85);
+    font-weight: bold;
+    font-size: 11px;
+    color: var(--texto-escuro);
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
 }
 
 .cabecalho-frequencia span:nth-child(2) {
     text-align: left;
-    padding-left: 20px;
+    padding-left: 0;
 }
 
-/* Linha do Aluno Clonavél */
 .aluno-frequencia {
-    padding: 15px 20px;
-    background-color: var(--branco);
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: all 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 0;
+    border-radius: 0;
 }
 
-.aluno-frequencia:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border-color: #cbd5e1;
+/* Faixa turquesa para o segundo bloco de alunos */
+.aluno-frequencia:nth-child(5),
+.aluno-frequencia:nth-child(6),
+.aluno-frequencia:nth-child(7) {
+    background-color: var(--verde-turquesa) !important;
+    color: var(--branco);
+}
+
+.aluno-frequencia:nth-child(5) .nome-aluno,
+.aluno-frequencia:nth-child(6) .nome-aluno,
+.aluno-frequencia:nth-child(7) .nome-aluno,
+.aluno-frequencia:nth-child(5) .turma-aluno,
+.aluno-frequencia:nth-child(6) .turma-aluno,
+.aluno-frequencia:nth-child(7) .turma-aluno {
+    color: var(--branco);
+}
+
+.aluno-frequencia:last-child {
+    border-radius: 0 0 12px 12px;
+    border-bottom: none;
 }
 
 .foto-aluno img {
-    width: 45px;
-    height: 45px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #e2e8f0;
+    border: 1px solid var(--branco);
+    display: block;
+    margin: 0 auto;
 }
 
 .nome-aluno {
     text-align: left;
-    padding-left: 20px;
-    font-weight: 600;
-    color: var(--texto-titulo);
+    padding-left: 0;
+    font-weight: bold;
+    font-size: 13px;
+    color: var(--texto-escuro);
 }
 
-/* Badges Dinâmicos de Status */
 .status-presenca {
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    display: inline-block;
-    width: fit-content;
-    justify-self: center;
+    padding: 0;
+    background: none !important;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.presente {
-    background-color: #d1fae5;
-    color: #065f46;
-}
+.presente { color: var(--status-presente) !important; }
+.falta { color: var(--status-falta) !important; }
+.confirmar { color: var(--status-confirmar) !important; }
 
-.falta {
-    background-color: #fee2e2;
-    color: #991b1b;
-}
-
-.confirmar {
-    background-color: #fef3c7;
-    color: #92400e;
-}
-
-/* Ações e Ícones */
 .acoes-aluno {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     justify-content: center;
 }
 
 .acoes-aluno button {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--borda);
+    border-radius: 50%;
+    background: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
-.acoes-aluno button:hover {
-    transform: scale(1.2);
-}
-
-.acoes-aluno button[aria-label*="Editar"] {
-    color: var(--laranja-alerta);
-}
-
-.acoes-aluno button[aria-label*="Confirmar"] {
-    color: var(--verde-sucesso);
+.aluno-frequencia:nth-child(5) .acoes-aluno button,
+.aluno-frequencia:nth-child(6) .acoes-aluno button,
+.aluno-frequencia:nth-child(7) .acoes-aluno button {
+    border-color: rgba(255,255,255,0.5);
 }
 
 .turma-aluno {
-    font-weight: 700;
-    color: #64748b;
+    font-weight: bold;
+    font-size: 13px;
+    color: var(--texto-escuro);
 }
 
 /* ==========================================================================
-   RODAPÉ
+   FOOTER (RODAPÉ)
    ========================================================================== */
 .rodape {
     grid-area: footer;
+    background-color: var(--cinza-rodape);
+    color: var(--branco);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 30px;
-    background-color: #0f172a;
-    color: #94a3b8;
-    border-top: 1px solid #1e293b;
+    padding: 15px 40px;
+    border-top: none;
+    height: 100px;
 }
 
 .contato h2 {
-    font-size: 0.95rem;
+    font-size: 12px;
+    margin: 0 0 4px 0;
     color: var(--branco);
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
 }
 
 .contato p {
-    font-size: 0.85rem;
-    margin-top: 4px;
+    font-size: 11px;
+    margin-top: 0;
 }
 
 .contato a {
-    color: var(--azul-marca);
-    text-decoration: none;
-    transition: color 0.2s;
-    font-weight: 500;
-}
-
-.contato a:hover {
-    color: #60a5fa;
+    color: var(--branco);
+    opacity: 0.9;
 }
 
 .logo-rodape img {
-    height: 40px;
+    height: 85px;
     width: auto;
-    opacity: 0.8;
-}
-
-/* ==========================================================================
-   MEDIA QUERIES (RESPONSIVIDADE COMPLETA)
-   ========================================================================== */
-@media (max-width: 992px) {
-    .cabecalho-frequencia, 
-    .aluno-frequencia {
-        grid-template-columns: 60px 1.5fr 120px 100px 70px;
-    }
-    .pesquisa-aluno input {
-        width: 220px;
-    }
+    opacity: 1;
+    border-radius: 4px;
+    display: block;
 }
 
 @media (max-width: 768px) {
     body {
-        grid-template-columns: 1fr;
+        grid-template-columns: 250px 1fr; /* Mantém a estrutura estável no tamanho ajustado */
         grid-template-areas: 
-            "header"
-            "sidebar"
-            "main"
-            "footer";
-    }
-
-    .cabecalho {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-
-    .slogan {
-        text-align: center;
-    }
-
-    .menu-lateral nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .menu-lateral nav a {
-        padding: 10px 15px;
-        border-left: none;
-        border-bottom: 3px solid transparent;
-    }
-
-    .menu-lateral nav a:hover,
-    .menu-lateral nav a:nth-child(4) {
-        border-bottom-color: var(--azul-marca);
-        padding-left: 15px;
-    }
-
-    /* Transformando as linhas em "cards" individuais no mobile */
-    .cabecalho-frequencia {
-        display: none;
-    }
-
-    .aluno-frequencia {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 20px;
-    }
-
-    .foto-aluno img {
-        margin: 0 auto;
-    }
-
-    .nome-aluno {
-        text-align: center;
-        padding-left: 0;
-    }
-
-    .rodape {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
+            "header header"
+            "nav main"
+            "footer footer";
     }
 }
