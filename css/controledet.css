@@ -1,17 +1,20 @@
 :root {
-    --azul-topo-rodape: #3b4b71;   /* Azul escuro do cabeçalho e rodapé */
-    --fundo-gradiente-topo: #283153; /* Início do degradê da seção de turmas */
-    --fundo-gradiente-fim: #4c327d;  /* Fim do degradê (tom roxo) */
-    --verde-turquesa: #26a69a;      /* Bloco intermediário "Sobre o Controle" */
+    /* Cores extraídas diretamente da imagem original */
+    --azul-barra-superior: #4e6a8d;   /* Tom exato do cabeçalho de navegação */
+    --fundo-gradiente-topo: #1b213b; /* Azul-escuro profundo do início das turmas */
+    --fundo-gradiente-fim: #392c68;  /* Roxo azulado da base das turmas */
+    --verde-turquesa: #29b6b9;       /* Verde-mar oficial do bloco "Sobre o Controle" */
+    --cinza-rodape: #78909c;         /* Tom fosco do rodapé final */
     
-    --texto-escuro: #333333;
-    --texto-mutado: #666666;
+    /* Tipografia e Superfícies */
+    --texto-escuro: #2d3748;
+    --texto-mutado: #718096;
     --branco: #ffffff;
-    --borda: #e0e0e0;
+    --borda: #cbd5e0;
 }
 
 /* ==========================================================================
-   CONFIGURAÇÕES GERAIS E LAYOUT DASHBOARD (TELA CHEIA)
+   CONFIGURAÇÕES GERAIS E LAYOUT DASHBOARD
    ========================================================================== */
 * {
     margin: 0;
@@ -28,39 +31,41 @@ body {
         "header header"
         "nav main"
         "footer footer";
-    grid-template-columns: 240px 1fr; /* Menu lateral com largura padrão de dashboard */
+    grid-template-columns: 200px 1fr;
     min-height: 100vh;
-    width: 100%; /* Ocupa a largura total da tela */
+    width: 100%;
 }
 
 /* ==========================================================================
-   HEADER (CABEÇALHO)
+   HEADER (CABEÇALHO) - COR ATUALIZADA E LOGO PEQUENA
    ========================================================================== */
 .cabecalho {
     grid-area: header;
-    background-color: var(--azul-topo-rodape);
+    background-color: var(--azul-barra-superior); /* Aplicada cor exata da imagem */
     color: var(--branco);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 30px;
-    border-bottom: 2px solid #2d3b58;
+    padding: 10px 40px;
+    height: 55px;
+    border-bottom: none;
 }
 
 .cabecalho .container-logo img {
-    max-height: 45px;
-    border-radius: 6px;
+    height: 22px; 
+    width: auto;
+    border-radius: 4px;
     display: block;
 }
 
 .cabecalho .slogan {
-    font-size: 11px;
-    font-weight: bold;
+    font-size: 10px;
+    font-weight: normal;
     letter-spacing: 0.5px;
     margin: 0;
-    max-width: 60%;
+    max-width: 70%;
     text-align: right;
-    line-height: 1.3;
+    opacity: 0.9;
 }
 
 /* ==========================================================================
@@ -68,222 +73,247 @@ body {
    ========================================================================== */
 .menu-lateral {
     grid-area: nav;
-    background-color: var(--azul-topo-rodape);
-    padding: 20px 0;
+    background-color: var(--azul-barra-superior); /* Mesma cor de fundo do cabeçalho */
+    padding: 20px 0 20px 20px;
 }
 
-/* Caixa flutuante branca interna do menu */
 .menu-lateral nav {
     display: flex;
     flex-direction: column;
-    background-color: var(--branco);
-    border-radius: 0 12px 12px 0;
-    padding: 15px 10px;
-    gap: 8px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.92); /* Branco translúcido fosco */
+    border-radius: 20px 0 0 20px;
+    padding: 20px 10px;
+    gap: 12px;
+    box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
 }
 
 .menu-lateral nav a {
     color: var(--texto-escuro);
     text-decoration: none;
-    padding: 10px 12px;
-    font-size: 13px;
+    padding: 8px 12px;
+    font-size: 11px;
     font-weight: bold;
-    border-left: 4px solid transparent;
+    text-transform: uppercase;
     transition: all 0.2s ease;
+    border-radius: 6px;
 }
 
 .menu-lateral nav a:hover,
 .menu-lateral nav a:first-child { 
-    color: var(--azul-topo-rodape);
-    background-color: #f0f2f5;
-    border-left-color: var(--azul-topo-rodape);
-    padding-left: 16px;
+    color: var(--branco);
+    background-color: var(--verde-turquesa); /* Hover com a cor intermediária do painel */
 }
 
 /* ==========================================================================
-   MAIN (CONTEÚDO PRINCIPAL)
+   MAIN (SUBIDA DAS TURMAS E GRADIENTE CORRIGIDO)
    ========================================================================== */
 .conteudo-principal {
     grid-area: main;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(180deg, var(--fundo-gradiente-topo) 0%, var(--fundo-gradiente-fim) 400px, var(--branco) 400px);
+    background: linear-gradient(180deg, var(--fundo-gradiente-topo) 0%, var(--fundo-gradiente-fim) 100%); /* Gradiente exato */
+    padding-bottom: 40px;
 }
 
-/* Seção 1: Controle de Turma */
 .titulo-pagina {
-    padding: 30px 40px 10px 40px;
+    padding: 20px 40px 10px 40px;
     text-align: center;
 }
 
 .titulo-pagina h1 {
     color: var(--branco);
-    font-size: 26px;
-    letter-spacing: 1px;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     margin: 0;
 }
 
-/* Grid das Turmas em Linha Única (4 colunas) como na foto do notebook */
+/* Grid das Turmas Organizado em 2x2 */
 .lista-turmas {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas para alinhar lado a lado */
-    gap: 20px;
-    padding: 20px 40px 40px 40px;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px;
+    padding: 15px 40px 20px 40px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-/* Cards de Turma Individuais */
+/* Cards das Turmas */
 .turma {
     background-color: var(--branco);
     color: var(--texto-escuro);
-    border-radius: 12px;
-    padding: 20px;
-    min-height: 220px;
+    border-radius: 24px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    position: relative;
 }
 
 .cabecalho-turma {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #f0f0f0;
-    padding-bottom: 8px;
+    margin-bottom: 15px;
 }
 
 .cabecalho-turma h2 {
-    color: #444444;
-    font-size: 15px;
-    margin: 0;
+    color: var(--texto-escuro);
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-/* Ícone de perfil cinza no card */
+/* Ícone de Usuário dentro do Card */
 .icone-turma {
-    background-color: #cccccc;
-    color: var(--branco);
-    width: 26px;
-    height: 26px;
+    background-color: #4a5568;
+    color: transparent; 
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0px; 
     position: relative;
 }
 
 .icone-turma::before {
     content: "";
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background: var(--branco);
     border-radius: 50%;
-    top: 4px;
+    top: 5px;
+    left: 11px;
 }
 
 .icone-turma::after {
     content: "";
     position: absolute;
-    width: 16px;
-    height: 7px;
+    width: 18px;
+    height: 8px;
     background: var(--branco);
-    border-radius: 8px 8px 0 0;
-    bottom: 3px;
+    border-radius: 10px 10px 0 0;
+    bottom: 4px;
+    left: 7px;
 }
 
 .lista-alunos {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin-top: 15px;
-    flex-grow: 1;
+    gap: 15px;
+    margin-top: 5px;
 }
 
+/* Linhas contínuas de preenchimento dos alunos */
 .lista-alunos p {
-    font-size: 12px;
-    color: #777777;
-    border-bottom: 1px solid #f9f9f9;
-    padding-bottom: 4px;
-    margin: 0;
+    font-size: 11px;
+    color: #a0aec0;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-end;
 }
 
-/* Mantém o botão "+ Adicionar Turma" centralizado abaixo dos 4 cards */
+.lista-alunos p::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #cbd5e0;
+    margin-left: 8px;
+    margin-bottom: 2px;
+}
+
+/* Remove botões antigos e exibe o marcador geométrico */
+.botao-acessar-turma {
+    display: none !important;
+}
+
+.numero-turma {
+    display: block !important;
+    align-self: flex-end;
+    font-size: 14px;
+    color: #cbd5e0;
+    margin-top: 15px;
+}
+
+/* Botão "+ Adicionar Turma" integrado ao Grid */
 .botao-adicionar-turma {
-    grid-column: 1 / -1; /* Ocupa todas as colunas para centralizar abaixo */
+    grid-column: 1 / -1;
     justify-self: center;
     background-color: #2b3654;
     color: var(--branco);
     border: none;
-    padding: 10px 20px;
-    font-size: 13px;
+    padding: 12px 30px;
+    font-size: 12px;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.numero-turma {
-    display: none;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
 }
 
 /* ==========================================================================
-   SEÇÃO 2: SOBRE O CONTROLE (BLOCO CENTRAL VERDE TURQUESA)
+   SEÇÃO 2: SOBRE O CONTROLE (BLOCO CENTRAL VERDE TURQUESA EXATO)
    ========================================================================= */
 .sobre-controle {
-    background-color: var(--verde-turquesa);
-    padding: 40px 50px;
+    grid-column: 1 / -1;
+    background-color: var(--verde-turquesa); /* Cor exata da imagem aplicada */
+    padding: 35px 50px;
     color: var(--branco);
+    width: 100%;
 }
 
 .sobre-controle h2 {
-    color: var(--branco);
-    font-size: 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
+    font-weight: bold;
 }
 
 .sobre-controle h3 {
-    color: var(--branco);
-    font-size: 14px;
-    margin: 18px 0 8px 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin: 15px 0 6px 0;
 }
 
 .sobre-controle ul {
-    margin: 0 0 15px 0;
+    margin-bottom: 15px;
     padding-left: 20px;
 }
 
 .sobre-controle li {
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--branco);
+    font-size: 12px;
+    line-height: 1.6;
     margin-bottom: 6px;
+    opacity: 0.95;
 }
 
 /* ==========================================================================
-   SEÇÃO 3: FAQ (PERGUNTAS FREQUENTES COM CAIXAS ARREDONDADAS)
+   SEÇÃO 3: FAQ (PERGUNTAS FREQUENTES COMPACTADAS)
    ========================================================================== */
 .perguntas-frequentes {
-    padding: 40px 50px;
+    grid-column: 1 / -1;
+    padding: 35px 50px;
     background-color: var(--branco);
+    width: 100%;
 }
 
 .perguntas-frequentes h2 {
-    color: #444444;
-    font-size: 20px;
+    color: var(--texto-escuro);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     margin-bottom: 25px;
     text-align: center;
 }
 
 .pergunta {
-    max-width: 900px;
+    max-width: 850px;
     margin: 0 auto 12px auto;
     border: 1px solid var(--borda);
-    border-radius: 30px; /* Formato oval/pílula alongada */
-    padding: 10px 20px;
+    border-radius: 30px; 
+    padding: 12px 25px;
 }
 
 .cabecalho-pergunta {
@@ -293,53 +323,61 @@ body {
 }
 
 .texto-pergunta {
-    font-weight: bold;
+    font-weight: normal;
     color: var(--texto-mutado);
-    font-size: 13px;
-    margin: 0;
+    font-size: 12px;
 }
 
+/* Botão em formato de esfera idêntico à imagem */
 .botao-pergunta {
-    background: none;
-    border: none;
-    color: #999999;
-    font-size: 16px;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--borda) !important;
+    background: transparent;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--texto-mutado);
+    font-size: 12px;
     cursor: pointer;
 }
 
 .resposta-pergunta {
-    display: none; /* Mantém recolhido conforme o padrão */
+    display: none;
+    padding-top: 10px;
+    font-size: 12px;
+    color: var(--texto-mutado);
+    border-top: 1px dashed var(--borda);
+    margin-top: 10px;
 }
 
 /* ==========================================================================
-   FOOTER (RODAPÉ)
+   FOOTER (RODAPÉ) - COR CINZA-AZULADO DA IMAGEM E LOGO COMPACTA
    ========================================================================== */
 .rodape {
     grid-area: footer;
-    background-color: var(--azul-topo-rodape);
+    background-color: var(--cinza-rodape); /* Cor exata da base da imagem */
     color: var(--branco);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    border-top: 2px solid #2d3b58;
+    padding: 15px 40px;
+    border-top: none;
 }
 
 .contato h2 {
-    font-size: 14px;
-    margin: 0 0 6px 0;
-    color: var(--branco);
+    font-size: 12px;
+    margin: 0 0 4px 0;
 }
 
 .contato p a {
-    color: var(--branco);
-    text-decoration: none;
-    font-size: 12px;
-    opacity: 0.8;
+    font-size: 11px;
+    opacity: 0.9;
 }
 
 .logo-rodape img {
-    height: 40px;
+    height: 70px; /* Logo reduzida idêntica ao cabeçalho */
     width: auto;
-    border-radius: 6px;
+    border-radius: 4px;
 }
