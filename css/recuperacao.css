@@ -1,136 +1,142 @@
-:root {
-  --bg-verde: #3a6b5c;       /* Tom de verde do fundo das telas */
-  --card-bg: rgba(255, 255, 255, 0.15); /* Fundo semi-transparente do painel */
-  --input-bg: #b0c2bc;      /* Cor cinza-esverdeada dos campos */
-  --btn-azul: #0055ff;      /* Azul do botão principal */
-  --texto-branco: #ffffff;
+:root { 
+    --bg-verde: #3a6b5c; /* Tom de verde do fundo das telas */ 
+    --card-bg: rgba(255, 255, 255, 0.15); /* Fundo semi-transparente do painel */ 
+    --input-bg: #b0c2bc; /* Cor cinza-esverdeada dos campos */ 
+    --btn-azul: #0055ff; /* Azul do botão principal */ 
+    --texto-branco: #ffffff; 
+} 
+
+*, *::before, *::after { 
+    box-sizing: border-box; 
+} 
+
+body { 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Arial', sans-serif; 
+    background-color: var(--bg-verde); 
+    background-image: url("../imagens/fundo.png"); /* Ajustado caminho relativo */ 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+} 
+
+/* Esconde as labels mantendo a acessibilidade para leitores de tela */ 
+.ocultar-label { 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip: rect(0, 0, 0, 0); 
+    border: 0; 
+} 
+
+/* Classe utilitária para o JavaScript alternar as etapas de recuperação */ 
+.etapa-recuperacao.escondido { 
+    display: none; 
+} 
+
+/* ========================================================================== 
+   ESTILIZAÇÃO DA PÁGINA DE RECUPERAÇÃO 
+   ========================================================================== */ 
+.pagina-recuperacao { 
+    background: var(--card-bg); 
+    border-radius: 25px; 
+    padding: 35px 25px; 
+    width: 340px; 
+    text-align: center; 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */ 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); 
+} 
+
+/* Container do Logo (Variante compacta para recuperação) */ 
+.container-logo { 
+    background: #ffffff; 
+    border-radius: 15px; 
+    padding: 20px;            
+    margin-bottom: 40px;      /* Aumentado o espaço abaixo da logo */ 
+    display: inline-block; 
+    width: 90%;               /* Ajustado para acomodar a logo maior */
+} 
+
+.container-logo img { 
+    max-width: 130px;         /* Logo aumentada para maior destaque */ 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+} 
+
+/* Formulário e Estrutura de Etapas */ 
+.formulario-recuperacao { 
+    display: flex; 
+    flex-direction: column; 
+} 
+
+.etapa-recuperacao { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 24px;                /* Aumentado o espaçamento padrão interno da etapa */ 
+} 
+
+/* Seletor específico para as etapas de código adicionarem respiro extra */
+.etapa-recuperacao:nth-child(n) {
+    margin-top: 15px;         
+    margin-bottom: 15px;      
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+.campo-recuperacao { 
+    display: flex; 
+    flex-direction: column; 
+    text-align: left; 
+} 
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: var(--bg-verde);
-  background-image: url("../imagens/fundo.png"); /* Ajustado caminho relativo */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+.campo-entrada { 
+    width: 100%; 
+    padding: 14px 20px;       /* Leve aumento na altura interna do input */
+    border: none; 
+    border-radius: 25px; 
+    background-color: var(--input-bg); 
+    color: #1a3a30; 
+    font-size: 14px; 
+    outline: none; 
+} 
 
-/* Esconde as labels mantendo a acessibilidade para leitores de tela */
-.ocultar-label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
+.campo-entrada::placeholder { 
+    color: #556a63; 
+} 
 
-/* Classe utilitária para o JavaScript alternar as etapas de recuperação */
-.etapa-recuperacao.escondido {
-  display: none;
-}
+/* Botão de Ação */ 
+.botao-recuperar-senha { 
+    width: 100%; 
+    padding: 16px;            
+    border: none; 
+    border-radius: 25px; 
+    background-color: var(--btn-azul); 
+    color: var(--texto-branco); 
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: background-color 0.2s ease; 
+} 
 
-/* ==========================================================================
-   ESTILIZAÇÃO DA PÁGINA DE RECUPERAÇÃO
-   ========================================================================== */
-.pagina-recuperacao {
-  background: var(--card-bg);
-  border-radius: 25px;
-  padding: 35px 25px;
-  width: 340px;
-  text-align: center;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
+.botao-recuperar-senha:hover { 
+    background-color: #0044cc; 
+} 
 
-/* Container do Logo (Variante compacta para recuperação) */
-.container-logo {
-  background: #ffffff;
-  border-radius: 15px;
-  padding: 15px;
-  margin-bottom: 25px;
-  display: inline-block;
-  width: 80%;
-}
-
-.container-logo img {
-  max-width: 60px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Formulário e Estrutura de Etapas */
-.formulario-recuperacao {
-  display: flex;
-  flex-direction: column;
-}
-
-.etapa-recuperacao {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Espaçamento ideal entre o input e o botão da etapa */
-}
-
-.campo-recuperacao {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.campo-entrada {
-  width: 100%;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 25px;
-  background-color: var(--input-bg);
-  color: #1a3a30;
-  font-size: 14px;
-  outline: none;
-}
-
-.campo-entrada::placeholder {
-  color: #556a63;
-}
-
-/* Botão de Ação */
-.botao-recuperar-senha {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  background-color: var(--btn-azul);
-  color: var(--texto-branco);
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.botao-recuperar-senha:hover {
-  background-color: #0044cc;
-}
-
-/* Frase Motivacional de Rodapé */
-.frase p {
-  color: var(--texto-branco);
-  font-size: 10px;
-  line-height: 1.4;
-  text-transform: uppercase;
-  margin: 25px 0 0 0;
-  padding: 0 10px;
-  opacity: 0.9;
+/* Frase Motivacional de Rodapé */ 
+.frase p { 
+    color: var(--texto-branco); 
+    font-size: 10px; 
+    line-height: 1.4; 
+    text-transform: uppercase; 
+    margin: 35px 0 0 0;       /* Aumentado para acompanhar o fluxo das etapas */
+    padding: 0 10px; 
+    opacity: 0.9; 
 }
