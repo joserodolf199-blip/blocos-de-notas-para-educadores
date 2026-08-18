@@ -58,7 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     );
 
                     if (!isNaN(valor)) {
+
                         soma += valor;
+
                     }
 
                 });
@@ -75,24 +77,74 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Pesquisa pelo nome do aluno
+    // Aplica a pesquisa e o filtro de turma
 
-    function pesquisarAluno() {
+    function aplicarFiltros() {
 
         const textoPesquisa = campoPesquisa.value
             .toUpperCase()
             .trim();
+
+        const turmaSelecionada =
+            seletorTurma.value;
+
+        let alunosEncontrados = 0;
+
 
         boletinsAlunos.forEach(function (boletim) {
 
             const nomeAluno = boletim
                 .querySelector(".dados-aluno h3")
                 .textContent
-                .toUpperCase();
+                .toUpperCase()
+                .trim();
 
-            if (nomeAluno.includes(textoPesquisa)) {
+            const turmaAluno = boletim
+                .querySelector(
+                    ".dados-aluno p:nth-of-type(2) span"
+                )
+                .textContent
+                .trim();
+
+
+            let turmaCorreta = false;
+
+
+            if (turmaSelecionada === "1A") {
+
+                turmaCorreta =
+                    turmaAluno === "1º A";
+
+            } else if (turmaSelecionada === "1B") {
+
+                turmaCorreta =
+                    turmaAluno === "1º B";
+
+            } else if (turmaSelecionada === "2A") {
+
+                turmaCorreta =
+                    turmaAluno === "2º A";
+
+            } else if (turmaSelecionada === "2B") {
+
+                turmaCorreta =
+                    turmaAluno === "2º B";
+
+            }
+
+
+            const nomeCorreto =
+                nomeAluno.includes(textoPesquisa);
+
+
+            if (
+                turmaCorreta &&
+                nomeCorreto
+            ) {
 
                 boletim.style.display = "";
+
+                alunosEncontrados++;
 
             } else {
 
@@ -102,6 +154,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+
+        return alunosEncontrados;
+
     }
 
 
@@ -109,7 +164,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     campoPesquisa.addEventListener(
         "input",
-        pesquisarAluno
+        function () {
+
+            aplicarFiltros();
+
+        }
     );
 
 
@@ -117,7 +176,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     botaoPesquisa.addEventListener(
         "click",
-        pesquisarAluno
+        function () {
+
+            const encontrados =
+                aplicarFiltros();
+
+
+            if (
+                campoPesquisa.value.trim() !== "" &&
+                encontrados === 0
+            ) {
+
+                alert(
+                    "Nenhum aluno encontrado."
+                );
+
+            }
+
+        }
     );
 
 
@@ -127,58 +203,11 @@ document.addEventListener("DOMContentLoaded", function () {
         "click",
         function () {
 
-            const turmaSelecionada =
-                seletorTurma.value;
+            const encontrados =
+                aplicarFiltros();
 
-            const boletinsEncontrados = [];
 
-            boletinsAlunos.forEach(function (boletim) {
-
-                const turmaAluno = boletim
-                    .querySelector(".dados-aluno p:nth-of-type(2) span")
-                    .textContent
-                    .trim();
-
-                const nomeAluno = boletim
-                    .querySelector(".dados-aluno h3")
-                    .textContent
-                    .trim();
-
-                let mostrar = false;
-
-                if (turmaSelecionada === "1A") {
-
-                    mostrar = turmaAluno === "1º A";
-
-                } else if (turmaSelecionada === "1B") {
-
-                    mostrar = turmaAluno === "1º B";
-
-                } else if (turmaSelecionada === "2A") {
-
-                    mostrar = turmaAluno === "2º A";
-
-                } else if (turmaSelecionada === "2B") {
-
-                    mostrar = turmaAluno === "2º B";
-
-                }
-
-                if (mostrar) {
-
-                    boletim.style.display = "";
-
-                    boletinsEncontrados.push(nomeAluno);
-
-                } else {
-
-                    boletim.style.display = "none";
-
-                }
-
-            });
-
-            if (boletinsEncontrados.length === 0) {
+            if (encontrados === 0) {
 
                 alert(
                     "Nenhum aluno encontrado na turma selecionada."
@@ -196,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "change",
         function () {
 
-            botaoFiltrar.click();
+            aplicarFiltros();
 
         }
     );
@@ -221,9 +250,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     .textContent
                     .trim();
 
+
                 if (nomePagina === "Boletim") {
+
                     return;
+
                 }
+
 
                 alert(
                     "A página " +
@@ -240,6 +273,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Calcula as médias ao carregar a página
 
     calcularMedias();
+
+
+    // Aplica o filtro inicial
+
+    aplicarFiltros();
 
 
     // Sistema carregado
