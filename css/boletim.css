@@ -136,7 +136,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 1500px;
+    height: 5000px;
     background-image: url("../imagens/silhueta-cidade.jpg"); 
     background-size: 100% auto;
     background-position: bottom center;
@@ -155,7 +155,7 @@ body {
 /* Container Estrutural */
 .painel-boletim {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1800px;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -165,7 +165,7 @@ body {
 
 /* Título Centralizado "PAINEL BOLETIM DOS ALUNOS" */
 .painel-boletim > h2 {
-    font-size: 36px;
+    font-size: 50px;
     font-weight: bold;
     letter-spacing: 2px;
     color: var(--texto-branco);
@@ -246,6 +246,20 @@ body {
     cursor: pointer;
     text-transform: uppercase;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin: 0;
+     transition: all 0.2s ease;
+}
+
+/* EFEITO HOVER MANTENDO O FORMATO PÍLULA (IGUAL AO MENU LATERAL) */
+.botao-filtrar:hover,
+.seletor-turma:hover {
+    color: var(--texto-branco);
+    background-color: var(--fundo-card-aluno); /* Muda para azul turquesa */
+    padding-left: 75px;                          /* Empurra o texto suavemente para a direita (ganho de 15px) */
+    padding-right: 45px;                         /* Compensa o espaço na direita para o texto continuar centralizado */
+    
+    /* Cria a barra escura do menu dentro da pílula, respeitando a curvatura de 40px */
+    box-shadow: inset 8px 0 0 0 var(--azul-topo-rodape), 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .seletor-turma {
@@ -266,7 +280,7 @@ body {
 }
 .pesquisa-aluno {
     width: 100%;
-    max-width: 750px;
+    max-width: 1500px;
     margin-bottom: 10px;
 }
 
@@ -338,7 +352,7 @@ body {
 .tabela-boletim {
     flex: 1;
     background-color: var(--fundo-tabela-notas);
-    padding: 10px;
+    padding: 15px;
     display: flex;
     align-items: center;
 }
@@ -356,7 +370,7 @@ body {
     color: #4bceeb; /* Tom azul claro/ciano dos títulos das colunas */
     padding: 15px 10px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: px;
     border-bottom: 2px solid var(--fundo-card-aluno);
 }
 
