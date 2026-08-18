@@ -2,44 +2,56 @@
 // ATLAS DIGITAL - HOME
 // ========================================
 
-//Perguntas 
-const pergunta = document.querySelectorAll(".pergunta");
+// Perguntas
+
+const perguntas = document.querySelectorAll(".pergunta");
 
 perguntas.forEach((pergunta) => {
 
-//Elemento da pergunta
-const botaoPergunta = pergunta.querySelector(".botao-pergunta");
-const respostaPergunta = pergunta.querySelector(".resposta-pergunta");
+    // Elemento da pergunta
+
+    const botaoPergunta = pergunta.querySelector(".botao-pergunta");
+    const respostaPergunta = pergunta.querySelector(".resposta-pergunta");
 
 
-//Clique no botão
-botaoPergunta.addEventListener("click", () => {
+    // Clique no botão
 
-    //verificar se a pergunta já está pronta
-    const repostaAberta =
-        repostaPerguta.style.display === "block";
+    botaoPergunta.addEventListener("click", () => {
 
+        // Verificar se a pergunta já está aberta
 
-    //Fechar todas as perguntas
-    pergunta.forEach((outrasPerguntas) => {
-
-        const outraResposta = 
-            outraPergunta.querySelector(".resposta-pergunta");
-        
-        const outroBotao = 
-            outraPergunta.querySelecctor(".botao-pergunta");
-
-        outraResposta.style.display = "none";
-        
-        outroBotao.textContent = "+";
-    });
+        const respostaAberta =
+            respostaPergunta.style.display === "block";
 
 
-    // Se estava fechada, abre
-    if (!respostaAberta) {
-        repostaPergunta.style.display = "block";
+        // Fechar todas as perguntas
 
-        botaoPergunta.textContent = "−";
+        perguntas.forEach((outrasPerguntas) => {
+
+            const outraResposta =
+                outrasPerguntas.querySelector(".resposta-pergunta");
+
+            const outroBotao =
+                outrasPerguntas.querySelector(".botao-pergunta");
+
+
+            outraResposta.style.display = "none";
+
+            outroBotao.textContent = "+";
+
+        });
+
+
+        // Se estava fechada, abre
+
+        if (!respostaAberta) {
+
+            respostaPergunta.style.display = "block";
+
+            botaoPergunta.textContent = "−";
+
         }
+
     });
-});    
+
+});
