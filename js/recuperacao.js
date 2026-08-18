@@ -284,7 +284,7 @@ formularioRecuperacao.addEventListener(
             // Volta para o login
 
             window.location.href =
-                "index.html";
+                "../index.html";
 
         }
 
