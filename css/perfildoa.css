@@ -1,14 +1,18 @@
 :root {
-    /* Cores das faixas dos alunos vistas no protótipo */
-    --cor-aluno-1: #1e294b;       /* Azul escuro da primeira faixa */
-    --cor-aluno-2: #3db2b2;       /* Verde turquesa/ciano da segunda faixa */
+    /* Paleta de Cores do seu Projeto Atlas Digital */
+    --azul-escuro-bloco: #1e294b; /* Azul escuro do painel/cards */
+    --turquesa-destaque: #3db2b2; /* Verde turquesa para hovers e detalhes */
     --azul-topo-rodape: #3b4b71;  /* Tom azulado do cabeçalho e rodapé */
-    --fundo-geral: #78909c;       /* Tom cinza-azulado do fundo geral */
+    --fundo-moldura: #78909c;     /* Tom cinza-azulado das bordas externas */
     
-    --texto-branco: #ffffff;
-    --borda-linha: rgba(255, 255, 255, 0.4);
+    --branco: #ffffff;
+    --texto-escuro: #333333;
+    --linha-divisoria: rgba(255, 255, 255, 0.3);
 }
 
+/* ==========================================================================
+   ESTRUTURA BASE E GRID TELA CHEIA (OTIMIZADO PARA PC)
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -17,40 +21,40 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: var(--fundo-geral);
-    color: var(--texto-branco);
+    background-color: var(--fundo-moldura);
+    color: var(--branco);
     display: grid;
     grid-template-areas: 
         "header header"
         "nav main"
         "footer footer";
-    grid-template-columns: 200px 1fr; 
+    grid-template-columns: 240px 1fr; /* Largura perfeita para o menu no monitor */
     min-height: 100vh;
     width: 100%; 
 }
 
 /* ==========================================================================
    CABEÇALHO (HEADER)
-   ========================================================================= */
+   ========================================================================== */
 .cabecalho {
     grid-area: header;
     background-color: var(--azul-topo-rodape);
-    color: var(--texto-branco);
+    color: var(--branco);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 25px;
+    padding: 18px 40px; /* Mais pixels de respiro no topo */
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .cabecalho .container-logo img {
-    max-height: 35px; 
+    max-height: 150px; /* Logo maior na tela grande */
     width: auto;
     border-radius: 4px;
 }
 
 .cabecalho .slogan {
-    font-size: 11px; 
+    font-size: 19px; /* Aumentado para melhor leitura */
     font-weight: bold;
     letter-spacing: 0.8px;
     max-width: 75%;
@@ -60,29 +64,29 @@ body {
 }
 
 /* ==========================================================================
-   ASIDE (MENU LATERAL COMPACTO EM CÁPSULA BRANCA)
-   ========================================================================= */
+   MENU LATERAL (CÁPSULA CONFORME SEU ESTILO ORIGINAL)
+   ========================================================================== */
 .menu-lateral {
     grid-area: nav;
     background-color: var(--azul-topo-rodape);
-    padding: 20px 10px;
+    padding: 30px 15px;
 }
 
 .menu-lateral nav {
     display: flex;
     flex-direction: column;
-    background-color: var(--texto-branco);
-    border-radius: 20px; /* Bordas arredondadas idênticas ao Figma */
-    padding: 15px 5px;
-    gap: 6px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+    background-color: var(--branco);
+    border-radius: 20px; 
+    padding: 20px 8px;
+    gap: 8px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .menu-lateral nav a {
-    color: #333333;
+    color: var(--texto-escuro);
     text-decoration: none;
-    padding: 8px 12px;
-    font-size: 11px; 
+    padding: 10px 14px;
+    font-size: 12px; /* Ampliado para o monitor */
     font-weight: bold;
     border-left: 4px solid transparent;
     transition: all 0.2s ease;
@@ -90,167 +94,224 @@ body {
 }
 
 .menu-lateral nav a:hover {
-    color: var(--texto-branco);
-    background-color: var(--cor-aluno-2);
+    color: var(--branco);
+    background-color: var(--turquesa-destaque);
     border-left-color: var(--azul-topo-rodape);
-    padding-left: 16px;
+    padding-left: 18px;
     border-radius: 0 10px 10px 0;
 }
 
+/* Destaque visual na página ativa */
+.menu-lateral nav a[href="perfildoa.html"] {
+    background-color: #f1f5f9;
+    border-left-color: var(--turquesa-destaque);
+    color: var(--turquesa-destaque);
+}
+
 /* ==========================================================================
-   MAIN (ÁREA DE CONTEÚDO SEM GRID INTERNO - FAIXAS COMPLETAS)
-   ========================================================================= */
+   CONTEÚDO PRINCIPAL E DISTRIBUIÇÃO DOS CARDS
+   ========================================================================== */
 .conteudo-principal {
     grid-area: main;
-    background-color: #ffffff; /* Fundo branco base da página */
+    background-color: #ffffff; 
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 30px 40px;
+    gap: 25px; /* Espaço amplo entre os cards dos alunos */
 }
 
-/* Título superior interno da página */
 .titulo-pagina {
-    padding: 20px 30px;
+    padding: 10px 0;
     background-color: #ffffff;
 }
 
 .titulo-pagina h1 {
-    font-size: 22px;
-    color: #333333;
+    font-size: 26px; /* Título imponente */
+    color: var(--texto-escuro);
     letter-spacing: 1px;
     margin: 0;
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
 /* ==========================================================================
-   ESTILIZAÇÃO DAS FAIXAS DE PERFIL DE CADA ALUNO (IGUAL À FOTO)
-   ========================================================================= */
+   CARDS DE PERFIL DOS ALUNOS (IGUAL AO FIGMA - COMPORTAMENTO SEGURO)
+   ========================================================================== */
 .perfil-aluno {
     width: 100%;
-    padding: 40px 50px;
+    padding: 30px 40px;
+    border-radius: 20px; /* Cantos arredondados do design */
     display: flex;
     align-items: center;
     gap: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     position: relative;
     overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Customização Individual das Cores de Fundo de cada bloco */
-.perfil-aluno:nth-of-type(1) {
-    background-color: var(--cor-aluno-1);
+.perfil-aluno:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
 }
 
-.perfil-aluno:nth-of-type(2) {
-    background-color: var(--cor-aluno-2);
-}
-
-.perfil-aluno:nth-of-type(3) {
-    /* Terceira faixa usa a imagem de paisagem/vetor ao fundo */
-    background-image: url("../imagens/fundo-paisagem.png"); 
-    background-size: cover;
-    background-position: center;
-    background-color: #512da8; /* Fallback caso a imagem não carregue */
-}
-
-/* Foto do Aluno redonda e centralizada com borda branca proeminente */
+/* Estrutura do Avatar */
 .foto-aluno {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .foto-aluno img {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid var(--texto-branco); /* Borda branca grossa do Figma */
-    background-color: #ffffff;
+    background-color: #4b5a7a; /* Cor interna do avatar padrão */
+    padding: 6px;
 }
 
-/* Bloco das informações com linhas contínuas */
+/* Estrutura dos Textos Internos */
 .informacoes-aluno {
     flex: 1;
-    max-width: 600px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
 
-/* Título "ALUNO: NOME" expandido horizontalmente com linha inferior */
-.informacoes-aluno h2 {
-    font-size: 24px;
-    font-weight: normal;
-    color: var(--texto-branco);
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--borda-linha); /* Linha horizontal contínua */
-    letter-spacing: 1px;
-    width: 100%;
-    text-transform: uppercase;
-}
-
-/* Estilização dos parágrafos como campos sublinhados inline */
+/* Ajuste das linhas horizontais para os títulos e textos */
+.informacoes-aluno h2, 
 .informacoes-aluno p {
-    font-size: 14px;
-    color: var(--texto-branco);
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--borda-linha); /* Linha contínua simulando input preenchido */
-    width: 100%;
+    font-size: 15px;
+    color: var(--branco);
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Linhas divisórias do design */
     text-transform: uppercase;
-    display: flex;
-    gap: 5px;
+    letter-spacing: 0.5px;
+    margin: 0;
 }
 
-.informacoes-aluno p strong {
+.informacoes-aluno h2 {
+    font-size: 18px;
     font-weight: bold;
 }
 
-/* Opcional: Ajuste para os pequenos ícones ilustrativos nos cantos das faixas */
-.perfil-aluno::after {
-    content: "";
-    position: absolute;
-    right: 40px;
-    bottom: 20px;
-    width: 60px;
-    height: 60px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.8;
+.informacoes-aluno p strong {
+    color: inherit; /* Mantém a cor original ou herda do card */
 }
 
 /* ==========================================================================
-   RODAPÉ (FOOTER)
-   ========================================================================= */
+   ESTILIZAÇÃO INDIVIDUAL SEM DE METER NO HTML
+   ========================================================================== */
+
+/* -----------------------------------------
+   CARD 1 (João) - Azul Escuro / Borda Vermelha
+   ----------------------------------------- */
+.perfil-aluno:nth-of-type(1) {
+    background-color: #0d1224; /* Azul noturno escuro */
+}
+
+.perfil-aluno:nth-of-type(1) .foto-aluno img {
+    border: 5px solid #ff4252; /* Linha de contorno vermelho/rosa */
+}
+
+/* -----------------------------------------
+   CARD 2 (Maria) - Turquesa / Borda Azul-piscina
+   ----------------------------------------- */
+.perfil-aluno:nth-of-type(2) {
+    background-color: #1a9aa0; /* Tom turquesa vibrante */
+}
+
+.perfil-aluno:nth-of-type(2) .foto-aluno img {
+    border: 5px solid #1bc3d7; /* Linha de contorno azul claro */
+}
+
+/* -----------------------------------------
+   CARD 3 (Pedro) - Gradiente Roxo / Borda Laranja
+   ----------------------------------------- */
+.perfil-aluno:nth-of-type(3) {
+    background: linear-gradient(135deg, #1b1647, #100d2b); /* Gradiente profundo */
+}
+
+.perfil-aluno:nth-of-type(3) .foto-aluno img {
+    border: 5px solid #ff6e40; /* Linha de contorno laranja */
+}
+
+/* Vetor ilustrativo da base da cidade no fundo do terceiro card */
+.perfil-aluno:nth-of-type(3) {
+    background: linear-gradient(135deg, #1b1647, #100d2b); /* Gradiente profundo */
+}
+
+.perfil-aluno:nth-of-type(3) .foto-aluno img {
+    border: 5px solid #ff6e40; /* Linha de contorno laranja */
+}
+
+/* Vetor ilustrativo da base da cidade no fundo do terceiro card */
+.perfil-aluno:nth-of-type(3)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 1200px;
+    height: 1100px;
+    background-image: url("../imagens/silhueta-cidade.jpg"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    opacity: 0.09; /* Aumentado para você conseguir enxergar e testar */
+    pointer-events: none;
+    z-index: 1; /* Garante que fique acima do fundo do card */
+}
+
+/* Garante que os textos fiquem por cima da imagem da silhueta */
+.perfil-aluno:nth-of-type(3) .informacoes-aluno {
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   RODAPÉ (FOOTER ESPALHADO NAS EXTREMIDADES)
+   ========================================================================== */
 .rodape {
     grid-area: footer;
     background-color: var(--azul-topo-rodape);
-    color: var(--texto-branco);
+    color: var(--branco);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    padding: 25px 40px; /* Maior altura e pixels de preenchimento */
     border-top: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .contato h2 {
-    font-size: 12px; 
-    margin: 0 0 4px 0;
+    font-size: 14px; 
+    margin: 0 0 8px 0;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
+    color: var(--turquesa-destaque); /* Destaque no título do rodapé */
 }
 
 .contato p {
-    margin: 2px 0;
+    margin: 4px 0;
+    font-size: 35px; /* Aumentado para melhor visibilidade à distância */
 }
 
 .contato p a {
-    color: var(--texto-branco);
+    color: var(--branco);
     text-decoration: none;
-    font-size: 11px; 
-    opacity: 0.8;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.contato p a:hover {
+    color: var(--turquesa-destaque);
+    text-decoration: underline;
 }
 
 .logo-rodape img {
-    max-height: 30px; 
+    max-height: 200px; /* Logo do rodapé ampliada no monitor */
     width: auto;
     border-radius: 4px;
 }
