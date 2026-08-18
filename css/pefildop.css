@@ -1,17 +1,16 @@
 :root {
-    /* Cores do ecossistema Atlas Digital obtidas no Figma */
-    --cor-professor-bg: #1e294b;   /* Azul escuro da faixa do professor */
-    --cor-destaque: #3db2b2;       /* Verde turquesa/ciano para hover e botões */
-    --azul-topo-rodape: #3b4b71;  /* Tom azulado do cabeçalho e rodapé */
-    --fundo-geral: #78909c;       /* Tom cinza-azulado de fundo das bordas */
+    --azul-escuro-bloco: #121829;
+    --turquesa-destaque: #4be3b5; /* Verde/Ciano vivo do botão Salvar */
+    --azul-topo-rodape: #4a618c;  /* Tom azul claro acinzentado do topo/rodapé */
+    --fundo-geral: #768da6;       /* Tom cinza-azulado externo */
     
     --texto-branco: #ffffff;
     --texto-escuro: #333333;
-    --borda-linha: rgba(255, 255, 255, 0.4);
+    --borda-linha: rgba(255, 255, 255, 0.65); /* Linhas nítidas */
 }
 
 /* ==========================================================================
-   ESTRUTURA GRID PÁGINA INTEIRA (IGUAL AOS ANTERIORES)
+   ESTRUTURA GRID PÁGINA INTEIRA (OTIMIZADA PARA MONITORES DE PC)
    ========================================================================== */
 * {
     margin: 0;
@@ -28,9 +27,11 @@ body {
         "header header"
         "nav main"
         "footer footer";
-    grid-template-columns: 200px 1fr; 
+    grid-template-columns: 320px 1fr; /* Menu alargado para comportar fontes maiores */
+    grid-template-rows: auto 1fr auto; 
     min-height: 100vh;
     width: 100%; 
+    overflow-x: hidden;
 }
 
 /* ==========================================================================
@@ -43,209 +44,301 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 25px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 50px; 
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .cabecalho .container-logo img {
-    max-height: 35px; 
+    max-height: 75px; /* Logo maior */
     width: auto;
-    border-radius: 4px;
+    background: #ffffff;
+    padding: 6px 18px;
+    border-radius: 20px;
 }
 
 .cabecalho .slogan {
-    font-size: 11px; 
+    font-size: 26px; /* Slogan bem grande para leitura à distância */
     font-weight: bold;
-    letter-spacing: 0.8px;
+    letter-spacing: 1px;
     max-width: 75%;
     text-align: right;
     line-height: 1.4;
     text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* ==========================================================================
-   ASIDE (MENU LATERAL COMPACTO EM CÁPSULA BRANCA)
+   MENU LATERAL (ESTILO CÁPSULA EXPANDIDO)
    ========================================================================== */
 .menu-lateral {
     grid-area: nav;
     background-color: var(--azul-topo-rodape);
-    padding: 20px 10px;
+    padding: 40px 20px;
 }
 
 .menu-lateral nav {
     display: flex;
     flex-direction: column;
     background-color: var(--texto-branco);
-    border-radius: 20px; 
-    padding: 15px 5px;
-    gap: 6px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+    border-radius: 24px; 
+    padding: 25px 12px;
+    gap: 14px;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.25);
 }
 
 .menu-lateral nav a {
     color: var(--texto-escuro);
     text-decoration: none;
-    padding: 8px 12px;
-    font-size: 11px; 
+    padding: 25px 30px; 
+    font-size: 30px; /* Links do menu em tamanho bem visível */
     font-weight: bold;
-    border-left: 4px solid transparent;
+    border-left: 6px solid transparent;
     transition: all 0.2s ease;
     text-transform: uppercase;
 }
 
 .menu-lateral nav a:hover {
     color: var(--texto-branco);
-    background-color: var(--cor-destaque);
+    background-color: var(--turquesa-destaque);
     border-left-color: var(--azul-topo-rodape);
-    padding-left: 16px;
-    border-radius: 0 10px 10px 0;
+    padding-left: 26px;
+    border-radius: 0 12px 12px 0;
+}
+
+.menu-lateral nav a[href="perfildop.html"] {
+    background-color: #f1f5f9;
+    border-left-color: var(--turquesa-destaque);
+    color: var(--turquesa-destaque);
 }
 
 /* ==========================================================================
-   MAIN (CONTEÚDO DO PROFESSOR EM FAIXA CONTÍNUA)
+   CONTEÚDO PRINCIPAL (WORKSPACE CENTRALIZADO DO MONITOR)
    ========================================================================== */
 .conteudo-principal {
     grid-area: main;
-    background-color: #ffffff; /* Fundo branco base da página */
+    background-color: var(--azul-topo-rodape); 
     display: flex;
     flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
     width: 100%;
+    padding: 60px 40px; 
 }
 
-.titulo-pagina {
-    padding: 20px 30px;
-    background-color: #ffffff;
-}
-
+/* Oculta o título redundante */
 .titulo-pagina h1 {
-    font-size: 22px;
-    color: var(--texto-escuro);
-    letter-spacing: 1px;
-    margin: 0;
+    display: none;
 }
 
-/* Faixa Principal Estilo Figma */
+/* Card Principal Gigante Fiel ao Figma */
 .perfil-professor {
     width: 100%;
-    padding: 45px 50px;
-    background-color: var(--cor-professor-bg);
+    max-width: 1300px; /* Card mais largo para comportar as fontes maiores */
+    min-height: 1050px; 
+    background: linear-gradient(180deg, #0b0e1a 0%, #161e45 40%, #252b61 70%, #0f132e 100%);
+    border-radius: 32px; 
+    padding: 60px 50px;
     display: flex;
-    flex-wrap: wrap; /* Permite a quebra para a seção 'Sobre mim' abaixo */
+    flex-direction: column;
     align-items: center;
-    gap: 40px;
     position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); 
+    overflow: hidden;
 }
 
-/* Foto Redonda com Borda Grossa */
+/* Ilustração de fundo na base do card */
+.perfil-professor::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 780px;
+    background-image: url("../imagens/silhueta-cidade.jpg"); 
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    opacity: 0.1; 
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Avatar Ampliado com Múltiplos Anéis */
 .foto-professor {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
 }
 
 .foto-professor img {
-    width: 130px;
-    height: 130px;
+    width: 300px; /* Foto consideravelmente maior */
+    height: 300px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid var(--texto-branco);
-    background-color: #ffffff;
+    background-color: #7bb5e3;
+    padding: 6px;
+    border: 8px solid #00d2ff; 
+    box-shadow: 0 0 0 8px #0b0e1a, 0 0 0 16px #00d2ff; 
 }
 
-/* Informações com Linhas Sublinhadas */
+/* Painel de Informações Alinhado à Direita */
 .informacoes-professor {
-    flex: 1;
-    min-width: 250px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 32px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Título "DETALHES" Gigante */
+.informacoes-professor::before {
+    content: "DETALHES";
+    display: block;
+    font-family: 'Georgia', serif;
+    font-size: 100px; /* Título super imponente */
+    letter-spacing: 2px;
+    color: var(--texto-branco);
+    text-align: right;
+    width: 100%;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.informacoes-professor h2,
+.informacoes-professor p {
+    font-size: 35px; /* Textos de detalhes ampliados para 24px */
+    color: var(--texto-branco);
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--borda-linha); 
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: right;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 .informacoes-professor h2 {
-    font-size: 24px;
-    font-weight: normal;
-    color: var(--texto-branco);
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--borda-linha);
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    font-weight: bold;
 }
 
-.informacoes-professor p {
-    font-size: 14px;
+.informacoes-professor p strong {
     color: var(--texto-branco);
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--borda-linha);
-    text-transform: uppercase;
+    font-weight: bold;
 }
 
-/* Ícones de Redes Sociais Laterais */
+/* Área de Redes Sociais e Ícone de Sincronia */
 .redes-sociais {
+    width: 100%;
     display: flex;
-    gap: 15px;
+    justify-content: flex-end;
     align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Ícone Extra do Lado Esquerdo */
+.redes-sociais::before {
+    content: "\f4fa"; 
+    font-family: "bootstrap-icons";
+    color: var(--texto-branco);
+    font-size: 34px; /* Ícones ampliados */
+    margin-right: auto;
+    cursor: pointer;
+    opacity: 0.9;
 }
 
 .redes-sociais a {
     color: var(--texto-branco);
-    font-size: 22px;
-    transition: color 0.2s ease, transform 0.2s ease;
+    font-size: 32px; /* Ícones das redes maiores */
     text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
 }
 
 .redes-sociais a:hover {
-    color: var(--cor-destaque);
-    transform: scale(1.1);
+    color: var(--turquesa-destaque);
+    transform: scale(1.15); 
 }
 
-/* Seção Sobre o Professor (Ocupa a largura total abaixo) */
+/* Seção Sobre o Professor */
 .sobre-professor {
     width: 100%;
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px dashed var(--borda-linha);
+    position: relative;
+    z-index: 2;
+    margin-bottom: 50px;
 }
 
 .sobre-professor h2 {
-    font-size: 16px;
+    font-size: 35px; /* Título Sobre Mim */
     text-align: center;
     letter-spacing: 1.5px;
-    margin-bottom: 15px;
-    color: var(--cor-destaque);
-}
-
-.sobre-professor p {
-    font-size: 14px;
-    line-height: 1.6;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+    margin-bottom: 30px;
     color: var(--texto-branco);
-}
-
-/* Botão Salvar Estilizado em Cápsula */
-.botao-salvar {
-    background-color: var(--cor-destaque);
-    color: var(--texto-branco);
-    border: none;
-    padding: 12px 35px;
-    font-size: 13px;
     font-weight: bold;
-    border-radius: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Linhas de Caderno Grandes e Espaçadas */
+.sobre-professor p {
+    font-size: 35px; /* Texto principal do bloco aumentado para 22px */
+    line-height: 55px; /* Distanciamento ajustado para a nova fonte */
+    text-align: center;
+    color: #ffffff; 
+    font-weight: bold;
+    background-image: linear-gradient(to bottom, transparent 53px, var(--borda-linha) 53px);
+    background-size: 100% 55px;
+    padding-bottom: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Ícone de Livros no Canto Inferior Direito */
+.sobre-professor::after {
+    content: "\f1da"; 
+    font-family: "bootstrap-icons";
+    position: absolute;
+    right: 15px;
+    bottom: 25px;
+    font-size: 90px; /* Ilustração nítida e gigante */
+    color: #000000; 
+    opacity: 1; 
+    pointer-events: none;
+}
+
+/* Botão Salvar Estilo Pílula Robusto */
+.botao-salvar {
+    background-color: var(--turquesa-destaque);
+    color: #0b0e1a; 
+    padding: 22px 100px; /* Botão imponente */
+    font-size: 18px; /* Fonte interna aumentada */
+    font-weight: bold;
+    border-radius: 40px;
+    border: none;
     cursor: pointer;
-    letter-spacing: 1px;
-    margin: 30px auto 0 auto; /* Centraliza horizontalmente */
-    display: block;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: auto; 
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 6px 20px rgba(75, 227, 181, 0.5);
 }
 
 .botao-salvar:hover {
-    background-color: #2da1a1;
+    background-color: var(--texto-branco);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
 }
 
 .botao-salvar:active {
-    transform: scale(0.98);
+    transform: translateY(0) scale(0.98);
 }
 
 /* ==========================================================================
@@ -258,35 +351,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
-    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 50px; 
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .contato h2 {
-    font-size: 12px; 
-    margin: 0 0 4px 0;
+    font-size: 30px; 
+    margin: 0 0 6px 0;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .contato p {
-    margin: 2px 0;
-    font-size: 11px;
+    margin: 4px 0;
+    font-size: 50px;
 }
 
 .contato p a {
     color: var(--texto-branco);
     text-decoration: none;
-    opacity: 0.8;
-}
-
-.contato p a:hover {
-    opacity: 1;
-    text-decoration: underline;
+    opacity: 0.9;
 }
 
 .logo-rodape img {
-    max-height: 30px; 
+    max-height: 200px; 
     width: auto;
-    border-radius: 4px;
 }
