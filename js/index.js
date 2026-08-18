@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Procura um usuário com o e-mail e a senha informados
+    // Procura um usuário cadastrado com o e-mail e a senha informados
     function verificarLogin(email, senha) {
 
         const usuarios = obterUsuarios();
@@ -120,6 +120,34 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
+        // Login de teste para a apresentação
+        const emailTeste = "teste@atlasdigital.com";
+        const senhaTeste = "123456";
+
+
+        // Verifica primeiro o usuário de teste
+        if (
+            emailDigitado === emailTeste &&
+            senhaDigitada === senhaTeste
+        ) {
+
+            const usuarioTeste = {
+                nome: "Professor",
+                email: emailTeste,
+                tipo: "Administrador"
+            };
+
+            localStorage.setItem(
+                "usuarioLogado",
+                JSON.stringify(usuarioTeste)
+            );
+
+            window.location.href = "html/home.html";
+
+            return;
+        }
+
+
         // Procura o usuário cadastrado
         const usuarioEncontrado =
             verificarLogin(
@@ -136,8 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 JSON.stringify(usuarioEncontrado)
             );
 
-
-            // Abre a página inicial
             window.location.href = "html/home.html";
 
             return;
