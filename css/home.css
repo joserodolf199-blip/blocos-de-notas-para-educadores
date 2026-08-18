@@ -466,8 +466,168 @@ body {
         flex-direction: column;
         gap: 30px;
         text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* sombra leve para destacar o rodapé em telas menores */
     }
     .info-link {
         justify-content: center;
+    }
+    
+     
+}
+
+/* ==========================================================================
+   6. PERGUNTAS FREQUENTES (FAQ)
+   ========================================================================== */
+.perguntas-frequentes {
+    background-color: #ffffff;
+    padding: 60px 80px;
+    width: 100%;
+}
+
+.perguntas-frequentes h2 {
+    font-size: 2.2rem;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.pergunta {
+    border-bottom: 2px solid #e0e0e0;
+    padding: 20px 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cabecalho-pergunta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.texto-pergunta {
+    font-size: 1.1rem;
+    color: #333333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.botao-pergunta {
+    background: transparent;
+    border: 2px solid #3ca6b4;
+    color: #3ca6b4;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1.4rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-pergunta:hover {
+    background-color: #3ca6b4;
+    color: #ffffff;
+}
+
+/* Oculta as respostas por padrão para criar o efeito sanfona */
+.resposta-pergunta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.resposta-pergunta p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    color: #666666;
+    line-height: 1.6;
+    padding-top: 15px;
+    font-weight: normal;
+}
+
+/* Classes ativadas via JavaScript */
+.pergunta.ativa .resposta-pergunta {
+    max-height: 200px; 
+}
+
+.pergunta.ativa .botao-pergunta {
+    transform: rotate(45deg);
+    background-color: #3ca6b4;
+    color: #ffffff;
+}
+
+/* Ajustes extras de responsividade */
+@media (max-width: 1024px) {
+    .principais-funcionalidades {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+    .image-funcionalidades {
+        grid-column: 1;
+        grid-row: auto;
+    }
+    .perguntas-frequentes {
+        padding: 40px 20px;
+    }
+}
+/* ==========================================================================
+   7. RODAPÉ (FOOTER) - ALINHAMENTO NAS EXTREMIDADES
+   ========================================================================== */
+.rodape {
+    grid-column: 1 / -1; /* Ocupa toda a largura da tela (menu + conteúdo) */
+    background-color: #7a92c3; /* Tom azul/cinza padrão do projeto */
+    display: flex;
+    justify-content: space-between; /* Empurra o contato para a esquerda e a logo para a direita */
+    align-items: center; /* Alinha os dois verticalmente ao centro */
+    padding: 40px 80px; /* Margem interna para não colarem totalmente no limite da tela */
+    width: 100%;
+}
+
+/* Estilização do bloco de Contatos (lado esquerdo) */
+.contato h2 {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contato p {
+    margin-bottom: 6px;
+}
+
+.contato a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: 'Arial', sans-serif; 
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.contato a:hover {
+    color: #00d2ff; /* Efeito aceso ao passar o mouse */
+}
+
+/* Estilização da Logo (lado direito) */
+.logo-rodape img {
+    height: 170px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Responsividade para telas de celulares */
+@media (max-width: 768px) {
+    .rodape {
+        flex-direction: column-reverse; /* Inverte para a logo ficar em cima no celular */
+        text-align: center;
+        gap: 30px;
+        padding: 40px 20px;
     }
 }
