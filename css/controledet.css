@@ -46,26 +46,26 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 40px;
-    height: 55px;
+    padding: 18px 50px;
+    height: 70px;
     border-bottom: none;
 }
 
 .cabecalho .container-logo img {
-    height: 22px; 
+    height: 70px; 
     width: auto;
     border-radius: 4px;
     display: block;
 }
 
 .cabecalho .slogan {
-    font-size: 10px;
+    font-size: 20px;
     font-weight: normal;
-    letter-spacing: 0.5px;
-    margin: 0;
+    letter-spacing: 0.0px;
+    margin: 10px 0 0 0;;
     max-width: 70%;
     text-align: right;
-    opacity: 0.9;
+    opacity: 2.0;
 }
 
 /* ==========================================================================
@@ -91,7 +91,7 @@ body {
     color: var(--texto-escuro);
     text-decoration: none;
     padding: 8px 12px;
-    font-size: 11px;
+    font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
     transition: all 0.2s ease;
@@ -112,7 +112,7 @@ body {
     display: flex;
     flex-direction: column;
     background: linear-gradient(180deg, var(--fundo-gradiente-topo) 0%, var(--fundo-gradiente-fim) 100%); /* Gradiente exato */
-    padding-bottom: 40px;
+    padding-bottom: 3px;
 }
 
 .titulo-pagina {
@@ -122,9 +122,9 @@ body {
 
 .titulo-pagina h1 {
     color: var(--branco);
-    font-size: 24px;
+    font-size: 30px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 10px;
     margin: 0;
 }
 
@@ -155,12 +155,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 19px;
 }
 
 .cabecalho-turma h2 {
     color: var(--texto-escuro);
-    font-size: 16px;
+    font-size: 30px;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -206,7 +206,7 @@ body {
 
 /* Linhas contínuas de preenchimento dos alunos */
 .lista-alunos p {
-    font-size: 11px;
+    font-size: 20px;
     color: #a0aec0;
     font-weight: bold;
     display: flex;
@@ -242,7 +242,7 @@ body {
     color: var(--branco);
     border: none;
     padding: 12px 30px;
-    font-size: 12px;
+    font-size: 24px;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
@@ -263,16 +263,16 @@ body {
 }
 
 .sobre-controle h2 {
-    font-size: 18px;
+    font-size: 30px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 10px;
     margin-bottom: 20px;
     text-align: center;
     font-weight: bold;
 }
 
 .sobre-controle h3 {
-    font-size: 13px;
+    font-size: 24px;
     text-transform: uppercase;
     margin: 15px 0 6px 0;
 }
@@ -283,7 +283,7 @@ body {
 }
 
 .sobre-controle li {
-    font-size: 12px;
+    font-size: 24px;
     line-height: 1.6;
     margin-bottom: 6px;
     opacity: 0.95;
@@ -301,9 +301,9 @@ body {
 
 .perguntas-frequentes h2 {
     color: var(--texto-escuro);
-    font-size: 18px;
+    font-size: 30px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 10px;
     margin-bottom: 25px;
     text-align: center;
 }
@@ -325,7 +325,7 @@ body {
 .texto-pergunta {
     font-weight: normal;
     color: var(--texto-mutado);
-    font-size: 12px;
+    font-size: 24px;
 }
 
 /* Botão em formato de esfera idêntico à imagem */
@@ -339,14 +339,14 @@ body {
     align-items: center;
     justify-content: center;
     color: var(--texto-mutado);
-    font-size: 12px;
+    font-size: 24px;
     cursor: pointer;
 }
 
 .resposta-pergunta {
     display: none;
     padding-top: 10px;
-    font-size: 12px;
+    font-size: 24px;
     color: var(--texto-mutado);
     border-top: 1px dashed var(--borda);
     margin-top: 10px;
@@ -367,17 +367,17 @@ body {
 }
 
 .contato h2 {
-    font-size: 12px;
+    font-size: 20px;
     margin: 0 0 4px 0;
 }
 
 .contato p a {
-    font-size: 11px;
+    font-size: 30px;
     opacity: 0.9;
 }
 
 .logo-rodape img {
-    height: 70px; 
+    height: 120px; /* Logo reduzida idêntica ao cabeçalho */
     width: auto;
     border-radius: 4px;
 }
