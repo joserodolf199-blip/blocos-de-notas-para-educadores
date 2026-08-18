@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel - Atlas Digital</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/painel.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+
+    <header class="cabecalho">
+
+        <div class="logo">
+
+            <img
+                src="../imagens/logo.jpeg"
+                alt="Logo Atlas Digital"
+            >
+
+        </div>
+
+        <div class="cabecalho-conteudo">
+
+            <div class="informacoes-professor">
+
+                <p>
+                    Bom dia, Professor!
+                </p>
+
+                <input
+                    type="search"
+                    id="campo-pesquisa"
+                    placeholder="Buscar alunos, turmas, avaliações..."
+                >
+
+            </div>
+
+            <div class="professor">
+
+                <span id="turma-atual">
+                    Turma atual
+                </span>
+
+                <span class="notificacao">
+                    🔔
+                </span>
+
+                <img
+                    src="../imagens/professor.png"
+                    alt="Professor"
+                >
+
+                <div>
+
+                    <strong>
+                        Professor
+                    </strong>
+
+                    <span>
+                        Administrador
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- Menu lateral -->
+
+    <aside class="menu-lateral">
+
+        <nav>
+
+            <nav>
+
+    <a href="controledet.html">Adm. Turma</a>
+
+    <a href="perfildoa.html">Perfil do Aluno</a>
+
+    <a href="perfildop.html">Perfil do Professor</a>
+
+    <a href="frequencia.html">Frequência</a>
+
+    <a href="boletim.html">Boletim</a>
+
+    <a href="avaliacao.html">Avaliações</a>
+
+    <a href="painel.html">Painel</a>
+
+    <a href="home.html">Menu</a>
+
+</nav>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- Conteúdo principal -->
+
+    <main class="conteudo-principal">
+
+        <!-- Indicadores -->
+
+        <section
+            class="indicadores"
+            id="indicadores"
+        >
+        </section>
+
+
+        <!-- Área principal -->
+
+        <section class="painel-superior">
+
+            <div class="card grafico">
+
+                <h2>
+                    📊 Desempenho da Turma
+                </h2>
+
+                <canvas id="grafico-desempenho"></canvas>
+
+            </div>
+
+
+            <div
+                class="card avaliacoes"
+                id="proximas-avaliacoes"
+            >
+
+                <h2>
+                    📅 Próximas Avaliações
+                </h2>
+
+            </div>
+
+
+            <div
+                class="card atencao"
+                id="alunos-atencao"
+            >
+
+                <h2>
+                    ⚠️ Alunos que precisam de atenção
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- Área inferior -->
+
+        <section class="painel-inferior">
+
+            <div
+                class="card resumo"
+                id="resumo-hoje"
+            >
+
+                <h2>
+                    📋 Resumo de Hoje
+                </h2>
+
+            </div>
+
+
+            <div
+                class="card atividades"
+                id="atividades-recentes"
+            >
+
+                <h2>
+                    🔴 Atividade Recente
+                </h2>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Rodapé -->
+
+    <footer class="rodape">
+
+        <p>
+            ATLAS DIGITAL
+        </p>
+
+    </footer>
+
+
+    <!-- jQuery -->
+
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+    ></script>
+
+
+    <!-- Chart.js -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+
+    <!-- JavaScript do painel -->
+
+    <script
+        src="../js/painel.js"
+        <script src="../js/navegacao.js"></script>
+    ></script>
+
+</body>
+
+</html>
