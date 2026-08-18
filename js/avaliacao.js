@@ -31,16 +31,23 @@ document.addEventListener("DOMContentLoaded", function () {
             .toUpperCase()
             .trim();
 
+        let alunosEncontrados = 0;
+
+
         cardsAlunos.forEach(function (card) {
 
             const nomeAluno = card
                 .querySelector(".nome-aluno span")
                 .textContent
-                .toUpperCase();
+                .toUpperCase()
+                .trim();
+
 
             if (nomeAluno.includes(textoPesquisa)) {
 
                 card.style.display = "";
+
+                alunosEncontrados++;
 
             } else {
 
@@ -50,6 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+
+        return alunosEncontrados;
+
     }
 
 
@@ -57,7 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     campoPesquisa.addEventListener(
         "input",
-        pesquisarAluno
+        function () {
+
+            pesquisarAluno();
+
+        }
     );
 
 
@@ -65,7 +79,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     botaoPesquisa.addEventListener(
         "click",
-        pesquisarAluno
+        function () {
+
+            const encontrados =
+                pesquisarAluno();
+
+
+            if (
+                campoPesquisa.value.trim() !== "" &&
+                encontrados === 0
+            ) {
+
+                alert(
+                    "Nenhum aluno encontrado."
+                );
+
+            }
+
+        }
     );
 
 
@@ -75,20 +106,25 @@ document.addEventListener("DOMContentLoaded", function () {
         "click",
         function () {
 
-            const cardsVisiveis = Array.from(cardsAlunos)
-                .filter(function (card) {
+            const cardsVisiveis =
+                Array.from(cardsAlunos)
+                    .filter(function (card) {
 
-                    return card.style.display !== "none";
+                        return card.style.display !== "none";
 
-                });
+                    });
+
 
             if (cardsVisiveis.length === 0) {
 
-                alert("Nenhum aluno encontrado.");
+                alert(
+                    "Nenhum aluno encontrado."
+                );
 
                 return;
 
             }
+
 
             alert(
                 "Turma selecionada: TURMA 1º A\n" +
@@ -121,25 +157,31 @@ document.addEventListener("DOMContentLoaded", function () {
                     ".card-avaliacoes"
                 );
 
+
                 const nomeAluno = card
                     .querySelector(".nome-aluno span")
                     .textContent
                     .trim();
+
 
                 const nomeAvaliacao = linha
                     .querySelector("span")
                     .textContent
                     .trim();
 
+
                 const notas = linha.querySelectorAll(
                     "span:not(:first-child)"
                 );
 
+
                 notas.forEach(function (notaElemento) {
 
-                    const notaAtual = notaElemento
-                        .textContent
-                        .replace(",", ".");
+                    const notaAtual =
+                        notaElemento.textContent
+                            .replace(",", ".")
+                            .trim();
+
 
                     const novaNota = prompt(
                         "Aluno: " + nomeAluno +
@@ -148,13 +190,18 @@ document.addEventListener("DOMContentLoaded", function () {
                         notaAtual
                     );
 
+
                     if (novaNota === null) {
+
                         return;
+
                     }
+
 
                     const valor = parseFloat(
                         novaNota.replace(",", ".")
                     );
+
 
                     if (
                         isNaN(valor) ||
@@ -170,8 +217,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     }
 
+
                     notaElemento.textContent =
-                        valor.toFixed(1).replace(".", ",");
+                        valor
+                            .toFixed(1)
+                            .replace(".", ",");
 
                 });
 
@@ -196,13 +246,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 event.preventDefault();
 
+
                 const nomePagina = link
                     .textContent
                     .trim();
 
+
                 if (nomePagina === "Avaliações") {
+
                     return;
+
                 }
+
 
                 alert(
                     "A página " +
