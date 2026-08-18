@@ -43,31 +43,32 @@ body {
 } 
 
 /* ========================================================================== 
-   ESTILIZAÇÃO DA PÁGINA DE RECUPERAÇÃO 
+   ESTLIZAÇÃO DA PÁGINA DE RECUPERAÇÃO - DESIGN FIGMA VERSÃO PC GIGANTE
    ========================================================================== */ 
 .pagina-recuperacao { 
     background: var(--card-bg); 
-    border-radius: 25px; 
-    padding: 35px 25px; 
-    width: 340px; 
+    border-radius: 40px; /* Cantos arredondados e elegantes do Figma */ 
+    padding: 65px 55px;  /* Amplo espaço de respiro interno */ 
+    width: 650px;        /* Largura imponente para monitores widescreen */ 
     text-align: center; 
-    backdrop-filter: blur(8px); 
-    -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */ 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); 
+    backdrop-filter: blur(15px); /* Efeito de vidro nítido no monitor */ 
+    -webkit-backdrop-filter: blur(15px); /* Suporte para Safari */ 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); 
 } 
 
-/* Container do Logo (Variante compacta para recuperação) */ 
+/* Container do Logo (Fiel ao mockup do Figma) */ 
 .container-logo { 
     background: #ffffff; 
-    border-radius: 15px; 
-    padding: 20px;            
-    margin-bottom: 40px;      /* Aumentado o espaço abaixo da logo */ 
+    border-radius: 24px; 
+    padding: 25px;            
+    margin-bottom: 50px;      /* Espaço generoso abaixo da logo */ 
     display: inline-block; 
-    width: 90%;               /* Ajustado para acomodar a logo maior */
+    width: 95%;               
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 } 
 
 .container-logo img { 
-    max-width: 130px;         /* Logo aumentada para maior destaque */ 
+    max-width: 240px;         /* Logo ampliada e com alta nitidez */ 
     height: auto; 
     display: block; 
     margin: 0 auto; 
@@ -82,13 +83,13 @@ body {
 .etapa-recuperacao { 
     display: flex; 
     flex-direction: column; 
-    gap: 24px;                /* Aumentado o espaçamento padrão interno da etapa */ 
+    gap: 35px;                /* Distanciamento perfeito entre o input e o botão */ 
 } 
 
 /* Seletor específico para as etapas de código adicionarem respiro extra */
 .etapa-recuperacao:nth-child(n) {
-    margin-top: 15px;         
-    margin-bottom: 15px;      
+    margin-top: 20px;         
+    margin-bottom: 20px;      
 }
 
 .campo-recuperacao { 
@@ -97,46 +98,70 @@ body {
     text-align: left; 
 } 
 
+/* Inputs Estilo Cápsula Gigante do Figma */
 .campo-entrada { 
     width: 100%; 
-    padding: 14px 20px;       /* Leve aumento na altura interna do input */
+    padding: 22px 30px;       /* Caixas de texto altas e fáceis de visualizar */
     border: none; 
-    border-radius: 25px; 
+    border-radius: 40px;      /* Formato pílula/cápsula idêntico ao Figma */ 
     background-color: var(--input-bg); 
-    color: #1a3a30; 
-    font-size: 14px; 
+    color: #0b1a15;           /* Contraste máximo ao digitar na tela do PC */ 
+    font-size: 26px;          /* Letras grandes para leitura imediata */ 
+    font-weight: bold;
     outline: none; 
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    letter-spacing: 2px;
 } 
+
+/* Feedback visual quando o usuário clica para digitar */
+.campo-entrada:focus {
+    box-shadow: 0 0 0 4px rgba(0, 85, 255, 0.4);
+    background-color: #ffffff;
+}
 
 .campo-entrada::placeholder { 
-    color: #556a63; 
+    color: #445750;           /* Placeholder escurecido para não sumir no projetor */ 
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
 } 
 
-/* Botão de Ação */ 
+/* Botão de Ação Estilo Cápsula do Figma */ 
 .botao-recuperar-senha { 
     width: 100%; 
-    padding: 16px;            
+    padding: 22px;            /* Botão robusto para cliques com o mouse */ 
     border: none; 
-    border-radius: 25px; 
+    border-radius: 40px;      /* Arredondamento pílula combinando com o input */ 
     background-color: var(--btn-azul); 
-    color: var(--texto-branco); 
-    font-size: 16px; 
+    color: var(--texto-white, #ffffff); 
+    font-size: 30px;          /* Texto do botão gigante */ 
     font-weight: bold; 
     cursor: pointer; 
-    transition: background-color 0.2s ease; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; 
+    box-shadow: 0 8px 20px rgba(0, 85, 255, 0.35);
 } 
 
 .botao-recuperar-senha:hover { 
     background-color: #0044cc; 
+    transform: translateY(-2px); /* Efeito suave ao passar o mouse */
+    box-shadow: 0 12px 28px rgba(0, 85, 255, 0.5);
 } 
 
-/* Frase Motivacional de Rodapé */ 
+.botao-recuperar-senha:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Frase Motivacional de Rodapé Nítida */ 
 .frase p { 
     color: var(--texto-branco); 
-    font-size: 10px; 
-    line-height: 1.4; 
+    font-size: 25px;          /* Fonte ampliada para dar peso estético à base */ 
+    line-height: 1.6; 
     text-transform: uppercase; 
-    margin: 35px 0 0 0;       /* Aumentado para acompanhar o fluxo das etapas */
-    padding: 0 10px; 
-    opacity: 0.9; 
+    margin: 55px 0 0 0;       
+    padding: 0 15px; 
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Sombra para não misturar com o papel de parede */
 }
