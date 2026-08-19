@@ -28,16 +28,85 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".porcentagem");
 
 
-    // Gráfico de presença
+    // Valores aleatórios de presença
 
-    if (canvasGrafico && typeof Chart !== "undefined") {
+    let presente;
+    let faltas;
+    let atestados;
 
-        const graficoPresenca = new Chart(
+
+    function gerarPercentuais() {
+
+        presente =
+            Math.floor(
+                Math.random() * 21
+            ) + 70;
+
+        faltas =
+            Math.floor(
+                Math.random() * 16
+            ) + 5;
+
+        atestados =
+            100 - presente - faltas;
+
+
+        if (atestados < 2) {
+
+            atestados = 2;
+
+            faltas =
+                100 - presente - atestados;
+
+        }
+
+    }
+
+
+    gerarPercentuais();
+
+
+    // Atualiza os percentuais exibidos na página
+
+    function atualizarPercentuais() {
+
+        if (porcentagens.length < 3) {
+            return;
+        }
+
+
+        porcentagens[0].textContent =
+            presente + "%";
+
+
+        porcentagens[1].textContent =
+            faltas + "%";
+
+
+        porcentagens[2].textContent =
+            atestados + "%";
+
+    }
+
+
+    atualizarPercentuais();
+
+
+    // Cria o gráfico de presença
+
+    if (
+        canvasGrafico &&
+        typeof Chart !== "undefined"
+    ) {
+
+        new Chart(
             canvasGrafico,
             {
+
                 type: "doughnut",
 
                 data: {
+
                     labels: [
                         "Presente",
                         "Faltas",
@@ -45,11 +114,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     ],
 
                     datasets: [
+
                         {
+
                             data: [
-                                65,
-                                30,
-                                5
+                                presente,
+                                faltas,
+                                atestados
                             ],
 
                             backgroundColor: [
@@ -59,22 +130,29 @@ document.addEventListener("DOMContentLoaded", function () {
                             ],
 
                             borderWidth: 0
+
                         }
+
                     ]
+
                 },
 
                 options: {
+
                     responsive: true,
 
                     maintainAspectRatio: false,
 
                     plugins: {
+
                         legend: {
                             display: false
                         },
 
                         tooltip: {
+
                             callbacks: {
+
                                 label: function (context) {
 
                                     return (
@@ -85,19 +163,24 @@ document.addEventListener("DOMContentLoaded", function () {
                                     );
 
                                 }
+
                             }
+
                         }
+
                     },
 
                     cutout: "65%"
+
                 }
+
             }
         );
 
     }
 
 
-    // Pesquisa de aluno
+    // Pesquisa alunos pelo nome
 
     function pesquisarAluno() {
 
@@ -106,30 +189,48 @@ document.addEventListener("DOMContentLoaded", function () {
                 .toLowerCase()
                 .trim();
 
-        linhasAlunos.forEach(function (linha) {
 
-            const nomeAluno =
-                linha
-                    .querySelector(".dados-aluno span")
-                    .textContent
-                    .toLowerCase();
+        linhasAlunos.forEach(
+            function (linha) {
 
-            if (nomeAluno.includes(textoPesquisa)) {
+                const elementoNome =
+                    linha.querySelector(
+                        ".dados-aluno span"
+                    );
 
-                linha.style.display = "";
 
-            } else {
+                if (!elementoNome) {
+                    return;
+                }
 
-                linha.style.display = "none";
+
+                const nomeAluno =
+                    elementoNome
+                        .textContent
+                        .toLowerCase();
+
+
+                if (
+                    nomeAluno.includes(
+                        textoPesquisa
+                    )
+                ) {
+
+                    linha.style.display = "";
+
+                } else {
+
+                    linha.style.display = "none";
+
+                }
 
             }
-
-        });
+        );
 
     }
 
 
-    // Botão de pesquisa
+    // Ativa o botão de pesquisa
 
     if (botaoPesquisa) {
 
@@ -141,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Pesquisa ao digitar
+    // Pesquisa automaticamente enquanto digita
 
     if (campoPesquisa) {
 
@@ -153,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Botão filtrar
+    // Filtra somente alunos com pendências
 
     if (botaoFiltrar) {
 
@@ -161,24 +262,29 @@ document.addEventListener("DOMContentLoaded", function () {
             "click",
             function () {
 
-                linhasAlunos.forEach(function (linha) {
+                linhasAlunos.forEach(
+                    function (linha) {
 
-                    const pendencias =
-                        linha.querySelectorAll(
-                            ".nao-realizada"
-                        );
+                        const pendencias =
+                            linha.querySelectorAll(
+                                ".nao-realizada"
+                            );
 
-                    if (pendencias.length > 0) {
 
-                        linha.style.display = "";
+                        if (
+                            pendencias.length > 0
+                        ) {
 
-                    } else {
+                            linha.style.display = "";
 
-                        linha.style.display = "none";
+                        } else {
+
+                            linha.style.display = "none";
+
+                        }
 
                     }
-
-                });
+                );
 
             }
         );
@@ -186,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Botão turma
+    // Mostra novamente todos os alunos
 
     if (botaoTurma) {
 
@@ -194,11 +300,14 @@ document.addEventListener("DOMContentLoaded", function () {
             "click",
             function () {
 
-                linhasAlunos.forEach(function (linha) {
+                linhasAlunos.forEach(
+                    function (linha) {
 
-                    linha.style.display = "";
+                        linha.style.display = "";
 
-                });
+                    }
+                );
+
 
                 if (campoPesquisa) {
 
@@ -212,110 +321,121 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // Botões de editar
+    // Botões para editar pendências
 
     const botoesEditar =
         document.querySelectorAll(
             '.acoes-pendencia button[aria-label="Editar pendência"]'
         );
 
-    botoesEditar.forEach(function (botao) {
 
-        botao.addEventListener(
-            "click",
-            function () {
+    botoesEditar.forEach(
+        function (botao) {
 
-                const linha =
-                    botao.closest(".linha-aluno");
+            botao.addEventListener(
+                "click",
+                function () {
 
-                const nome =
-                    linha
-                        .querySelector(".dados-aluno span")
-                        .textContent
-                        .trim();
-
-                alert(
-                    "Editando pendências de " + nome
-                );
-
-            }
-        );
-
-    });
+                    const linha =
+                        botao.closest(
+                            ".linha-aluno"
+                        );
 
 
-    // Botões de confirmar
+                    if (!linha) {
+                        return;
+                    }
+
+
+                    const elementoNome =
+                        linha.querySelector(
+                            ".dados-aluno span"
+                        );
+
+
+                    if (!elementoNome) {
+                        return;
+                    }
+
+
+                    const nome =
+                        elementoNome
+                            .textContent
+                            .trim();
+
+
+                    alert(
+                        "Editando pendências de " +
+                        nome
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    // Botões para confirmar pendências
 
     const botoesConfirmar =
         document.querySelectorAll(
             '.acoes-pendencia button[aria-label="Confirmar pendência"]'
         );
 
-    botoesConfirmar.forEach(function (botao) {
 
-        botao.addEventListener(
-            "click",
-            function () {
+    botoesConfirmar.forEach(
+        function (botao) {
 
-                const linha =
-                    botao.closest(".linha-aluno");
+            botao.addEventListener(
+                "click",
+                function () {
 
-                const pendencias =
-                    linha.querySelectorAll(
-                        ".nao-realizada"
+                    const linha =
+                        botao.closest(
+                            ".linha-aluno"
+                        );
+
+
+                    if (!linha) {
+                        return;
+                    }
+
+
+                    const pendencias =
+                        linha.querySelectorAll(
+                            ".nao-realizada"
+                        );
+
+
+                    pendencias.forEach(
+                        function (pendencia) {
+
+                            pendencia.classList.remove(
+                                "nao-realizada"
+                            );
+
+
+                            pendencia.classList.add(
+                                "realizada"
+                            );
+
+
+                            pendencia.innerHTML =
+                                '<i class="bi bi-check-circle-fill"></i> REALIZADA';
+
+                        }
                     );
 
-                pendencias.forEach(function (pendencia) {
+                }
+            );
 
-                    pendencia.classList.remove(
-                        "nao-realizada"
-                    );
-
-                    pendencia.classList.add(
-                        "realizada"
-                    );
-
-                    pendencia.innerHTML =
-                        '<i class="bi bi-check-circle-fill"></i> REALIZADA';
-
-                });
-
-            }
-        );
-
-    });
-
-
-    // Atualização dos percentuais
-
-    function atualizarPercentuais() {
-
-        if (porcentagens.length < 3) {
-            return;
         }
+    );
 
-        const presente =
-            Math.floor(
-                Math.random() * 16
-            ) + 60;
 
-        const faltas =
-            Math.floor(
-                Math.random() * 16
-            ) + 20;
-
-        const atestados =
-            100 - presente - faltas;
-
-        porcentagens[0].textContent =
-            presente + "%";
-
-        porcentagens[1].textContent =
-            faltas + "%";
-
-        porcentagens[2].textContent =
-            atestados + "%";
-
-    }
+    console.log(
+        "Atlas Digital - Relatórios carregado."
+    );
 
 });
