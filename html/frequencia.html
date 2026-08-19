@@ -27,15 +27,15 @@
 
         <nav>
 
-            <a href="#">Adm. Turma</a>
-            <a href="#">Perfil do Aluno</a>
-            <a href="#">Perfil do Professor</a>
-            <a href="#">Frequência</a>
-            <a href="#">Boletim</a>
-            <a href="#">Avaliações</a>
-            <a href="#">Relatórios</a>
-            <a href="#">Painel</a>
-            <a href="#">Menu</a>
+            <a href="controledet.html">Adm. Turma</a>
+            <a href="perfildoa.html">Perfil do Aluno</a>
+            <a href="perfildop.html">Perfil do Professor</a>
+            <a href="frequencia.html">Frequência</a>
+            <a href="boletim.html">Boletim</a>
+            <a href="avaliacao.html">Avaliações</a>
+            <a href="configuracao2.html">Relatórios</a>
+            <a href="painel.html">Painel</a>
+            <a href="home.html">Menu</a>
 
         </nav>
 
@@ -111,21 +111,28 @@
                 </div>
 
                 <div class="status-presenca presente">
-                    PRESENTE
+                    <select
+                        class="seletor-presenca"
+                        aria-label="Status de presença de Maria José Cavalcante"
+                    >
+                        <option value="presente" selected>PRESENTE</option>
+                        <option value="falta">FALTA</option>
+                        <option value="confirmar">A CONFIRMAR</option>
+                    </select>
                 </div>
 
                 <div class="acoes-aluno">
 
                     <button
                         type="button"
-                        aria-label="Editar frequência"
+                        aria-label="Marcar falta"
                     >
-                        ✎
+                        ✕
                     </button>
 
                     <button
                         type="button"
-                        aria-label="Confirmar presença"
+                        aria-label="Marcar presença"
                     >
                         ✓
                     </button>
@@ -155,21 +162,28 @@
                 </div>
 
                 <div class="status-presenca falta">
-                    FALTA
+                    <select
+                        class="seletor-presenca"
+                        aria-label="Status de presença de João Jonas Cavalcante"
+                    >
+                        <option value="presente">PRESENTE</option>
+                        <option value="falta" selected>FALTA</option>
+                        <option value="confirmar">A CONFIRMAR</option>
+                    </select>
                 </div>
 
                 <div class="acoes-aluno">
 
                     <button
                         type="button"
-                        aria-label="Editar frequência"
+                        aria-label="Marcar falta"
                     >
-                        ✎
+                        ✕
                     </button>
 
                     <button
                         type="button"
-                        aria-label="Confirmar frequência"
+                        aria-label="Marcar presença"
                     >
                         ✓
                     </button>
@@ -199,21 +213,28 @@
                 </div>
 
                 <div class="status-presenca confirmar">
-                    A CONFIRMAR
+                    <select
+                        class="seletor-presenca"
+                        aria-label="Status de presença de Wellington Marques Pereira"
+                    >
+                        <option value="presente">PRESENTE</option>
+                        <option value="falta">FALTA</option>
+                        <option value="confirmar" selected>A CONFIRMAR</option>
+                    </select>
                 </div>
 
                 <div class="acoes-aluno">
 
                     <button
                         type="button"
-                        aria-label="Editar frequência"
+                        aria-label="Marcar falta"
                     >
-                        ✎
+                        ✕
                     </button>
 
                     <button
                         type="button"
-                        aria-label="Confirmar presença"
+                        aria-label="Marcar presença"
                     >
                         ✓
                     </button>
@@ -243,21 +264,28 @@
                 </div>
 
                 <div class="status-presenca presente">
-                    PRESENTE
+                    <select
+                        class="seletor-presenca"
+                        aria-label="Status de presença de Ana Júlia Cavalcante"
+                    >
+                        <option value="presente" selected>PRESENTE</option>
+                        <option value="falta">FALTA</option>
+                        <option value="confirmar">A CONFIRMAR</option>
+                    </select>
                 </div>
 
                 <div class="acoes-aluno">
 
                     <button
                         type="button"
-                        aria-label="Editar frequência"
+                        aria-label="Marcar falta"
                     >
-                        ✎
+                        ✕
                     </button>
 
                     <button
                         type="button"
-                        aria-label="Confirmar presença"
+                        aria-label="Marcar presença"
                     >
                         ✓
                     </button>
@@ -305,5 +333,6 @@
         </div>
 
     </footer>
+    <script src="../js/frequencia.js"></script>
 </body>
 </html>

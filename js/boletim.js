@@ -231,45 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-    // Menu lateral
-
-    const linksMenu = document.querySelectorAll(
-        ".menu-lateral a"
-    );
-
-
-    linksMenu.forEach(function (link) {
-
-        link.addEventListener(
-            "click",
-            function (event) {
-
-                event.preventDefault();
-
-                const nomePagina = link
-                    .textContent
-                    .trim();
-
-
-                if (nomePagina === "Boletim") {
-
-                    return;
-
-                }
-
-
-                alert(
-                    "A página " +
-                    nomePagina +
-                    " ainda está em desenvolvimento."
-                );
-
-            }
-        );
-
-    });
-
-
     // Calcula as médias ao carregar a página
 
     calcularMedias();

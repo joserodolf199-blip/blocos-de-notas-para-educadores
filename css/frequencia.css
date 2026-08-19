@@ -282,6 +282,28 @@ body {
     font-size: 13px;
     font-weight: bold;
     text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+}
+
+.seletor-presenca {
+    width: 100%;
+    max-width: 135px;
+    padding: 7px 10px;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.96);
+    color: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+}
+
+.seletor-presenca:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 
 .presente { color: var(--status-presente) !important; }
