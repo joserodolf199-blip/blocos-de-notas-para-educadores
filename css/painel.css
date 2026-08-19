@@ -10,8 +10,8 @@ body {
     color: #1e293b;
     height: 100vh;
     display: grid;
-    grid-template-rows: 90px 1fr 30px;
-    grid-template-columns: 180px 1fr;
+    grid-template-rows: 130px 1fr 30px;
+    grid-template-columns: 280px 1fr;
     grid-template-areas: 
         "header header"
         "sidebar main"
@@ -32,9 +32,9 @@ body {
 }
 
 .logo img {
-    height: 65px;
+    height: 100px;
     background: #ffffff;
-    padding: 8px;
+    padding: 5px;
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
@@ -43,48 +43,48 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: calc(100% - 130px);
+    width: calc(100% - 280px);
     background: #cbd5e1;
     padding: 10px 25px;
     border-radius: 35px;
-    height: 70px;
+    height: 100%;
 }
 
 .informacoes-professor {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 50px;
 }
 
 .informacoes-professor p {
-    font-weight: bold;
+    font-weight: 800;
     color: #0f172a;
-    font-size: 14px;
+    font-size: 15px;
     white-space: nowrap;
 }
 
 #campo-pesquisa {
-    padding: 8px 15px;
+    padding: 12px 25px;
     border: none;
     border-radius: 20px;
-    width: 280px;
+    width: 450px;
     outline: none;
-    font-size: 13px;
+    font-size: 1. 2rem;
     background: #f1f5f9;
 }
 
 .professor {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 45px;
 }
 
 #turma-atual {
     background: #f1f5f9;
-    padding: 6px 14px;
+    padding: 10px 20px;
     border-radius: 15px;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 800;
     text-align: center;
 }
 
@@ -92,7 +92,7 @@ body {
     content: "\A 9º Ano A"; /* Força a quebra e exibe a turma idêntica ao mockup */
     white-space: pre-wrap;
     display: block;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .notificacao {
@@ -104,8 +104,8 @@ body {
 }
 
 .professor img {
-    width: 45px;
-    height: 45px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
     background: #fff;
@@ -114,12 +114,12 @@ body {
 .professor div {
     display: flex;
     flex-direction: column;
-    font-size: 11px;
+    font-size: 30px;
 }
 
 .professor div strong {
     color: #0f172a;
-    font-size: 13px;
+    font-size: 1. 1rem;
 }
 
 /* ==========================================================================
@@ -127,26 +127,25 @@ body {
    ========================================================================== */
 .menu-lateral {
     grid-area: sidebar;
-    padding: 10px 0 20px 25px;
+    padding: 10px 0 20px 2px;
 }
 
 .menu-lateral nav {
     background: #ffffff;
     border-radius: 25px;
-    padding: 15px 8px;
+    padding: 25px 12px;
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    height: 90%;
+    gap: 50px;
+    height: 60%;
 }
 
 .menu-lateral nav a {
     color: #475569;
     text-decoration: none;
-    padding: 8px 12px;
-    font-size: 10px;
-    font-weight: 700;
+    padding: 25px 30px;
+    font-size: 20px;
+    font-weight: bold;
     border-radius: 12px;
     text-transform: uppercase;
     transition: background 0.2s ease;
@@ -163,18 +162,18 @@ body {
    ========================================================================== */
 .conteudo-principal {
     grid-area: main;
-    padding: 10px 25px 20px 25px;
+    padding: 20px 35px 30px 25px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
 }
 
 /* 🚀 TRUQUE AVANÇADO: Gerando os 4 Cards Ovais do Topo Sem Alterar o HTML */
 #indicadores {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 40px;
     height: 90px;
 }
 
@@ -194,7 +193,7 @@ body {
 #indicadores::before {
     content: "👥 Total de Alunos \A 1000";
     white-space: pre-wrap;
-    font-size: 13px;
+    font-size: 28px;
     line-height: 1.6;
 }
 
@@ -202,7 +201,7 @@ body {
 #indicadores::after {
     content: "🎓 Turmas \A 15";
     white-space: pre-wrap;
-    font-size: 13px;
+    font-size: 28px;
     line-height: 1.6;
 }
 
@@ -210,27 +209,27 @@ body {
 .painel-superior {
     display: grid;
     grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 20px;
+    gap: 40px;
 }
 
 /* Distribuição Horizontal do Painel Inferior */
 .painel-inferior {
     display: grid;
     grid-template-columns: 1fr 2.4fr;
-    gap: 20px;
+    gap: 40px;
 }
 
 /* Estilo Base dos Cards (Estilo Cinza-Claro Arredondado) */
 .card {
     background: #cbd5e1;
     border-radius: 30px;
-    padding: 22px;
+    padding: 85px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     border: none;
 }
 
 .card h2 {
-    font-size: 14px;
+    font-size: 28px;
     color: #0f172a;
     margin-bottom: 15px;
     font-weight: bold;
@@ -244,7 +243,7 @@ body {
 
 /* Customização básica interna para prever os dados textuais */
 .card h2 + * {
-    font-size: 13px;
+    font-size: 280px;
     color: #334155;
 }
 
@@ -256,7 +255,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    font-size: 1. 2rem;
     color: rgba(255, 255, 255, 0.5);
     font-weight: bold;
     letter-spacing: 2px;
