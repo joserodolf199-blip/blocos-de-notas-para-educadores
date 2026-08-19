@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const mensagemErro =
         document.getElementById("mensagem-erro");
 
+    const botaoCadastro =
+        document.querySelector(".botao-cadastro");
+
 
     // Confere se os elementos principais estão disponíveis
     if (
@@ -192,5 +195,19 @@ document.addEventListener("DOMContentLoaded", () => {
         "input",
         limparErro
     );
+
+    if (botaoCadastro) {
+
+        botaoCadastro.addEventListener(
+            "click",
+            function() {
+
+                window.location.href =
+                    "html/cadastro.html";
+
+            }
+        );
+
+    }
 
 });

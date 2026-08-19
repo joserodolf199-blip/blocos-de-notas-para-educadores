@@ -116,11 +116,8 @@ body {
     background-color: #ffffff;
 }
 
-.campo-entrada::placeholder {
-    color: #4a5757;
-}
-
-/* Botão LOGIN Azul Royal Robusto */
+/* Botão Entrar (Submit Principal) */
+.entrar,
 .botao-entrar {
     width: 100%;
     background-color: var(--azul-botao-login);
@@ -137,20 +134,27 @@ body {
     transition: filter 0.2s;
 }
 
+.entrar:hover,
 .botao-entrar:hover {
-    filter: brightness(1.15);
+    background-color: #2563eb;
 }
 
-/* Texto divisor "ou" */
-.formulario-login::after {
-    content: "ou";
-    display: block;
+.mensagem-erro {
+    width: 100%;
+    margin-top: 12px;
     text-align: center;
-    color: var(--texto-branco);
-    font-size: 16px; /* 👈 Divisor maior (era 14px) */
-    font-weight: bold;
-    margin-top: 40px; /* Excelente espaçamento */
-    text-transform: uppercase;
+    color: #dc2626;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.mensagem-erro:empty {
+    display: none;
+}
+
+/* Oculta o botão duplicado de Login fora do escopo do formulário */
+div.botao-login {
+    display: none;
 }
 
 /* ==========================================================================
@@ -214,4 +218,54 @@ body {
 .recuperacao-senha a:hover {
     color: var(--texto-branco);
     text-decoration: underline;
+}
+
+.cadastro {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.botao-cadastro {
+    width: 100%;
+    padding: 16px;
+    background-color: #5a5a5a;
+    color: var(--branco);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.botao-cadastro:hover {
+    background-color: #4b4b4b;
+}
+
+/* ==========================================================================
+   ADICIONADO: SEÇÃO DE PERGUNTAS FREQUENTES (FAQ)
+   ========================================================================== */
+.secao-faq {
+    width: 100%;
+    margin-top: 25px;         /* Separação confortável do fluxo de login */
+    padding-top: 25px;
+    border-top: 1px solid var(--cinza-borda); /* Linha divisória limpa seguindo o tema */
+    text-align: left;
+}
+
+.faq-item {
+    margin-bottom: 20px;      /* Distância generosa entre blocos de perguntas */
+}
+
+.faq-pergunta {
+    color: var(--texto-titulo);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.faq-resposta {
+    color: var(--cinza-texto);
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
