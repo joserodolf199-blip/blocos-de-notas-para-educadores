@@ -6,15 +6,13 @@
 }
 
 body {
-    /* Mantém o seu fundo com gradiente e imagem */
     background: linear-gradient(180deg, #3b4ba6 0%, #5164cc 50%, #1e285a 100%);
     background-image: linear-gradient(180deg, #3b4ba6 0%, rgba(81,100,204,0.8) 70%), url('../imagens/sinlhueta-montanha.png');
     background-size: cover;
     background-position: bottom center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Deixa o fundo fixo enquanto você rola a página */
+    background-attachment: fixed;
     color: #ffffff;
-    
     min-height: 100vh;
     display: grid;
     grid-template-areas:
@@ -26,18 +24,18 @@ body {
     padding: 16px;
 }
 
-
-
 /* ==========================================================================
-   2. REMOVENDO O CABEÇALHO PADRÃO (O design do Figma não usa topo esticado)
+   2. REMOVENDO O CABEÇALHO PADRÃO
    ========================================================================== */
+
 .cabecalho {
-    display: none; /* Escondido pois a logo já está no menu lateral e o título no main */
+    display: none;
 }
 
 /* ==========================================================================
-   3. MENU LATERAL FLUTUANTE (CARD BRANCO CORRIDO)
+   3. MENU LATERAL FLUTUANTE
    ========================================================================== */
+
 .menu-lateral {
     grid-area: sidebar;
     background-color: rgba(255, 255, 255, 0.95);
@@ -50,9 +48,8 @@ body {
     align-self: start;
 }
 
-/* Container para simular a logo no topo da barra lateral como na imagem */
 .menu-lateral::before {
-    content: "Atlas"; /* Fallback caso não queira usar div */
+    content: "Atlas";
     display: block;
     background-color: #e2e8f0;
     color: #1e285a;
@@ -90,15 +87,15 @@ body {
     padding-left: 18px;
 }
 
-/* Destaque para o item ativo (Menu/Configurações) */
-.menu-lateral a:nth-child(7) { 
+.menu-lateral a:nth-child(7) {
     background-color: #cbd5e1;
     color: #1e285a;
 }
 
 /* ==========================================================================
-   4. CONTEÚDO PRINCIPAL (LAYOUT CENTRALIZADO)
+   4. CONTEÚDO PRINCIPAL
    ========================================================================== */
+
 .conteudo-principal {
     grid-area: main;
     padding: 32px 24px 28px;
@@ -124,7 +121,10 @@ body {
     text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
 }
 
-/* 4.1. FILEIRAS DE CONFIGURAÇÃO (PÍLULAS BRANCAS) */
+/* ==========================================================================
+   4.1. FILEIRAS DE CONFIGURAÇÃO
+   ========================================================================== */
+
 .configuracoes {
     display: flex;
     flex-direction: column;
@@ -133,7 +133,7 @@ body {
 }
 
 .configuracao-item {
-    background-color: #e2e8f0; /* Tom cinza claro/branco dos blocos */
+    background-color: #e2e8f0;
     border-radius: 28px;
     padding: 24px 28px;
     display: flex;
@@ -166,7 +166,10 @@ body {
     transform: scale(1.1);
 }
 
-/* 4.2. CARD DE ADICIONAR EMAIL */
+/* ==========================================================================
+   4.2. CARD DE ADICIONAR EMAIL
+   ========================================================================== */
+
 .seguranca {
     width: 100%;
     background-color: #e2e8f0;
@@ -246,6 +249,7 @@ body {
 }
 
 /* Linha divisória discreta */
+
 .conteudo-principal::after {
     content: "";
     display: block;
@@ -258,6 +262,7 @@ body {
 /* ==========================================================================
    5. SEÇÃO DE EXCLUSÃO E BOTÕES VERMELHOS
    ========================================================================== */
+
 .exclusao-conta {
     width: 100%;
     display: grid;
@@ -265,19 +270,17 @@ body {
     gap: 24px;
 }
 
-/* Texto acima dos botões ("Deseja excluir a conta?" / "Deslogar") */
 .exclusao-conta h2 {
-    display: none; /* Removido para usar a estrutura em blocos separados */
+    display: none;
 }
 
-/* Recriando os blocos de texto cinza do Figma com CSS */
 .acoes-conta {
-    display: contents; /* Permite alinhar os botões diretamente no grid pai */
+    display: contents;
 }
 
-/* Estilização dos Botões de Ação Vermelhos */
-.botao-excluir, .botao-sair {
-    background-color: #ff0000; /* Vermelho vivo idêntico ao Figma */
+.botao-excluir,
+.botao-sair {
+    background-color: #ff0000;
     color: #ffffff;
     border: none;
     border-radius: 10px;
@@ -292,11 +295,11 @@ body {
     text-align: center;
 }
 
-.botao-excluir:hover, .botao-sair:hover {
+.botao-excluir:hover,
+.botao-sair:hover {
     background-color: #cc0000;
 }
 
-/* Criando os balões cinzas indicativos acima dos botões vermelhos */
 .botao-excluir::before {
     content: "DESEJA EXCLUIR A CONTA?";
     display: block;
@@ -320,8 +323,9 @@ body {
 }
 
 /* ==========================================================================
-   6. RODAPÉ (INFORMAÇÕES DISCRETAS NAS LATERAIS)
+   6. RODAPÉ
    ========================================================================== */
+
 .rodape {
     grid-area: footer;
     display: flex;
@@ -349,7 +353,88 @@ body {
     opacity: 0.8;
 }
 
+/* ==========================================================================
+   7. TEMA ESCURO - CONFIGURAÇÕES
+   ========================================================================== */
+
+body.tema-escuro {
+    background: linear-gradient(
+        180deg,
+        #111827 0%,
+        #1f2937 50%,
+        #0f172a 100%
+    );
+
+    background-image:
+        linear-gradient(
+            180deg,
+            #111827 0%,
+            rgba(31, 41, 55, 0.9) 70%
+        ),
+        url('../imagens/sinlhueta-montanha.png');
+
+    color: #ffffff;
+}
+
+body.tema-escuro .menu-lateral {
+    background-color: rgba(31, 41, 55, 0.96);
+}
+
+body.tema-escuro .menu-lateral::before {
+    background-color: #374151;
+    color: #ffffff;
+}
+
+body.tema-escuro .menu-lateral a {
+    color: #d1d5db;
+}
+
+body.tema-escuro .menu-lateral a:hover,
+body.tema-escuro .menu-lateral a:nth-child(7) {
+    background-color: #4b5563;
+    color: #ffffff;
+}
+
+body.tema-escuro .configuracao-item,
+body.tema-escuro .seguranca {
+    background-color: #374151;
+}
+
+body.tema-escuro .configuracao-item span,
+body.tema-escuro .seguranca h2 {
+    color: #ffffff;
+}
+
+body.tema-escuro .configuracao-item button {
+    color: #ffffff;
+}
+
+body.tema-escuro .form-email-seguranca input {
+    background-color: #1f2937;
+    color: #ffffff;
+    border-color: #4b5563;
+}
+
+body.tema-escuro .form-email-seguranca input::placeholder {
+    color: #9ca3af;
+}
+
+body.tema-escuro .mensagem-configuracao {
+    color: #ffffff;
+}
+
+body.tema-escuro .botao-excluir::before,
+body.tema-escuro .botao-sair::before {
+    background-color: #374151;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   8. RESPONSIVIDADE
+   ========================================================================== */
+
 @media (max-width: 980px) {
+
     body {
         grid-template-areas:
             "sidebar"
@@ -378,6 +463,7 @@ body {
 }
 
 @media (max-width: 640px) {
+
     body {
         padding: 10px;
     }
