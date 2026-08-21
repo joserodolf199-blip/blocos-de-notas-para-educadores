@@ -13,6 +13,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const chaveConfiguracoes =
         "configuracoesAtlas";
 
+    const botaoTema =
+        document.querySelector(
+            ".botao-tema"
+        );
+
+    const iconesTema =
+        botaoTema
+            ? botaoTema.querySelectorAll("i")
+            : [];
+
     const botaoNotificacoes =
         document.querySelector(
             ".botao-notificacoes"
@@ -58,11 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const valorSalvo =
                 localStorage.getItem(chave);
 
-
             if (!valorSalvo) {
                 return valorPadrao;
             }
-
 
             return JSON.parse(valorSalvo);
 
@@ -75,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             return valorPadrao;
         }
-
     }
 
 
@@ -106,14 +113,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 null
             );
 
-
         if (
             usuario &&
             typeof usuario === "object"
         ) {
             return usuario;
         }
-
 
         return null;
 
@@ -135,11 +140,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const usuario =
             obterUsuarioLogado();
 
-
         if (!usuario) {
             return;
         }
-
 
         salvarUsuarioLogado({
             ...usuario,
@@ -182,7 +185,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 {}
             );
 
-
         if (
             configuracoes &&
             typeof configuracoes === "object" &&
@@ -190,7 +192,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
             return configuracoes;
         }
-
 
         return {};
 
@@ -212,14 +213,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const usuario =
             obterUsuarioLogado();
 
-
         if (
             !usuario ||
             !usuario.email
         ) {
             return "";
         }
-
 
         return normalizarEmail(
             usuario.email
@@ -241,7 +240,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const configuracaoPadrao = {
             notificacoesAtivas: true,
-            emailSeguranca: ""
+            emailSeguranca: "",
+            temaEscuro: false
         };
 
 
@@ -260,6 +260,15 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
             configuracaoPadrao.notificacoesAtivas =
                 usuarioLogado.notificacoesAtivas;
+        }
+
+
+        if (
+            usuarioLogado &&
+            typeof usuarioLogado.temaEscuro === "boolean"
+        ) {
+            configuracaoPadrao.temaEscuro =
+                usuarioLogado.temaEscuro;
         }
 
 
@@ -284,11 +293,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const emailUsuario =
             obterEmailUsuarioAtual();
 
-
         if (!emailUsuario) {
             return false;
         }
-
 
         const configuracoes =
             obterConfiguracoes();
@@ -311,11 +318,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const emailUsuario =
             obterEmailUsuarioAtual();
 
-
         if (!emailUsuario) {
             return;
         }
-
 
         const configuracoes =
             obterConfiguracoes();
@@ -333,7 +338,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         mensagemConfiguracao.textContent =
             texto;
 
@@ -341,7 +345,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "erro",
             "sucesso"
         );
-
 
         if (tipo) {
             mensagemConfiguracao.classList.add(tipo);
@@ -356,7 +359,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         mensagemConfiguracao.textContent = "";
 
         mensagemConfiguracao.classList.remove(
@@ -367,12 +369,118 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    // ==========================================
+    // TEMA
+    // ==========================================
+
+    function atualizarTema(temaEscuro) {
+
+        document.body.classList.toggle(
+            "tema-escuro",
+            temaEscuro
+        );
+
+        if (!botaoTema) {
+            return;
+        }
+
+        botaoTema.classList.toggle(
+            "ativo",
+            temaEscuro
+        );
+
+        botaoTema.setAttribute(
+            "aria-pressed",
+            String(temaEscuro)
+        );
+
+        botaoTema.setAttribute(
+            "aria-label",
+            temaEscuro
+                ? "Ativar tema claro"
+                : "Ativar tema escuro"
+        );
+
+        botaoTema.title =
+            temaEscuro
+                ? "Tema escuro ativado"
+                : "Tema claro ativado";
+
+
+        if (iconesTema.length >= 2) {
+
+            iconesTema[0].style.display =
+                temaEscuro
+                    ? "none"
+                    : "inline-block";
+
+            iconesTema[1].style.display =
+                temaEscuro
+                    ? "inline-block"
+                    : "none";
+
+        }
+
+    }
+
+
+    const configuracaoAtual =
+        obterConfiguracaoAtual();
+
+
+    atualizarTema(
+        configuracaoAtual.temaEscuro === true
+    );
+
+
+    if (botaoTema) {
+
+        botaoTema.addEventListener(
+            "click",
+            function () {
+
+                const temaAtual =
+                    obterConfiguracaoAtual();
+
+                const novoTema =
+                    temaAtual.temaEscuro !== true;
+
+
+                atualizarTema(
+                    novoTema
+                );
+
+
+                const salvo =
+                    salvarConfiguracaoAtual({
+                        temaEscuro: novoTema
+                    });
+
+
+                if (!salvo) {
+
+                    localStorage.setItem(
+                        "temaEscuroAtlas",
+                        String(novoTema)
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ==========================================
+    // NOTIFICAÇÕES
+    // ==========================================
+
     function atualizarBotaoNotificacoes(ativas) {
 
         if (!botaoNotificacoes) {
             return;
         }
-
 
         botaoNotificacoes.classList.toggle(
             "ativo",
@@ -401,7 +509,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         iconeNotificacoes.classList.toggle(
             "bi-bell",
             ativas
@@ -415,9 +522,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    const configuracaoAtual =
-        obterConfiguracaoAtual();
-
     atualizarBotaoNotificacoes(
         configuracaoAtual.notificacoesAtivas !== false
     );
@@ -427,8 +531,10 @@ document.addEventListener("DOMContentLoaded", function () {
         inputEmailSeguranca &&
         configuracaoAtual.emailSeguranca
     ) {
+
         inputEmailSeguranca.value =
             configuracaoAtual.emailSeguranca;
+
     }
 
 
@@ -471,6 +577,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     notificacoesAtivas: novoEstado
                 });
 
+
                 atualizarBotaoNotificacoes(
                     novoEstado
                 );
@@ -480,6 +587,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
+    // ==========================================
+    // E-MAIL DE SEGURANÇA
+    // ==========================================
 
     if (
         formularioEmailSeguranca &&
@@ -533,8 +644,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     emailSeguranca: emailDigitado
                 });
 
+
                 inputEmailSeguranca.value =
                     emailDigitado;
+
 
                 mostrarMensagem(
                     "E-mail de segurança salvo com sucesso.",
@@ -546,6 +659,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
+    // ==========================================
+    // SAIR
+    // ==========================================
 
     if (botaoSair) {
 
@@ -565,6 +682,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+
+    // ==========================================
+    // EXCLUIR CONTA
+    // ==========================================
 
     if (botaoExcluir) {
 
@@ -600,6 +721,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const usuarios =
                     obterUsuarios();
 
+
                 const indiceUsuario =
                     usuarios.findIndex(
                         function (usuario) {
@@ -630,16 +752,24 @@ document.addEventListener("DOMContentLoaded", function () {
                     1
                 );
 
-                salvarUsuarios(usuarios);
+
+                salvarUsuarios(
+                    usuarios
+                );
+
+
                 removerConfiguracaoAtual();
+
 
                 localStorage.removeItem(
                     chaveUsuarioLogado
                 );
 
+
                 alert(
                     "Conta excluída com sucesso!"
                 );
+
 
                 window.location.href =
                     "../index.html";
