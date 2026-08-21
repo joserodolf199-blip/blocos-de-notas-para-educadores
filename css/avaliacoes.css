@@ -1,20 +1,16 @@
 :root {
-    /* Cores oficiais do ecossistema Atlas Digital */
-    --fundo-card-aluno: #29a3a3;    /* Azul turquesa dos cards dos alunos */
-    --fundo-tabela-notas: #000000;   /* Preto sólido de fundo da grade de notas */
-    --azul-painel-topo: #1a244d;     /* Azul escuro do painel superior */
-    --azul-topo-rodape: #4a618c;     /* Tom azul claro acinzentado do topo/rodapé */
-    --fundo-geral: #768da6;          /* Tom cinza-azulado externo */
-    
+    --fundo-card-aluno: #29a3a3;
+    --fundo-tabela-notas: #000000;
+    --azul-painel-topo: #1a244d;
+    --azul-topo-rodape: #4a618c;
+    --fundo-geral: #768da6;
+
     --texto-branco: #ffffff;
     --texto-escuro: #000000;
-    --nota-azul-verde: #00ffcc;      /* Verde/Ciano neon para notas boas e mídias */
+    --nota-azul-verde: #00ffcc;
     --borda-linha: rgba(255, 255, 255, 0.2);
 }
 
-/* ==========================================================================
-   ESTRUTURA GRID PÁGINA INTEIRA (OTIMIZADA PARA MONITORES DE PC)
-   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -26,20 +22,17 @@ body {
     background-color: var(--fundo-geral);
     color: var(--texto-branco);
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         "header header"
         "nav main"
         "footer footer";
-    grid-template-columns: 320px 1fr; /* Menu alargado acompanhando o padrão do projeto */
-    grid-template-rows: auto 1fr auto; 
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: auto 1fr auto;
     min-height: 100vh;
-    width: 100%; 
+    width: 100%;
     overflow-x: hidden;
 }
 
-/* ==========================================================================
-   CABEÇALHO (HEADER GIGANTE)
-   ========================================================================== */
 .cabecalho {
     grid-area: header;
     background-color: var(--azul-topo-rodape);
@@ -47,54 +40,51 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 25px 50px; 
+    padding: 15px 30px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .cabecalho .container-logo img {
-    max-height: 200px; 
+    max-height: 100px;
     width: auto;
     background: #ffffff;
-    padding: 6px 18px;
-    border-radius: 20px;
+    padding: 5px 12px;
+    border-radius: 15px;
 }
 
 .cabecalho .slogan {
-    font-size: 40px; 
+    font-size: 24px;
     font-weight: bold;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     max-width: 75%;
     text-align: right;
-    line-height: 1.4;
+    line-height: 1.3;
     text-transform: uppercase;
 }
 
-/* ==========================================================================
-   MENU LATERAL
-   ========================================================================== */
 .menu-lateral {
     grid-area: nav;
     background-color: var(--azul-topo-rodape);
-    padding: 40px 20px;
+    padding: 25px 15px;
 }
 
 .menu-lateral nav {
     display: flex;
     flex-direction: column;
     background-color: var(--texto-branco);
-    border-radius: 24px; 
-    padding: 25px 12px;
-    gap: 14px;
-    box-shadow: 4px 4px 20px rgba(0,0,0,0.25);
+    border-radius: 18px;
+    padding: 18px 10px;
+    gap: 6px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .menu-lateral nav a {
     color: var(--texto-escuro);
     text-decoration: none;
-    padding: 16px 20px; 
-    font-size: 30px; 
+    padding: 13px 15px;
+    font-size: 20px;
     font-weight: bold;
-    border-left: 6px solid transparent;
+    border-left: 5px solid transparent;
     transition: all 0.2s ease;
     text-transform: uppercase;
 }
@@ -103,40 +93,37 @@ body {
     color: var(--texto-branco);
     background-color: var(--fundo-card-aluno);
     border-left-color: var(--azul-topo-rodape);
-    padding-left: 26px;
-    border-radius: 0 12px 12px 0;
+    padding-left: 20px;
+    border-radius: 0 10px 10px 0;
 }
 
-/* Ativa visualmente o link de Avaliações (6º link do menu) */
 .menu-lateral nav a:nth-child(6) {
     background-color: #f1f5f9;
     border-left-color: var(--fundo-card-aluno);
     color: var(--fundo-card-aluno);
 }
 
-/* ==========================================================================
-   CONTEÚDO PRINCIPAL (PAINEL DE AVALIAÇÕES)
-   ========================================================================== */
 .conteudo-principal {
     grid-area: main;
-    background-color: #1b2244; /* Azul escuro de fundo conforme o Figma */
+    background-color: #1b2244;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     width: 100%;
-    padding: 50px 40px 450px 40px; /* Amplo preenchimento na base para a silhueta */
+    min-width: 0;
+    padding: 30px 25px 100px 25px;
     position: relative;
+    overflow: hidden;
 }
 
-/* Silhueta de Árvores/Montanhas no fundo da página inteira */
 .conteudo-principal::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 1800px;
-    background-image: url("../imagens/silhueta-cidade.jpg"); 
+    height: 500px;
+    background-image: url("../imagens/silhueta-cidade.jpg");
     background-size: 100% auto;
     background-position: bottom center;
     background-repeat: no-repeat;
@@ -146,45 +133,39 @@ body {
     filter: brightness(0.8) contrast(1.2);
 }
 
-/* Oculta h1 puro */
 .titulo-pagina h1 {
     display: none;
 }
 
-/* Container do Painel de Controle */
 .painel-avaliacoes {
     width: 100%;
-    max-width: 1800px;
+    max-width: 1400px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 25px;
     position: relative;
     z-index: 2;
 }
 
-/* Título Interno Superior Gigante */
 .painel-avaliacoes > h2 {
-    font-size: 42px;
+    font-size: 30px;
     font-weight: bold;
     letter-spacing: 2px;
     color: var(--texto-branco);
     text-align: center;
     width: 100%;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-/* ==========================================================================
-   BARRA DE PESQUISA, FILTROS E STATUS (ESTILO CÁPSULA BRANCA)
-   ========================================================================== */
 .pesquisa-aluno {
     display: flex;
     align-items: center;
     background-color: #e0e0e0;
-    border-radius: 40px;
-    padding: 15px 45px;
+    border-radius: 30px;
+    padding: 8px 30px;
     width: 100%;
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -193,11 +174,11 @@ body {
     border: none;
     outline: none;
     color: #000000;
-    font-size: 29px;
+    font-size: 20px;
     font-weight: bold;
     width: 100%;
-    padding: 14px 0;
-    letter-spacing: 5px;
+    padding: 10px 0;
+    letter-spacing: 3px;
 }
 
 .pesquisa-aluno input::placeholder {
@@ -207,28 +188,27 @@ body {
 .pesquisa-aluno button {
     background: transparent;
     border: none;
-    font-size: 35px;
+    font-size: 25px;
     cursor: pointer;
 }
 
-/* Botão Filtrar e Label da Turma em formato Pílula Lado a Lado */
 .botao-filtrar,
 .turma-selecionada {
     background-color: #ffffff;
     color: #000000;
-    font-size: 35px;
+    font-size: 23px;
     font-weight: bold;
     border: none;
-    padding: 15px 60px;
-    border-radius: 40px;
+    padding: 12px 40px;
+    border-radius: 30px;
     cursor: pointer;
     text-transform: uppercase;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     width: fit-content;
     text-align: center;
     display: inline-block;
-    margin: 0 15px;
-    border-left: 6px solid transparent;
+    margin: 0 10px;
+    border-left: 5px solid transparent;
     transition: all 0.2s ease;
 }
 
@@ -239,139 +219,133 @@ body {
 .botao-filtrar:hover,
 .turma-selecionada:hover {
     color: var(--texto-branco);
-    background-color: var(--fundo-card-aluno); /* Azul turquesa */
-    padding-left: 75px;                          /* Deslocamento fluido do texto */
-    padding-right: 40px;
-     box-shadow: inset 8px 0 0 0 var(--azul-topo-rodape), 0 4px 15px rgba(0,0,0,0.2);
+    background-color: var(--fundo-card-aluno);
+    padding-left: 50px;
+    padding-right: 30px;
+    box-shadow:
+        inset 6px 0 0 0 var(--azul-topo-rodape),
+        0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* ==========================================================================
-   CARDS DE AVALIAÇÃO (ESTILO INTEGRADO TURQUESA E PRETO)
-   ========================================================================== */
 .card-avaliacoes {
     width: 100%;
     background-color: var(--fundo-card-aluno);
-    border-radius: 35px;
-    padding: 0; 
+    border-radius: 25px;
+    padding: 0;
     display: flex;
-    flex-direction: row; /* Divide em coluna de aluno (esquerda) e notas (direita) */
+    flex-direction: row;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    margin-bottom: 15px;
 }
 
-/* --- LADO ESQUERDO: INFORMAÇÕES DO ALUNO --- */
 .informacoes-aluno {
-    width: 320px; /* Alinhamento idêntico ao do boletim */
+    width: 220px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 25px;
+    padding: 25px 15px;
     text-align: center;
     justify-content: center;
-    gap: 20px;
+    gap: 12px;
 }
 
 .foto-aluno img {
-    width: 200px;
-    height: 200px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: cover;
-    border: 6px solid #00ffff; /* Anel ciano neon em volta do avatar */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border: 4px solid #00ffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .nome-aluno span {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 900;
-    color: var(--texto-escuro); /* Texto escuro fiel à imagem */
+    color: var(--texto-escuro);
     letter-spacing: 0.5px;
     line-height: 1.3;
     display: block;
     text-transform: uppercase;
 }
 
-/* --- LADO DIREITO: GRID DE NOTAS DAS AVALIAÇÕES (PRETO SÓLIDO) --- */
 .tabela-avaliacoes {
     flex: 1;
+    min-width: 0;
     background-color: var(--fundo-tabela-notas);
-    padding: 20px 30px;
+    padding: 15px 20px;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 12px;
     justify-content: center;
+    overflow: hidden;
 }
 
-/* Alinhamento de colunas perfeito usando CSS Grid para cabeçalho e linhas */
 .cabecalho-avaliacoes,
 .linha-avaliacao {
     display: grid;
-    grid-template-columns: 200px repeat(4, 1fr) 100px; /* Colunas ordenadas com espaço fixo para o botão */
+    grid-template-columns: 130px repeat(4, minmax(70px, 1fr)) 50px;
     align-items: center;
     text-align: center;
-    padding: 10px 0;
+    padding: 6px 0;
+    width: 100%;
 }
 
-/* Títulos das colunas (Matérias) */
 .cabecalho-avaliacoes {
     border-bottom: 2px solid var(--fundo-card-aluno);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .cabecalho-avaliacoes span {
-    font-size: 30px;
+    font-size: 18px;
     font-weight: bold;
-    color: #4bceeb; /* Tom azul claro/ciano do mockup */
+    color: #4bceeb;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 
-/* Linhas com as notas das avaliações */
 .linha-avaliacao {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Estilização dos títulos das avaliações como cápsulas brancas (PROVA 1, PROVA 2...) */
 .linha-avaliacao span:first-child {
     background-color: #ffffff;
     color: #000000;
-    font-size: 30px;
+    font-size: 19px;
     font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 30px;
+    padding: 8px 15px;
+    border-radius: 25px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     width: fit-content;
     justify-self: center;
-    min-width: 170px;
+    min-width: 110px;
 }
 
-/* Números das Notas Gigantes */
 .linha-avaliacao span:not(:first-child) {
-    font-size: 45px;
+    font-size: 28px;
     font-weight: bold;
-    color: var(--nota-azul-verde); /* Tom neon esverdeado de alta visibilidade */
+    color: var(--nota-azul-verde);
 }
 
-/* Botões de Ação para Editar (✎) */
 .linha-avaliacao button {
     background: transparent;
     border: none;
     color: var(--texto-branco);
-    font-size: 70px;
+    font-size: 35px;
     cursor: pointer;
     transition: color 0.2s, transform 0.2s;
     justify-self: center;
 }
 
 .linha-avaliacao button:hover {
-    color: var(--turquesa-destaque);
-    transform: scale(1.2); /* Feedback visual premium ao passar o mouse */
+    color: var(--fundo-card-aluno);
+    transform: scale(1.15);
 }
-/* ==========================================================================
-   RODAPÉ (FOOTER - PADRÃO ATLAS DIGITAL)
-   ========================================================================== */
+
 .rodape {
     grid-area: footer;
     background-color: var(--azul-topo-rodape);
@@ -379,22 +353,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 50px; 
+    padding: 20px 30px;
     border-top: 2px solid rgba(255, 255, 255, 0.2);
     position: relative;
-    z-index: 10; /* Garante que fique acima da silhueta de fundo */
+    z-index: 10;
 }
 
 .contato h2 {
-    font-size: 40px; 
-    margin: 0 0 6px 0;
+    font-size: 24px;
+    margin: 0 0 5px 0;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .contato p {
-    margin: 4px 0;
-    font-size: 50px;
+    margin: 3px 0;
+    font-size: 20px;
 }
 
 .contato p a {
@@ -410,6 +384,6 @@ body {
 }
 
 .logo-rodape img {
-    max-height: 200px; 
+    max-height: 100px;
     width: auto;
 }
