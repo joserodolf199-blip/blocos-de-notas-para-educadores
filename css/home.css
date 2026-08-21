@@ -98,13 +98,6 @@ body {
     transform: translateX(3px);
 }
 
-/* Como os ícones estão no design, simulamos uma margem para quando você colocá-los no HTML */
-.menu-lateral nav a::before {
-    content: "⚙️"; /* Emoji temporário como marcador de posição dos seus ícones */
-    font-size: 1rem;
-    filter: grayscale(100%);
-}
-
 /* ==========================================================================
    4. CONTEÚDO PRINCIPAL (MAIN)
    ========================================================================== */
