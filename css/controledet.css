@@ -1,21 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
 :root {
-    /* Cores extraídas diretamente da imagem original */
-    --azul-barra-superior: #4e6a8d;   /* Tom exato do cabeçalho de navegação */
-    --fundo-gradiente-topo: #1b213b; /* Azul-escuro profundo do início das turmas */
-    --fundo-gradiente-fim: #392c68;  /* Roxo azulado da base das turmas */
-    --verde-turquesa: #29b6b9;       /* Verde-mar oficial do bloco "Sobre o Controle" */
-    --cinza-rodape: #78909c;         /* Tom fosco do rodapé final */
-    
-    /* Tipografia e Superfícies */
+    --azul-barra-superior: #4e6a8d;
+    --fundo-gradiente-topo: #1b213b;
+    --fundo-gradiente-fim: #392c68;
+    --verde-turquesa: #29b6b9;
+    --cinza-rodape: #78909c;
+
     --texto-escuro: #2d3748;
     --texto-mutado: #718096;
     --branco: #ffffff;
     --borda: #cbd5e0;
 }
 
+
 /* ==========================================================================
-   CONFIGURAÇÕES GERAIS E LAYOUT DASHBOARD
+   CONFIGURAÇÕES GERAIS
    ========================================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -23,361 +25,679 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     color: var(--texto-escuro);
     background-color: var(--branco);
+
     display: grid;
-    grid-template-areas: 
+
+    grid-template-areas:
         "header header"
         "nav main"
         "footer footer";
-    grid-template-columns: 200px 1fr;
+
+    /* MENU LATERAL REDUZIDO */
+    grid-template-columns: 160px 1fr;
+
     min-height: 100vh;
     width: 100%;
 }
 
+
 /* ==========================================================================
-   HEADER (CABEÇALHO) - COR ATUALIZADA E LOGO PEQUENA
+   HEADER
    ========================================================================== */
+
 .cabecalho {
     grid-area: header;
-    background-color: var(--azul-barra-superior); /* Aplicada cor exata da imagem */
+
+    background-color: var(--azul-barra-superior);
     color: var(--branco);
+
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 18px 50px;
-    height: 70px;
-    border-bottom: none;
+    justify-content: flex-start;
+
+    padding: 0 24px 0 0;
+
+    height: 64px;
+
+    overflow: hidden;
+
+    gap: 16px;
 }
 
-.cabecalho .container-logo img {
-    height: 70px; 
-    width: auto;
-    border-radius: 4px;
-    display: block;
+.cabecalho img {
+    background-color: var(--branco);
+
+    align-self: stretch;
+
+    width: 160px;
+    flex-shrink: 0;
+
+    height: auto;
+
+    object-fit: contain;
+
+    padding: 8px 16px;
+
+    box-sizing: border-box;
 }
 
-.cabecalho .slogan {
-    font-size: 20px;
-    font-weight: normal;
-    letter-spacing: 0.0px;
-    margin: 10px 0 0 0;;
-    max-width: 70%;
-    text-align: right;
-    opacity: 2.0;
-}
 
 /* ==========================================================================
-   ASIDE (MENU LATERAL)
+   MENU LATERAL
    ========================================================================== */
+
 .menu-lateral {
     grid-area: nav;
-    background-color: var(--azul-barra-superior); /* Mesma cor de fundo do cabeçalho */
-    padding: 20px 0 20px 20px;
+
+    background-color: var(--azul-barra-superior);
+
+    padding: 15px 0 15px 12px;
+
+    width: 160px;
 }
 
 .menu-lateral nav {
+
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.92); /* Branco translúcido fosco */
-    border-radius: 20px 0 0 20px;
-    padding: 20px 10px;
-    gap: 12px;
-    box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
+
+    background-color: rgba(255, 255, 255, 0.92);
+
+    border-radius: 18px 0 0 18px;
+
+    padding: 15px 7px;
+
+    gap: 8px;
+
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu-lateral nav a {
+
     color: var(--texto-escuro);
+
     text-decoration: none;
-    padding: 8px 12px;
-    font-size: 20px;
-    font-weight: bold;
+
+    padding: 8px 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
     text-transform: uppercase;
+
     transition: all 0.2s ease;
+
     border-radius: 6px;
+
+    line-height: 1.2;
 }
 
 .menu-lateral nav a:hover,
-.menu-lateral nav a:first-child { 
+.menu-lateral nav a:first-child {
+
     color: var(--branco);
-    background-color: var(--verde-turquesa); /* Hover com a cor intermediária do painel */
+
+    background-color: var(--verde-turquesa);
 }
+
 
 /* ==========================================================================
-   MAIN (SUBIDA DAS TURMAS E GRADIENTE CORRIGIDO)
+   CONTEÚDO PRINCIPAL
    ========================================================================== */
+
 .conteudo-principal {
+
     grid-area: main;
+
     display: flex;
     flex-direction: column;
-    background: linear-gradient(180deg, var(--fundo-gradiente-topo) 0%, var(--fundo-gradiente-fim) 100%); /* Gradiente exato */
-    padding-bottom: 3px;
+
+    background: linear-gradient(
+        180deg,
+        var(--fundo-gradiente-topo) 0%,
+        var(--fundo-gradiente-fim) 100%
+    );
+
+    min-width: 0;
 }
 
+
+/* ==========================================================================
+   TÍTULO
+   ========================================================================== */
+
 .titulo-pagina {
-    padding: 20px 40px 10px 40px;
+
+    padding: 12px 24px 6px 24px;
+
     text-align: center;
 }
 
 .titulo-pagina h1 {
+
     color: var(--branco);
-    font-size: 30px;
+
+    font-size: 20px;
+
     text-transform: uppercase;
-    letter-spacing: 10px;
+
+    letter-spacing: 4px;
+
     margin: 0;
 }
 
-/* Grid das Turmas Organizado em 2x2 */
+
+/* ==========================================================================
+   GRID DAS TURMAS
+   ========================================================================== */
+
 .lista-turmas {
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 30px;
-    padding: 15px 40px 20px 40px;
-    max-width: 800px;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+    padding: 10px 24px 12px 24px;
+
     width: 100%;
+
+    max-width: 680px;
+
     margin: 0 auto;
 }
 
-/* Cards das Turmas */
+
+/* ==========================================================================
+   CARDS DAS TURMAS
+   ========================================================================== */
+
 .turma {
+
     background-color: var(--branco);
+
     color: var(--texto-escuro);
-    border-radius: 24px;
-    padding: 25px;
+
+    border-radius: 14px;
+
+    padding: 16px;
+
     display: flex;
+
     flex-direction: column;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
     position: relative;
 }
 
 .cabecalho-turma {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
-    margin-bottom: 19px;
+
+    margin-bottom: 10px;
 }
 
 .cabecalho-turma h2 {
+
     color: var(--texto-escuro);
-    font-size: 30px;
+
+    font-size: 18px;
+
     text-transform: uppercase;
+
     font-weight: bold;
 }
 
-/* Ícone de Usuário dentro do Card */
+
+/* ==========================================================================
+   ÍCONE DA TURMA
+   ========================================================================== */
+
 .icone-turma {
+
     background-color: #4a5568;
-    color: transparent; 
-    width: 32px;
-    height: 32px;
+
+    color: transparent;
+
+    width: 24px;
+    height: 24px;
+
     border-radius: 50%;
+
     position: relative;
 }
 
 .icone-turma::before {
+
     content: "";
+
     position: absolute;
-    width: 10px;
-    height: 10px;
+
+    width: 8px;
+    height: 8px;
+
     background: var(--branco);
+
     border-radius: 50%;
-    top: 5px;
-    left: 11px;
+
+    top: 3.5px;
+    left: 8px;
 }
 
 .icone-turma::after {
+
     content: "";
+
     position: absolute;
-    width: 18px;
-    height: 8px;
+
+    width: 14px;
+    height: 6px;
+
     background: var(--branco);
-    border-radius: 10px 10px 0 0;
-    bottom: 4px;
-    left: 7px;
+
+    border-radius: 8px 8px 0 0;
+
+    bottom: 3.5px;
+    left: 5px;
 }
+
+
+/* ==========================================================================
+   LISTA DE ALUNOS
+   ========================================================================== */
 
 .lista-alunos {
+
     display: flex;
+
     flex-direction: column;
-    gap: 15px;
-    margin-top: 5px;
+
+    gap: 8px;
+
+    margin-top: 4px;
 }
 
-/* Linhas contínuas de preenchimento dos alunos */
 .lista-alunos p {
-    font-size: 20px;
+
+    font-size: 13px;
+
     color: #a0aec0;
+
     font-weight: bold;
+
     display: flex;
+
     align-items: flex-end;
 }
 
 .lista-alunos p::after {
+
     content: "";
+
     flex: 1;
+
     border-bottom: 1px solid #cbd5e0;
+
     margin-left: 8px;
+
     margin-bottom: 2px;
 }
 
-/* Remove botões antigos e exibe o marcador geométrico */
+
+/* ==========================================================================
+   BOTÃO DE ACESSAR
+   ========================================================================== */
+
 .botao-acessar-turma {
+
     display: none !important;
 }
 
+
+/* ==========================================================================
+   NÚMERO DA TURMA
+   ========================================================================== */
+
 .numero-turma {
+
     display: block !important;
+
     align-self: flex-end;
-    font-size: 14px;
+
+    font-size: 11px;
+
     color: #cbd5e0;
-    margin-top: 15px;
+
+    margin-top: 8px;
 }
 
-/* Botão "+ Adicionar Turma" integrado ao Grid */
+
+/* ==========================================================================
+   BOTÃO ADICIONAR TURMA
+   ========================================================================== */
+
 .botao-adicionar-turma {
+
     grid-column: 1 / -1;
+
     justify-self: center;
+
     background-color: #2b3654;
+
     color: var(--branco);
+
     border: none;
-    padding: 12px 30px;
-    font-size: 24px;
+
+    padding: 8px 18px;
+
+    font-size: 14px;
+
     font-weight: bold;
+
     border-radius: 6px;
+
     cursor: pointer;
-    margin-top: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+    margin-top: 8px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
     text-transform: uppercase;
 }
 
+
 /* ==========================================================================
-   SEÇÃO 2: SOBRE O CONTROLE (BLOCO CENTRAL VERDE TURQUESA EXATO)
-   ========================================================================= */
+   SOBRE O CONTROLE
+   ========================================================================== */
+
 .sobre-controle {
+
     grid-column: 1 / -1;
-    background-color: var(--verde-turquesa); /* Cor exata da imagem aplicada */
-    padding: 35px 50px;
+
+    background-color: var(--verde-turquesa);
+
+    padding: 18px 24px;
+
     color: var(--branco);
+
     width: 100%;
 }
 
 .sobre-controle h2 {
-    font-size: 30px;
+
+    font-size: 18px;
+
     text-transform: uppercase;
-    letter-spacing: 10px;
-    margin-bottom: 20px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+
     text-align: center;
+
     font-weight: bold;
 }
 
 .sobre-controle h3 {
-    font-size: 24px;
+
+    font-size: 15px;
+
     text-transform: uppercase;
-    margin: 15px 0 6px 0;
+
+    margin: 10px 0 4px 0;
 }
 
 .sobre-controle ul {
-    margin-bottom: 15px;
-    padding-left: 20px;
+
+    margin-bottom: 8px;
+
+    padding-left: 18px;
 }
 
 .sobre-controle li {
-    font-size: 24px;
-    line-height: 1.6;
-    margin-bottom: 6px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 4px;
+
     opacity: 0.95;
 }
 
+
 /* ==========================================================================
-   SEÇÃO 3: FAQ (PERGUNTAS FREQUENTES COMPACTADAS)
+   FAQ
    ========================================================================== */
+
 .perguntas-frequentes {
+
     grid-column: 1 / -1;
-    padding: 35px 50px;
+
+    padding: 18px 24px;
+
     background-color: var(--branco);
+
     width: 100%;
 }
 
 .perguntas-frequentes h2 {
+
     color: var(--texto-escuro);
-    font-size: 30px;
+
+    font-size: 18px;
+
     text-transform: uppercase;
-    letter-spacing: 10px;
-    margin-bottom: 25px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
+
     text-align: center;
 }
 
 .pergunta {
-    max-width: 850px;
-    margin: 0 auto 12px auto;
+
+    max-width: 700px;
+
+    margin: 0 auto 8px auto;
+
     border: 1px solid var(--borda);
-    border-radius: 30px; 
-    padding: 12px 25px;
+
+    border-radius: 20px;
+
+    padding: 8px 16px;
 }
 
 .cabecalho-pergunta {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
 .texto-pergunta {
+
     font-weight: normal;
+
     color: var(--texto-mutado);
-    font-size: 24px;
+
+    font-size: 14px;
 }
 
-/* Botão em formato de esfera idêntico à imagem */
 .botao-pergunta {
-    width: 22px;
-    height: 22px;
+
+    width: 20px;
+
+    height: 20px;
+
     border: 1px solid var(--borda) !important;
+
     background: transparent;
+
     border-radius: 50% !important;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     color: var(--texto-mutado);
-    font-size: 24px;
+
+    font-size: 16px;
+
     cursor: pointer;
 }
 
 .resposta-pergunta {
+
     display: none;
-    padding-top: 10px;
-    font-size: 24px;
+
+    padding-top: 6px;
+
+    font-size: 14px;
+
     color: var(--texto-mutado);
+
     border-top: 1px dashed var(--borda);
-    margin-top: 10px;
+
+    margin-top: 6px;
 }
 
+
 /* ==========================================================================
-   FOOTER (RODAPÉ) - COR CINZA-AZULADO DA IMAGEM E LOGO COMPACTA
+   FOOTER
    ========================================================================== */
+
 .rodape {
+
     grid-area: footer;
-    background-color: var(--cinza-rodape); /* Cor exata da base da imagem */
+
+    background-color: var(--cinza-rodape);
+
     color: var(--branco);
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
-    padding: 15px 40px;
+
+    padding: 10px 24px;
+
     border-top: none;
 }
 
 .contato h2 {
-    font-size: 20px;
+
+    font-size: 16px;
+
     margin: 0 0 4px 0;
 }
 
 .contato p a {
-    font-size: 30px;
+
+    font-size: 18px;
+
     opacity: 0.9;
 }
 
 .logo-rodape img {
-    height: 120px; /* Logo reduzida idêntica ao cabeçalho */
+
+    height: 70px;
+
     width: auto;
+
     border-radius: 4px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 900px) {
+
+    body {
+
+        grid-template-columns: 130px 1fr;
+    }
+
+    .menu-lateral {
+
+        width: 130px;
+
+        padding-left: 8px;
+    }
+
+    .menu-lateral nav a {
+
+        font-size: 11px;
+
+        padding: 7px 5px;
+    }
+
+    .lista-turmas {
+
+        grid-template-columns: 1fr;
+
+        max-width: 460px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+
+        display: block;
+    }
+
+    .menu-lateral {
+
+        width: 100%;
+
+        padding: 10px;
+    }
+
+    .menu-lateral nav {
+
+        border-radius: 15px;
+
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .menu-lateral nav a {
+
+        font-size: 11px;
+    }
+
+    .conteudo-principal {
+
+        width: 100%;
+    }
+
+    .lista-turmas {
+
+        grid-template-columns: 1fr;
+
+        padding: 10px 15px;
+    }
 }

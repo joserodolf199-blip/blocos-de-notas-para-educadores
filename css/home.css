@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,11 +7,11 @@
 }
 
 body {
-    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     background-color: #ffffff;
     color: #ffffff;
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 160px 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas: 
         "cabecalho cabecalho"
@@ -25,32 +27,32 @@ body {
     background-color: #7a92c3; /* Cor exata do topo da imagem */
     display: flex;
     align-items: center;
-    padding: 0 30px 0 0; /* Deixa o bloco da logo colar na esquerda */
-    height: 120px;
-    gap: 30px;
+    padding: 0 20px 0 0; /* Deixa o bloco da logo colar na esquerda */
+    height: 76px;
+    gap: 16px;
 }
 
 /* Bloco branco com cantos arredondados que envolve a logo */
 .container-logo {
     background-color: #ffffff;
     height: 100%;
-    width: 240px; /* Mesma largura do menu lateral para alinhar */
+    width: 160px; /* Mesma largura do menu lateral para alinhar */
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom-right-radius: 40px; /* Curvatura característica do Figma */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    padding: 8px 16px;
+    box-sizing: border-box;
 }
 
 .container-logo img {
-    height: 70px;
-    width: auto;
+    width: 100%;
+    height: auto;
     object-fit: contain;
 }
 
 /* Slogan ao lado da logo */
 .slogan {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     font-weight: 900;
     color: #ffffff;
     text-transform: uppercase;
@@ -65,8 +67,8 @@ body {
 .menu-lateral {
     grid-area: menu;
     background-color: #eef2f7; /* Fundo cinza bem claro/gelo */
-    padding: 40px 20px;
-    border-top-right-radius: 40px; /* Encaixe arredondado superior */
+    padding: 15px 10px;
+    border-top-right-radius: 18px; /* Encaixe arredondado superior */
     border-right: 1px solid #d1d9e6;
     z-index: 2;
 }
@@ -74,21 +76,21 @@ body {
 .menu-lateral nav {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 6px;
 }
 
 /* Links do menu lateral */
 .menu-lateral nav a {
     color: #333333; /* Texto escuro conforme a imagem */
     text-decoration: none;
-    font-weight: 900;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 25px 25px;
+    gap: 8px;
+    padding: 9px 8px;
     transition: all 0.2s ease;
 }
 
@@ -115,7 +117,7 @@ body {
 
 .banner img {
     width: 100%;
-    height: 480px; /* Banner bem grande e destacado */
+    height: 240px; /* Banner proporcional, sem dominar a tela */
     object-fit: cover;
     display: block;
 }
@@ -124,25 +126,25 @@ body {
 .titulo-site {
     background-color: #e0e0e0; /* Fundo cinza claro */
     text-align: center;
-    padding: 30px;
+    padding: 16px;
 }
 
 .titulo-site h1 {
-    font-size: 2.2rem;
+    font-size: 1.4rem;
     color: #000000;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 /* SEÇÃO AZUL TURQUESA (SOBRE O PROJETO) */
 .sobre-projeto {
     background-color: #3ca6b4; /* Azul turquesa oficial */
-    padding: 60px 50px;
+    padding: 28px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 50px;
+    gap: 24px;
 }
 
 .texto-projeto {
@@ -151,20 +153,20 @@ body {
 }
 
 .texto-projeto h2 {
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: #ffffff;
-    margin-bottom: 30px;
+    margin-bottom: 14px;
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 0.5px;
 }
 
 .texto-projeto p {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     color: #ffffff;
     text-transform: uppercase; /* Caixa alta do Figma */
     font-weight: bold;
-    line-height: 1.8;
+    line-height: 1.7;
     text-align: justify;
 }
 
@@ -176,9 +178,9 @@ body {
 
 .imagem-projeto img {
     width: 100%;
-    max-width: 440px;
+    max-width: 260px;
     height: auto;
-    border-radius: 25px; /* Bordas bem arredondadas da foto da professora */
+    border-radius: 16px; /* Bordas bem arredondadas da foto da professora */
     object-fit: cover;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
@@ -231,9 +233,9 @@ body {
     display: grid;
     /* Divide em duas colunas estáveis para computadores */
     grid-template-columns: 55% 45%; 
-    padding: 0 80px 80px 80px; /* Mais preenchimento nas laterais em monitores grandes */
+    padding: 0 24px 30px 24px; /* Preenchimento contido nas laterais */
     align-items: center;
-    gap: 30px 60px; /* Ótimo espaçamento entre o texto e a foto */
+    gap: 16px 24px; /* Espaçamento equilibrado entre o texto e a foto */
 }
 
 /* Faixa cinza superior que cruza a tela toda */
@@ -242,20 +244,20 @@ body {
     background-color: #e0e0e0; 
     color: #000000;
     text-align: center;
-    padding: 35px;
-    font-size: 2.2rem; /* Tamanho ideal para monitores */
+    padding: 16px;
+    font-size: 1.4rem; /* Tamanho compacto */
     text-transform: uppercase;
-    font-family: 'Arial Black', sans-serif;
-    letter-spacing: 2px;
-    margin: 0 -80px 40px -80px; /* Ajustado para compensar o novo padding */
-    width: calc(100% + 160px);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    margin: 0 -24px 20px -24px; /* Ajustado para compensar o novo padding */
+    width: calc(100% + 48px);
 }
 
 /* Subtítulo interno "PRINCIPAIS FUNCIONALIDADES:" */
 .principais-funcionalidades .subtitulo-interno {
     grid-column: 1; 
     color: #ffffff;
-    font-size: 1.4rem; 
+    font-size: 1rem; 
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -266,7 +268,7 @@ body {
 .funcionalidade {
     grid-column: 1; 
     background-color: transparent !important; 
-    padding: 10px 0;
+    padding: 8px 0;
     border-left: none !important;
     width: 100%;
     max-width: 650px; /* Impede que as linhas de texto fiquem longas demais e ruins de ler em telas gigantes */
@@ -274,10 +276,10 @@ body {
 
 .funcionalidade h4 {
     color: #ffffff; 
-    font-size: 1.2rem; /* Título da função bem visível no monitor */
+    font-size: 0.95rem; /* Título da função compacto */
     font-weight: 900;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     letter-spacing: 0.5px;
 }
 
@@ -287,14 +289,14 @@ body {
 }
 
 .funcionalidade li {
-    font-size: 1.05rem; /* Tamanho confortável e nítido para desktop */
+    font-size: 0.85rem; /* Tamanho compacto para desktop */
     text-transform: uppercase; 
     color: #ffffff; 
     font-weight: bold;
-    line-height: 1.6; /* Espaçamento confortável entre linhas */
+    line-height: 1.5; /* Espaçamento confortável entre linhas */
     position: relative;
-    padding-left: 22px;
-    margin-bottom: 8px;
+    padding-left: 18px;
+    margin-bottom: 6px;
 }
 
 .funcionalidade li::before {
@@ -302,7 +304,7 @@ body {
     position: absolute;
     left: 0;
     color: #ffffff;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     top: -1px;
 }
 
@@ -318,9 +320,9 @@ body {
 
 .image-funcionalidades img {
     width: 100%; 
-    max-width: 520px; /* A foto ganha uma presença excelente ao lado do texto */
+    max-width: 300px; /* Presença equilibrada ao lado do texto */
     height: auto;
-    border-radius: 30px; 
+    border-radius: 16px; 
     object-fit: cover;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
 }
@@ -329,7 +331,7 @@ body {
    ========================================================================== */
 .perguntas-frequentes {
     background-color: #ffffff; /* Fundo branco limpo */
-    padding: 60px 10px;
+    padding: 30px 10px;
     width: 100%;
     max-width: 900px; /* Centraliza e limita a largura das perguntas */
     margin: 0 auto;
@@ -338,10 +340,10 @@ body {
 .perguntas-frequentes h2 {
     color: #333333;
     font-family: 'Times New Roman', Times, serif; /* Fonte elegante com serifa do Figma */
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     font-weight: normal;
     letter-spacing: 1px;
 }
@@ -355,7 +357,7 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 14px 0;
+    padding: 10px 0;
     background-color: transparent;
 }
 
@@ -372,10 +374,10 @@ body {
     background-color: transparent;
     color: #333333;
     border: 1px solid #333333; /* Linha fina do contorno */
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%; /* Perfeitamente redondo */
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
     cursor: pointer;
     display: flex;
@@ -401,7 +403,7 @@ body {
 .rodape-site {
     background-color: #7a92c3; /* Mesma cor azul suave do cabeçalho */
     color: #ffffff;
-    padding: 40px 60px;
+    padding: 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -411,15 +413,15 @@ body {
 .contato-rodape {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 .contato-rodape h5 {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .info-link {
@@ -428,13 +430,13 @@ body {
     gap: 10px;
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: bold;
 }
 
 /* Container da logo no rodapé */
 .logo-rodape img {
-    height: 120px; /* Tamanho proporcional e elegante */
+    height: 70px; /* Tamanho proporcional e elegante */
     width: auto;
     object-fit: contain;
     
@@ -446,18 +448,18 @@ body {
 @media (max-width: 1100px) {
     .principais-funcionalidades {
         grid-template-columns: 1fr;
-        padding: 20px;
+        padding: 16px;
     }
     .principais-funcionalidades h3 {
-        margin: 0 -20px 20px -20px;
-        width: calc(100% + 40px);
+        margin: 0 -16px 16px -16px;
+        width: calc(100% + 32px);
     }
     .image-funcionalidades, .funcionalidade, .principais-funcionalidades .subtitulo-interno {
         grid-column: 1;
     }
     .rodape-site {
         flex-direction: column;
-        gap: 30px;
+        gap: 20px;
         text-align: center;
         box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* sombra leve para destacar o rodapé em telas menores */
     }
@@ -473,22 +475,22 @@ body {
    ========================================================================== */
 .perguntas-frequentes {
     background-color: #ffffff;
-    padding: 60px 80px;
+    padding: 30px 24px;
     width: 100%;
 }
 
 .perguntas-frequentes h2 {
-    font-size: 2.2rem;
+    font-size: 1.4rem;
     color: #000000;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
 }
 
 .pergunta {
     border-bottom: 2px solid #e0e0e0;
-    padding: 20px 0;
+    padding: 12px 0;
     max-width: 900px;
     margin: 0 auto;
 }
@@ -501,7 +503,7 @@ body {
 }
 
 .texto-pergunta {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     color: #333333;
     font-weight: bold;
     text-transform: uppercase;
@@ -511,10 +513,10 @@ body {
     background: transparent;
     border: 2px solid #3ca6b4;
     color: #3ca6b4;
-    font-family: 'Arial Black', sans-serif;
-    font-size: 1.4rem;
-    width: 36px;
-    height: 36px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -537,10 +539,10 @@ body {
 
 .resposta-pergunta p {
     font-family: 'Arial', sans-serif;
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: #666666;
     line-height: 1.6;
-    padding-top: 15px;
+    padding-top: 10px;
     font-weight: normal;
 }
 
@@ -559,14 +561,14 @@ body {
 @media (max-width: 1024px) {
     .principais-funcionalidades {
         grid-template-columns: 1fr;
-        padding: 40px 20px;
+        padding: 24px 16px;
     }
     .image-funcionalidades {
         grid-column: 1;
         grid-row: auto;
     }
     .perguntas-frequentes {
-        padding: 40px 20px;
+        padding: 24px 16px;
     }
 }
 /* ==========================================================================
@@ -578,15 +580,15 @@ body {
     display: flex;
     justify-content: space-between; /* Empurra o contato para a esquerda e a logo para a direita */
     align-items: center; /* Alinha os dois verticalmente ao centro */
-    padding: 40px 80px; /* Margem interna para não colarem totalmente no limite da tela */
+    padding: 20px 24px; /* Margem interna contida */
     width: 100%;
 }
 
 /* Estilização do bloco de Contatos (lado esquerdo) */
 .contato h2 {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: #ffffff;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -598,7 +600,7 @@ body {
 .contato a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 20px;
     font-family: 'Arial', sans-serif; 
     font-weight: bold;
     transition: color 0.2s ease;
@@ -610,7 +612,7 @@ body {
 
 /* Estilização da Logo (lado direito) */
 .logo-rodape img {
-    height: 170px;
+    height: 90px;
     width: auto;
     object-fit: contain;
 }
@@ -620,7 +622,7 @@ body {
     .rodape {
         flex-direction: column-reverse; /* Inverte para a logo ficar em cima no celular */
         text-align: center;
-        gap: 30px;
-        padding: 40px 20px;
+        gap: 20px;
+        padding: 24px 16px;
     }
 }
