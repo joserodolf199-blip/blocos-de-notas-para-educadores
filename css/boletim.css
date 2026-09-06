@@ -1,1156 +1,1213 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 /* =========================================================
-VARIÁVEIS
+   VARIÁVEIS
 ========================================================= */
 
 :root {
---fundo-card-aluno: #76fbfb;
---fundo-tabela-notas: #000000;
---azul-painel-topo: #000000;
---azul-topo-rodape: #a1bef4;
---fundo-geral: #768da6;
---fundo-principal: #1b2244;
+    --fundo-card-aluno: #76fbfb;
+    --fundo-tabela-notas: #000000;
 
---texto-branco: #ffffff;
---texto-escuro: #000000;
+    --azul-painel-topo: #000000;
+    --azul-topo-rodape: #a1bef4;
 
---nota-verde: #00ff04;
---nota-vermelha: #ff0015;
+    --fundo-geral: #768da6;
+    --fundo-principal: #1b2244;
 
---ciano: #4bceeb;
---ciano-forte: #00ffff;
+    --texto-branco: #ffffff;
+    --texto-escuro: #000000;
 
---sombra: rgba(0, 0, 0, 0.30);
---sombra-forte: rgba(0, 0, 0, 0.45);
+    --nota-verde: #00ff04;
+    --nota-vermelha: #ff0015;
 
---raio-card: 35px;
---raio-pilula: 40px;
+    --ciano: #4bceeb;
+    --ciano-forte: #00ffff;
 
+    --sombra: rgba(0, 0, 0, .30);
+    --sombra-forte: rgba(0, 0, 0, .45);
+
+    --raio-card: 35px;
+    --raio-pilula: 40px;
 }
+
 
 /* =========================================================
-RESET
+   RESET
 ========================================================= */
 
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 html {
-scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-min-height: 100vh;
-width: 100%;
-overflow-x: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
 
-font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 
-background-color: var(--fundo-geral);
-color: var(--texto-branco);
+    display: grid;
 
-display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "footer footer";
 
-grid-template-areas:
-    "header header"
-    "nav main"
-    "footer footer";
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: auto 1fr auto;
 
-grid-template-columns: 320px minmax(0, 1fr);
-grid-template-rows: auto 1fr auto;
-
+    background: var(--fundo-geral);
 }
 
+
 /* =========================================================
-CABEÇALHO
+   CABEÇALHO
 ========================================================= */
 
 .cabecalho {
-grid-area: header;
+    grid-area: header;
 
-min-height: 170px;
+    min-height: 170px;
 
-background-color: var(--azul-topo-rodape);
+    background: var(--azul-topo-rodape);
 
-display: flex;
-align-items: center;
-justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-gap: 40px;
+    gap: 30px;
 
-padding: 25px 50px;
+    padding: 20px 45px;
 
-border-bottom: 2px solid rgba(255, 255, 255, 0.25);
-
+    box-shadow: 0 5px 15px var(--sombra);
 }
 
-/* Logo */
+
+/* LOGO DO CABEÇALHO */
 
 .container-logo {
-flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
 }
 
-.cabecalho .container-logo img {
-display: block;
+.container-logo img {
+    width: 100%;
+    max-width: 230px;
+    max-height: 150px;
 
-width: auto;
-max-width: 230px;
-max-height: 150px;
+    object-fit: contain;
 
-object-fit: contain;
+    background: #ffffff;
 
-background-color: #ffffff;
+    padding: 10px;
 
-padding: 6px 18px;
+    border-radius: 20px;
 
-border-radius: 20px;
-
+    box-shadow: 0 5px 15px var(--sombra);
 }
 
-/* Slogan */
 
-.cabecalho .slogan {
-max-width: 75%;
+/* SLOGAN */
 
-color: var(--texto-branco);
+.slogan {
+    flex: 1;
 
-font-size: clamp(16px, 1.5vw, 25px);
-font-weight: 700;
+    color: var(--texto-branco);
 
-line-height: 1.4;
+    text-align: right;
 
-letter-spacing: clamp(2px, 0.45vw, 9px);
+    font-size: clamp(20px, 2.2vw, 34px);
 
-text-align: right;
-text-transform: uppercase;
+    font-weight: 800;
 
+    line-height: 1.2;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
 }
+
 
 /* =========================================================
-MENU LATERAL
+   MENU LATERAL
 ========================================================= */
 
 .menu-lateral {
-grid-area: nav;
+    grid-area: nav;
 
-background-color: var(--azul-topo-rodape);
+    background: var(--azul-topo-rodape);
 
-padding: 40px 20px;
-
+    padding: 30px 20px;
 }
+
+
+/* CONTAINER DO MENU */
 
 .menu-lateral nav {
-width: 100%;
+    width: 100%;
 
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-gap: 12px;
+    gap: 12px;
 
-background-color: var(--texto-branco);
+    padding: 20px;
 
-padding: 25px 12px;
+    background: #ffffff;
 
-border-radius: 24px;
+    border-radius: 30px;
 
-box-shadow: 4px 4px 20px var(--sombra);
-
+    box-shadow: 0 8px 20px var(--sombra);
 }
+
+
+/* LINKS */
 
 .menu-lateral nav a {
-display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-color: var(--texto-escuro);
+    min-height: 50px;
 
-text-decoration: none;
+    padding: 12px 15px;
 
-padding: 15px 18px;
+    color: var(--texto-escuro);
 
-font-size: clamp(15px, 1.2vw, 21px);
-font-weight: 700;
+    background: transparent;
 
-border-left: 6px solid transparent;
+    border-radius: 18px;
 
-border-radius: 0 12px 12px 0;
+    text-decoration: none;
 
-text-transform: uppercase;
+    text-align: center;
 
-transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    padding-left 0.2s ease,
-    border-color 0.2s ease;
+    font-size: 25px;
 
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
 }
+
+
+/* HOVER */
 
 .menu-lateral nav a:hover {
-color: var(--texto-branco);
+    background: var(--ciano);
 
-background-color: var(--fundo-card-aluno);
+    color: #000000;
 
-border-left-color: var(--azul-topo-rodape);
-
-padding-left: 28px;
-
+    transform: translateX(4px);
 }
 
-/* Link ativo: Boletim */
+
+/* BOTÃO BOLETIM ATIVO */
 
 .menu-lateral nav a:nth-child(5) {
-background-color: #f1f5f9;
+    background: var(--ciano-forte);
 
-border-left-color: var(--fundo-card-aluno);
+    color: #000000;
 
-color: #111827;
+    font-weight: 900;
 
+    box-shadow: 0 5px 12px var(--sombra);
 }
 
+
 /* =========================================================
-CONTEÚDO PRINCIPAL
+   CONTEÚDO PRINCIPAL
 ========================================================= */
 
 .conteudo-principal {
-grid-area: main;
+    grid-area: main;
 
-position: relative;
+    position: relative;
 
-width: 100%;
-min-width: 0;
+    min-width: 0;
 
-background-color: var(--fundo-principal);
+    padding: 45px 35px 180px;
 
-display: flex;
-flex-direction: column;
-align-items: center;
+    background: var(--fundo-principal);
 
-padding: 50px 40px 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-isolation: isolate;
-
+    overflow: hidden;
 }
 
-/* Silhueta */
+
+/* SILHUETA DA CIDADE */
 
 .conteudo-principal::after {
-content: "";
+    content: "";
 
-position: absolute;
+    position: absolute;
 
-left: 0;
-right: 0;
-bottom: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-height: 420px;
+    height: 2000px;
 
-background-image: url("../imagens/silhueta-cidade.jpg");
+    background-image: url("../imagens/silhueta-cidade.jpg");
 
-background-size: cover;
-background-position: bottom center;
-background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
 
-opacity: 0.20;
+    opacity: .20;
 
-filter: brightness(0.75) contrast(1.15);
-
-pointer-events: none;
-
-z-index: -1;
-
+    pointer-events: none;
 }
 
-/* Título original do HTML */
-
-.titulo-pagina h1 {
-display: none;
-}
 
 /* =========================================================
-PAINEL DO BOLETIM
+   TÍTULO
+========================================================= */
+
+.titulo-pagina {
+    display: none;
+}
+
+
+/* =========================================================
+   PAINEL DO BOLETIM
 ========================================================= */
 
 .painel-boletim {
-width: 100%;
-max-width: 1800px;
+    position: relative;
+    z-index: 1;
 
-display: flex;
-flex-direction: column;
-
-gap: 35px;
-
-}
-
-/* Título */
-
-.painel-boletim > h2 {
-width: 100%;
-
-color: var(--texto-branco);
-
-font-size: clamp(28px, 3vw, 50px);
-font-weight: 800;
-
-line-height: 1.15;
-
-letter-spacing: 2px;
-
-text-align: center;
-text-transform: uppercase;
-
-margin-bottom: 5px;
-
-}
-
-/* =========================================================
-FILTROS
-========================================================= */
-
-.filtros-boletim {
-width: 100%;
-
-display: flex;
-flex-wrap: wrap;
-
-align-items: center;
-justify-content: center;
-
-gap: 20px;
-
-margin-bottom: 5px;
-
-}
-
-/* Campo de pesquisa */
-
-.pesquisa-aluno {
-width: min(100%, 900px);
-
-display: flex;
-align-items: center;
-
-background-color: #e0e0e0;
-
-border-radius: var(--raio-pilula);
-
-padding: 8px 25px;
-
-box-shadow: 0 4px 15px var(--sombra);
-
-transition: box-shadow 0.2s ease;
-
-}
-
-.pesquisa-aluno:focus-within {
-box-shadow:
-0 0 0 3px rgba(118, 251, 251, 0.45),
-0 4px 15px var(--sombra);
-}
-
-.pesquisa-aluno input {
-width: 100%;
-min-width: 0;
-
-background: transparent;
-
-border: none;
-outline: none;
-
-color: #000000;
-
-font-family: inherit;
-
-font-size: clamp(16px, 1.5vw, 25px);
-font-weight: 600;
-
-padding: 12px 10px;
-
-}
-
-.pesquisa-aluno input::placeholder {
-color: #333333;
-opacity: 1;
-}
-
-.pesquisa-aluno button {
-flex-shrink: 0;
-
-width: 50px;
-height: 50px;
-
-display: grid;
-place-items: center;
-
-background: transparent;
-
-border: none;
-
-font-size: 25px;
-
-cursor: pointer;
-
-}
-
-/* Botão Filtrar */
-
-.botao-filtrar,
-.seletor-turma {
-min-height: 58px;
-
-background-color: #ffffff;
-
-color: #000000;
-
-border: none;
-outline: none;
-
-border-radius: var(--raio-pilula);
-
-padding: 12px 35px;
-
-font-family: inherit;
-
-font-size: clamp(16px, 1.4vw, 24px);
-font-weight: 700;
-
-text-transform: uppercase;
-
-cursor: pointer;
-
-box-shadow: 0 4px 15px var(--sombra);
-
-transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-
-}
-
-.botao-filtrar:hover,
-.seletor-turma:hover {
-color: #ffffff;
-
-background-color: var(--fundo-card-aluno);
-
-box-shadow:
-    inset 8px 0 0 var(--azul-topo-rodape),
-    0 5px 15px var(--sombra);
-
-transform: translateY(-2px);
-
-}
-
-.botao-filtrar:active,
-.seletor-turma:active {
-transform: translateY(0);
-}
-
-/* Select */
-
-.seletor-turma {
-min-width: 250px;
-
-appearance: auto;
--webkit-appearance: auto;
-
-text-align: center;
-
-}
-
-/* =========================================================
-CARD DO ALUNO
-========================================================= */
-
-.boletim-aluno {
-width: 100%;
-
-display: flex;
-
-background-color: var(--fundo-card-aluno);
-
-border-radius: var(--raio-card);
-
-overflow: hidden;
-
-box-shadow: 0 15px 35px var(--sombra-forte);
-
-margin-bottom: 5px;
-
-}
-
-/* =========================================================
-IDENTIFICAÇÃO DO ALUNO
-========================================================= */
-
-.identificacao-aluno {
-width: 320px;
-min-width: 320px;
-
-display: flex;
-flex-direction: column;
-
-align-items: center;
-justify-content: flex-start;
-
-gap: 18px;
-
-padding: 35px 25px;
-
-text-align: center;
-
-}
-
-/* Foto */
-
-.foto-aluno {
-display: flex;
-justify-content: center;
-}
-
-.foto-aluno img {
-width: 145px;
-height: 145px;
-
-display: block;
-
-object-fit: cover;
-
-border-radius: 50%;
-
-border: 6px solid var(--ciano-forte);
-
-box-shadow: 0 4px 15px var(--sombra);
-
-}
-
-/* Nome */
-
-.dados-aluno {
-width: 100%;
-}
-
-.dados-aluno h3 {
-color: var(--texto-escuro);
-
-font-size: clamp(18px, 1.5vw, 24px);
-font-weight: 900;
-
-line-height: 1.3;
-
-letter-spacing: 0.2px;
-
-margin-bottom: 15px;
-
-}
-
-/* Matrícula e turma */
-
-.dados-aluno p {
-display: block;
-
-color: #000000;
-
-font-size: 17px;
-font-weight: 700;
-
-line-height: 1.6;
-
-}
-
-.dados-aluno p span {
-font-weight: 900;
-}
-
-/* IMPORTANTE:
-Não usamos ::after para inventar informações.
-O HTML continua sendo a fonte dos dados do aluno. */
-
-/* =========================================================
-TABELA
-========================================================= */
-
-.tabela-boletim {
-flex: 1;
-min-width: 0;
-
-background-color: var(--fundo-tabela-notas);
-
-padding: 20px;
-
-display: flex;
-align-items: center;
-
-overflow-x: auto;
-
-}
-
-/* Tabela */
-
-.tabela-boletim table {
-width: 100%;
-min-width: 720px;
-
-border-collapse: separate;
-
-border-spacing: 0 12px;
-
-text-align: center;
-
-}
-
-/* Cabeçalho */
-
-.tabela-boletim thead th {
-color: var(--ciano);
-
-background: transparent;
-
-font-size: clamp(15px, 1.3vw, 22px);
-font-weight: 700;
-
-padding: 10px;
-
-text-transform: uppercase;
-
-white-space: nowrap;
-
-}
-
-/* Matérias */
-
-.tabela-boletim tbody th {
-background-color: #ffffff;
-
-color: #000000;
-
-font-size: clamp(14px, 1.2vw, 20px);
-font-weight: 700;
-
-padding: 12px 18px;
-
-border-radius: 30px;
-
-white-space: nowrap;
-
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-
-}
-
-/* Notas */
-
-.tabela-boletim td {
-color: var(--nota-verde);
-
-font-size: clamp(18px, 1.8vw, 29px);
-font-weight: 700;
-
-padding: 12px 10px;
-
-white-space: nowrap;
-
-}
-
-/* Média */
-
-.tabela-boletim td.media {
-color: var(--nota-verde);
-
-font-size: clamp(20px, 2vw, 32px);
-
-font-weight: 900;
-
-}
-
-/* =========================================================
-ESTADO PARA NOTAS BAIXAS
-========================================================= */
-
-/*
-Use a classe .nota-baixa no HTML quando uma nota
-precisar aparecer em vermelho.
-
-Exemplo:
-
-<td class="nota-baixa">4,0</td> */
-.tabela-boletim td.nota-baixa {
-color: var(--nota-vermelha);
-}
-
-.tabela-boletim td.media.nota-baixa {
-color: var(--nota-vermelha);
-}
-
-/* =========================================================
-RODAPÉ
-========================================================= */
-
-.rodape {
-grid-area: footer;
-
-background-color: var(--azul-topo-rodape);
-
-color: var(--texto-branco);
-
-display: flex;
-align-items: center;
-justify-content: space-between;
-
-gap: 40px;
-
-padding: 30px 50px;
-
-border-top: 2px solid rgba(255, 255, 255, 0.2);
-
-}
-
-/* Contato */
-
-.contato {
-min-width: 0;
-}
-
-.contato h2 {
-margin-bottom: 8px;
-
-font-size: clamp(22px, 2.5vw, 40px);
-font-weight: 800;
-
-letter-spacing: 0.5px;
-
-text-transform: uppercase;
-
-}
-
-.contato p {
-margin: 5px 0;
-
-font-size: clamp(16px, 2vw, 28px);
-
-}
-
-.contato p a {
-color: var(--texto-branco);
-
-text-decoration: none;
-
-opacity: 0.95;
-
-transition: opacity 0.2s ease;
-
-}
-
-.contato p a:hover {
-opacity: 0.70;
-}
-
-/* Logo rodapé */
-
-.logo-rodape {
-flex-shrink: 0;
-}
-
-.logo-rodape img {
-display: block;
-
-width: auto;
-max-width: 230px;
-max-height: 150px;
-
-object-fit: contain;
-
-background-color: #ffffff;
-
-padding: 6px 18px;
-
-border-radius: 20px;
-
-}
-
-/* =========================================================
-TABLETS
-========================================================= */
-
-@media screen and (max-width: 1100px) {
-
-body {
-    grid-template-columns: 230px minmax(0, 1fr);
-}
-
-.cabecalho {
-    padding: 20px 30px;
-}
-
-.cabecalho .slogan {
-    font-size: 17px;
-    letter-spacing: 3px;
-}
-
-.menu-lateral {
-    padding: 25px 12px;
-}
-
-.menu-lateral nav {
-    padding: 18px 8px;
-    gap: 8px;
-}
-
-.menu-lateral nav a {
-    padding: 12px;
-    font-size: 15px;
-}
-
-.conteudo-principal {
-    padding: 35px 25px 150px;
-}
-
-.boletim-aluno {
-    flex-direction: column;
-}
-
-.identificacao-aluno {
     width: 100%;
-    min-width: 0;
+    max-width: 1800px;
 
-    flex-direction: row;
-
-    align-items: center;
-
-    text-align: left;
-
-    padding: 25px;
-}
-
-.dados-aluno {
-    flex: 1;
-}
-
-.dados-aluno h3 {
-    margin-bottom: 8px;
-}
-
-.tabela-boletim {
-    width: 100%;
-}
-
-}
-
-/* =========================================================
-CELULARES
-========================================================= */
-
-@media screen and (max-width: 700px) {
-
-body {
-    display: block;
-    min-height: 100vh;
-}
-
-/* Cabeçalho */
-
-.cabecalho {
-    min-height: auto;
-
+    display: flex;
     flex-direction: column;
 
-    justify-content: center;
-
-    padding: 20px 15px;
-
-    gap: 15px;
+    gap: 35px;
 }
 
-.cabecalho .container-logo img {
-    max-width: 170px;
-    max-height: 100px;
-}
 
-.cabecalho .slogan {
-    max-width: 100%;
-
-    font-size: 13px;
-
-    letter-spacing: 1.5px;
-
-    text-align: center;
-}
-
-/* Menu */
-
-.menu-lateral {
-    width: 100%;
-
-    padding: 10px;
-}
-
-.menu-lateral nav {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 6px;
-
-    padding: 8px;
-
-    border-radius: 15px;
-}
-
-.menu-lateral nav a {
-    padding: 10px 8px;
-
-    border-left: 0;
-
-    border-radius: 8px;
-
-    font-size: 11px;
-
-    text-align: center;
-}
-
-.menu-lateral nav a:hover {
-    padding-left: 8px;
-}
-
-/* Conteúdo */
-
-.conteudo-principal {
-    width: 100%;
-
-    padding: 30px 12px 100px;
-}
-
-.conteudo-principal::after {
-    height: 250px;
-}
-
-/* Título */
+/* TÍTULO DO PAINEL */
 
 .painel-boletim > h2 {
-    font-size: 27px;
+    color: var(--texto-branco);
+
+    text-align: center;
+
+    font-size: clamp(28px, 3vw, 48px);
+
+    font-weight: 900;
+
+    line-height: 1.15;
+
+    text-transform: uppercase;
 
     letter-spacing: 1px;
 }
 
-/* Filtros */
+
+/* =========================================================
+   FILTROS
+========================================================= */
 
 .filtros-boletim {
-    flex-direction: column;
+    width: 100%;
 
-    gap: 12px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
 }
+
+
+/* =========================================================
+   PESQUISA
+========================================================= */
 
 .pesquisa-aluno {
-    width: 100%;
+    min-width: 280px;
 
-    padding: 6px 15px;
+    display: flex;
+    align-items: center;
+
+    background: #ffffff;
+
+    border-radius: var(--raio-pilula);
+
+    overflow: hidden;
+
+    box-shadow: 0 5px 15px var(--sombra);
 }
+
+
+/* INPUT */
 
 .pesquisa-aluno input {
-    font-size: 15px;
+    width: 100%;
 
-    padding: 10px 5px;
+    min-width: 0;
+
+    padding: 15px 20px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #000000;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 25px;
+
+    font-weight: 600;
 }
+
+
+/* BOTÃO PESQUISAR */
 
 .pesquisa-aluno button {
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
+
+    border: none;
+
+    background: var(--ciano);
+
+    color: #000000;
+
+    cursor: pointer;
 
     font-size: 20px;
+
+    transition: .25s ease;
 }
 
-.botao-filtrar,
+.pesquisa-aluno button:hover {
+    background: var(--ciano-forte);
+}
+
+
+/* =========================================================
+   BOTÃO FILTRAR
+========================================================= */
+
+.botao-filtrar {
+    min-height: 55px;
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: var(--raio-pilula);
+
+    background: #ffffff;
+
+    color: #000000;
+
+    cursor: pointer;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    box-shadow: 0 5px 15px var(--sombra);
+
+    transition: .25s ease;
+}
+
+.botao-filtrar:hover {
+    background: var(--ciano-forte);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   SELETOR DE TURMA
+========================================================= */
+
 .seletor-turma {
-    width: 100%;
+    min-height: 55px;
 
-    min-height: 50px;
+    padding: 0 25px;
 
-    padding: 10px 20px;
+    border: none;
 
-    font-size: 15px;
+    border-radius: var(--raio-pilula);
+
+    background: #ffffff;
+
+    color: #000000;
+
+    cursor: pointer;
+
+    outline: none;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    box-shadow: 0 5px 15px var(--sombra);
+
+    transition: .25s ease;
 }
 
-/* Cards */
+.seletor-turma:hover,
+.seletor-turma:focus {
+    background: var(--ciano-forte);
+}
+
+
+/* =========================================================
+   CARD DO ALUNO
+========================================================= */
 
 .boletim-aluno {
-    border-radius: 20px;
-}
-
-.identificacao-aluno {
     width: 100%;
 
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 25px;
+
+    padding: 25px;
+
+    /* TODO O CARD É CIANO */
+    background: var(--fundo-card-aluno);
+
+    border-radius: var(--raio-card);
+
+    box-shadow: 0 10px 25px var(--sombra-forte);
+}
+
+
+/* =========================================================
+   IDENTIFICAÇÃO DO ALUNO
+========================================================= */
+
+.identificacao-aluno {
+    width: 320px;
+
+    flex-shrink: 0;
+
+    display: flex;
     flex-direction: column;
 
     align-items: center;
+    justify-content: center;
 
-    text-align: center;
+    gap: 20px;
 
-    padding: 25px 15px;
+    padding: 20px;
+}
+
+
+/* =========================================================
+   FOTO
+========================================================= */
+
+.foto-aluno {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .foto-aluno img {
-    width: 110px;
-    height: 110px;
+    width: 145px;
+    height: 145px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 6px solid var(--ciano-forte);
+
+    background: #ffffff;
+
+    box-shadow: 0 6px 15px var(--sombra);
 }
+
+
+/* =========================================================
+   DADOS DO ALUNO
+   AGORA TAMBÉM FICAM CIANO
+========================================================= */
+
+.dados-aluno {
+    width: 100%;
+
+    padding: 15px;
+
+    background: var(--fundo-card-aluno);
+
+    color: #000000;
+
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+
+/* NOME */
 
 .dados-aluno h3 {
-    font-size: 18px;
+    margin-bottom: 12px;
+
+    color: #000000;
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    line-height: 1.2;
 }
+
+
+/* INFORMAÇÕES */
 
 .dados-aluno p {
-    font-size: 14px;
+    margin: 5px 0;
+
+    color: #000000;
+
+    font-size: 25px;
+
+    font-weight: 700;
 }
 
-/* Tabela */
+
+/* VALORES */
+
+.dados-aluno span {
+    color: #000000;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   TABELA DE NOTAS
+   SOMENTE ESTA ÁREA FICA PRETA
+========================================================= */
 
 .tabela-boletim {
-    padding: 10px;
+    flex: 1;
+
+    min-width: 0;
+
+    /* PRETO SOMENTE NA ÁREA DAS NOTAS */
+    background: var(--fundo-card-alunos);
+
+    padding: 15px;
+
+    border-radius: 25px;
 
     overflow-x: auto;
 
-    -webkit-overflow-scrolling: touch;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .05);
 }
+
+
+/* =========================================================
+   TABELA
+========================================================= */
 
 .tabela-boletim table {
-    min-width: 650px;
+    width: 100%;
+
+    min-width: 850px;
+
+    border-collapse: separate;
+
+    border-spacing: 0 15px;
+
+    color: #ffffff;
 }
+
+
+/* =========================================================
+   CABEÇALHO DA TABELA
+========================================================= */
 
 .tabela-boletim thead th {
-    font-size: 13px;
+    padding: 20px 14px;
 
-    padding: 8px 5px;
-}
+    background: var(--fundo-card-aluno);
 
-.tabela-boletim tbody th {
-    font-size: 13px;
-
-    padding: 9px 12px;
-}
-
-.tabela-boletim td {
-    font-size: 17px;
-
-    padding: 9px 6px;
-}
-
-.tabela-boletim td.media {
-    font-size: 19px;
-}
-
-/* Rodapé */
-
-.rodape {
-    flex-direction: column;
-
-    align-items: center;
+    color: #000000;
 
     text-align: center;
 
-    padding: 25px 15px;
+    font-size: 25px;
 
-    gap: 20px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin: 15px;
 }
 
-.contato h2 {
-    font-size: 22px;
+
+/* PRIMEIRO CANTO */
+
+.tabela-boletim thead th:first-child {
+    border-radius: 15px 0 0 15px;
 }
 
-.contato p {
-    font-size: 16px;
+
+/* ÚLTIMO CANTO */
+
+.tabela-boletim thead th:last-child {
+    border-radius: 0 15px 15px 0;
 }
 
-.logo-rodape img {
-    max-width: 160px;
-    max-height: 100px;
-}
-
-}
 
 /* =========================================================
-TELAS MUITO PEQUENAS
+   LINHAS
 ========================================================= */
 
-@media screen and (max-width: 400px) {
-
-.menu-lateral nav {
-    grid-template-columns: 1fr 1fr;
+.tabela-boletim tbody tr {
+    background: transparent;
 }
 
-.menu-lateral nav a {
-    font-size: 10px;
-}
-
-.painel-boletim > h2 {
-    font-size: 23px;
-}
-
-.boletim-aluno {
-    border-radius: 15px;
-}
-
-}
 
 /* =========================================================
-ACESSIBILIDADE / MOVIMENTO REDUZIDO
+   MATÉRIA
+========================================================= */
+
+.tabela-boletim tbody th {
+    padding: 5px 12px;
+
+    background: #ffffff;
+
+    color: #000000;
+
+    border-radius: 100px;
+
+    text-align: center;
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   NOTAS
+========================================================= */
+
+.tabela-boletim tbody td {
+    padding: 19px 14px;
+
+    background: #000000;
+
+    color: #00ff04;
+
+    text-align: center;
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    white-space: nowrap;
+
+    border-right: 10px solid #333;
+}
+
+
+/* =========================================================
+   MÉDIA
+========================================================= */
+
+.tabela-boletim tbody td.media {
+    background: #000000;
+
+    color: #00ff04;
+
+    font-weight: 900;
+
+    border-radius: 0 15px 15px 0;
+
+    font-size: 25px;
+}
+
+
+/* =========================================================
+   NOTA BAIXA
+========================================================= */
+
+.tabela-boletim tbody td.nota-baixa {
+    color: var(--nota-vermelha);
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   HOVER NAS LINHAS
+========================================================= */
+
+.tabela-boletim tbody tr:hover td {
+    background: #151515;
+    color: #00ff04;
+}
+
+.tabela-boletim tbody tr:hover td.media {
+    background: #151515;
+    color: #00ff04;
+}
+
+.tabela-boletim tbody tr:hover th {
+    background: #ffffff;
+    color: #000000;
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.rodape {
+    grid-area: footer;
+
+    min-height: 150px;
+
+    padding: 25px 45px;
+
+    background: var(--azul-topo-rodape);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    box-shadow: 0 -5px 15px var(--sombra);
+}
+
+
+/* CONTATO */
+
+.contato { 
+
+    display: flex; 
+
+    flex-direction: column; 
+
+    gap: 14px; 
+} 
+.contato h2 { 
+
+    margin-bottom: 8px; 
+    
+    color: #000; 
+    
+    font-size: 39px; 
+    
+    font-weight: 900; 
+    
+    text-transform: uppercase; 
+
+} 
+
+.contato p { 
+
+    margin: 0; 
+
+} .contato a { 
+    
+    display: block;
+    
+    min-width: 520px; 
+    
+    padding: 20px 28px; 
+    
+    background: #fff; 
+    
+    color: #000; 
+    
+    text-decoration: none; 
+    
+    border-radius: 15px; 
+    
+    font-size: 33px; 
+    
+    font-weight: 800; 
+    
+    box-shadow: 0 5px 12px var(--sombra); 
+    
+    transition: .25s ease; 
+
+} 
+
+.contato a:hover { 
+
+    background: var(--ciano-forte);
+
+     color: #000; 
+     
+     transform: translateX(6px); 
+    
+}
+
+/* LOGO DO RODAPÉ */
+
+.logo-rodape img {
+    width: 270px;
+    max-height: 170px;
+
+    object-fit: contain;
+
+    background: #ffffff;
+
+    padding: 8px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 15px var(--sombra);
+}
+
+
+/* =========================================================
+   RESPONSIVO - 1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    body {
+        grid-template-columns: 230px 1fr;
+    }
+
+    .cabecalho {
+        min-height: 140px;
+
+        padding: 20px 25px;
+    }
+
+    .container-logo img {
+        max-width: 180px;
+        max-height: 110px;
+    }
+
+    .slogan {
+        font-size: 25px;
+    }
+
+    .menu-lateral {
+        padding: 20px 12px;
+    }
+
+    .menu-lateral nav {
+        padding: 15px;
+    }
+
+    .menu-lateral nav a {
+        font-size: 25px;
+    }
+
+    .conteudo-principal {
+        padding: 35px 20px 150px;
+    }
+
+    .boletim-aluno {
+        flex-direction: column;
+    }
+
+    .identificacao-aluno {
+        width: 100%;
+
+        flex-direction: row;
+
+        justify-content: flex-start;
+    }
+
+    .dados-aluno {
+        flex: 1;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVO - 700px
+========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        display: block;
+
+        min-height: 100vh;
+    }
+
+
+    /* CABEÇALHO */
+
+    .cabecalho {
+        min-height: auto;
+
+        flex-direction: column;
+
+        padding: 20px;
+    }
+
+    .container-logo img {
+        max-width: 180px;
+    }
+
+    .slogan {
+        text-align: center;
+
+        font-size: 25px;
+    }
+
+
+    /* MENU */
+
+    .menu-lateral {
+        padding: 15px;
+    }
+
+    .menu-lateral nav {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 8px;
+
+        padding: 12px;
+    }
+
+    .menu-lateral nav a {
+        min-height: 45px;
+
+        padding: 8px;
+
+        font-size: 25px;
+    }
+
+
+    /* CONTEÚDO */
+
+    .conteudo-principal {
+        padding: 30px 15px 130px;
+    }
+
+
+    /* TÍTULO */
+
+    .painel-boletim > h2 {
+        font-size: 28px;
+    }
+
+
+    /* FILTROS */
+
+    .filtros-boletim {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .pesquisa-aluno {
+        width: 100%;
+    }
+
+    .botao-filtrar,
+    .seletor-turma {
+        width: 100%;
+    }
+
+
+    /* CARD */
+
+    .boletim-aluno {
+        padding: 15px;
+
+        border-radius: 25px;
+
+        gap: 15px;
+    }
+
+
+    /* IDENTIFICAÇÃO */
+
+    .identificacao-aluno {
+        flex-direction: column;
+
+        padding: 10px;
+    }
+
+
+    /* TABELA */
+
+    .tabela-boletim {
+        width: 100%;
+
+        padding: 10px;
+
+        border-radius: 20px;
+    }
+
+    .tabela-boletim table {
+        min-width: 700px;
+    }
+
+
+    /* RODAPÉ */
+
+    .rodape {
+        flex-direction: column;
+
+        justify-content: center;
+
+        text-align: center;
+
+        padding: 25px 20px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVO - 400px
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .menu-lateral nav {
+        grid-template-columns: 1fr;
+    }
+
+    .slogan {
+        font-size: 25px;
+    }
+
+    .painel-boletim > h2 {
+        font-size: 25px;
+    }
+
+    .boletim-aluno {
+        border-radius: 20px;
+    }
+
+    .foto-aluno img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .dados-aluno h3 {
+        font-size: 25px;
+    }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-*,
-*::before,
-*::after {
-    scroll-behavior: auto !important;
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
 
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+        transition: none !important;
+
+        animation: none !important;
+    }
 }
 
-}
 
 /* =========================================================
-IMPRESSÃO
+   IMPRESSÃO
 ========================================================= */
 
 @media print {
 
-body {
-    display: block;
+    body {
+        display: block;
 
-    background: #ffffff;
+        background: #ffffff;
+    }
 
-    color: #000000;
-}
+    .cabecalho,
+    .menu-lateral,
+    .rodape,
+    .filtros-boletim {
+        display: none !important;
+    }
 
-.menu-lateral,
-.cabecalho,
-.rodape,
-.filtros-boletim {
-    display: none !important;
-}
+    .conteudo-principal {
+        padding: 20px;
 
-.conteudo-principal {
-    padding: 0;
+        background: #ffffff;
 
-    background: #ffffff;
+        overflow: visible;
+    }
 
-    color: #000000;
-}
+    .conteudo-principal::after {
+        display: none;
+    }
 
-.conteudo-principal::after {
-    display: none;
-}
+    .titulo-pagina {
+        display: block;
+    }
 
-.painel-boletim > h2 {
-    color: #000000;
-}
+    .titulo-pagina h1 {
+        display: block;
 
-.boletim-aluno {
-    break-inside: avoid;
+        margin-bottom: 20px;
 
-    box-shadow: none;
+        color: #000000;
 
-    margin-bottom: 20px;
-}
+        text-align: center;
 
+        font-size: 24px;
+    }
+
+    .painel-boletim > h2 {
+        color: #000000;
+    }
+
+    .boletim-aluno {
+        box-shadow: none;
+
+        break-inside: avoid;
+    }
+
+    .tabela-boletim {
+        box-shadow: none;
+    }
 }
