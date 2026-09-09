@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+
+/* ==========================================================================
+   ATLAS DIGITAL - RELATÓRIOS
+   ========================================================================== */
+
+:root {
+    --azul-barra-superior: #4e6a8d;
+    --fundo-gradiente-topo: #1b213b;
+    --fundo-gradiente-fim: #392c68;
+    --verde-turquesa: #29b6b9;
+    --cinza-rodape: #78909c;
+
+    --texto-escuro: #2d3748;
+    --texto-mutado: #718096;
+    --branco: #ffffff;
+    --borda: #cbd5e0;
+    --cinza-claro: #eef2f7;
+}
+
+
 /* ==========================================================================
    CONFIGURAÇÕES GERAIS
    ========================================================================== */
@@ -6,33 +28,27 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html {
     min-height: 100%;
-    overflow-y: auto;
 }
 
 body {
-    background: linear-gradient(
-        180deg,
-        #2b3a67 0%,
-        #3d5a80 100%
-    );
+    font-family: 'Poppins', Arial, sans-serif;
 
-    color: #1e293b;
+    color: var(--texto-escuro);
 
     min-height: 100vh;
 
     display: grid;
 
     grid-template-columns:
-        180px
+        160px
         minmax(0, 1fr);
 
     grid-template-rows:
-        auto
+        76px
         1fr
         auto;
 
@@ -41,8 +57,9 @@ body {
         "sidebar main"
         "footer footer";
 
+    background-color: var(--azul-barra-superior);
+
     overflow-x: hidden;
-    overflow-y: auto;
 }
 
 
@@ -53,61 +70,96 @@ body {
 .cabecalho {
     grid-area: header;
 
+    height: 76px;
+
+    background-color: var(--azul-barra-superior);
+
     display: flex;
+
     align-items: center;
 
-    gap: 25px;
+    gap: 16px;
 
-    padding: 10px 25px;
+    padding: 0 24px 0 0;
 
-    min-height: 90px;
+    overflow: hidden;
 }
 
 
+/* ==========================================================================
+   LOGO
+   ========================================================================== */
+
 .container-logo {
+    width: 160px;
+
+    height: 76px;
+
     flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: var(--branco);
+
+    padding: 4px 8px;
 }
 
 
 .container-logo img {
-    height: 65px;
-    width: auto;
+    width: 100%;
 
-    background: #ffffff;
+    height: auto;
 
-    padding: 8px;
+    max-height: 72px;
 
-    border-radius: 20px;
+    object-fit: contain;
 
-    box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.1);
+    background: transparent;
+
+    padding: 0;
+
+    border-radius: 0;
+
+    box-shadow: none;
 }
 
+
+/* ==========================================================================
+   SLOGAN
+   ========================================================================== */
 
 .slogan {
     flex: 1;
 
-    min-height: 65px;
+    color: var(--branco);
 
-    display: flex;
-    align-items: center;
-
-    padding: 0 30px;
-
-    background: #cbd5e1;
-
-    border-radius: 35px;
-
-    color: #0f172a;
-
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: 700;
 
-    letter-spacing: 0.4px;
+    letter-spacing: 0.5px;
 
-    box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.05);
+    text-transform: uppercase;
+
+    line-height: 1.4;
+
+    background: transparent;
+
+    padding: 0;
+
+    min-height: auto;
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    display: flex;
+
+    align-items: center;
 }
 
 
@@ -118,66 +170,64 @@ body {
 .menu-lateral {
     grid-area: sidebar;
 
-    width: 180px;
+    background-color: var(--azul-barra-superior);
 
-    padding: 0 0 20px 0;
+    width: 160px;
+
+    padding: 15px 0 15px 12px;
+
+    display: flex;
 
     min-width: 0;
 }
 
 
 .menu-lateral nav {
-    background: #ffffff;
-
-    border-radius:
-        25px
-        0
-        0
-        25px;
-
-    padding: 15px 8px;
+    width: 100%;
 
     display: flex;
+
     flex-direction: column;
 
-    gap: 4px;
+    background-color: rgba(255, 255, 255, 0.92);
 
-    min-height: calc(100vh - 110px);
+    border-radius: 18px 0 0 18px;
+
+    padding: 15px 7px;
+
+    gap: 8px;
 
     box-shadow:
-        4px 4px 15px rgba(0, 0, 0, 0.08);
-
-    overflow: hidden;
+        -2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 
 .menu-lateral nav a {
-    color: #475569;
+    color: var(--texto-escuro);
 
     text-decoration: none;
 
-    padding: 11px 12px;
+    padding: 8px 7px;
 
-    font-size: 10px;
+    font-size: 12px;
 
-    font-weight: 700;
+    font-weight: 600;
 
-    border-radius: 12px;
+    border-radius: 6px;
 
     text-transform: uppercase;
 
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+    line-height: 1.2;
+
+    transition: all 0.2s ease;
 }
 
 
 .menu-lateral nav a:hover,
 .menu-lateral nav a[href="relatorio.html"] {
-    background-color: #cbd5e1;
+    color: var(--branco);
 
-    color: #0f172a;
+    background-color: var(--verde-turquesa);
 }
 
 
@@ -197,18 +247,19 @@ body {
 
     width: 100%;
 
-    padding:
-        0
-        25px
-        35px
-        20px;
+    padding: 24px;
 
     display: flex;
+
     flex-direction: column;
 
     gap: 20px;
 
-    overflow: visible;
+    background: linear-gradient(
+        180deg,
+        var(--fundo-gradiente-topo) 0%,
+        var(--fundo-gradiente-fim) 100%
+    );
 }
 
 
@@ -217,34 +268,28 @@ body {
    ========================================================================== */
 
 .titulo-pagina {
-    background: #cbd5e1;
-
-    min-height: 75px;
-
     display: flex;
+
     align-items: center;
 
-    padding: 0 30px;
+    justify-content: center;
 
-    border-radius:
-        0
-        30px
-        30px
-        0;
-
-    box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 4px 0;
 }
 
 
 .titulo-pagina h1 {
-    color: #0f172a;
+    color: var(--branco);
 
     font-size: 20px;
 
     font-weight: 800;
 
-    letter-spacing: 1px;
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    text-align: center;
 }
 
 
@@ -253,31 +298,36 @@ body {
    ========================================================================== */
 
 .relatorio-presenca {
-    background: #cbd5e1;
+    background-color: var(--branco);
 
-    border-radius: 30px;
+    border-radius: 14px;
 
-    padding: 25px;
+    padding: 22px;
 
     box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.05);
+        0 8px 20px rgba(0, 0, 0, 0.22);
 
     min-width: 0;
 }
 
 
 .titulo-presenca {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+
+    padding-bottom: 10px;
+
+    border-bottom:
+        1px solid var(--borda);
 }
 
 
 .titulo-presenca h2,
 .titulo-pendencias h2 {
-    color: #0f172a;
+    color: var(--texto-escuro);
 
     font-size: 15px;
 
-    font-weight: 800;
+    font-weight: 700;
 
     letter-spacing: 0.5px;
 }
@@ -291,19 +341,20 @@ body {
     display: grid;
 
     grid-template-columns:
-        320px
+        minmax(250px, 320px)
         minmax(300px, 1fr);
 
     align-items: center;
 
     gap: 40px;
 
-    min-height: 230px;
+    min-height: 250px;
 }
 
 
 .grafico-pizza {
     width: 230px;
+
     height: 230px;
 
     margin: 0 auto;
@@ -312,9 +363,16 @@ body {
 }
 
 
+/* IMPORTANTE: MANTÉM O GRÁFICO CONTROLADO */
+
 #grafico-presenca {
     width: 230px !important;
+
     height: 230px !important;
+
+    max-width: 230px;
+
+    max-height: 230px;
 }
 
 
@@ -324,11 +382,14 @@ body {
 
 .dados-presenca {
     display: flex;
+
     flex-direction: column;
 
-    gap: 15px;
+    gap: 12px;
 
-    max-width: 450px;
+    max-width: 500px;
+
+    width: 100%;
 }
 
 
@@ -344,16 +405,20 @@ body {
 
     gap: 12px;
 
-    background: #f1f5f9;
+    background-color: var(--cinza-claro);
 
     padding: 13px 16px;
 
-    border-radius: 15px;
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(203, 213, 224, 0.7);
 }
 
 
 .dado-presenca .indicador {
     width: 12px;
+
     height: 12px;
 
     border-radius: 50%;
@@ -361,7 +426,7 @@ body {
 
 
 .dado-presenca p {
-    color: #334155;
+    color: var(--texto-escuro);
 
     font-size: 12px;
 }
@@ -370,15 +435,17 @@ body {
 .dado-presenca .porcentagem {
     text-align: right;
 
-    color: #0f172a;
+    color: var(--texto-escuro);
 
-    font-size: 15px;
+    font-size: 16px;
 
     font-weight: 800;
 }
 
 
-/* Cores dos indicadores */
+/* ==========================================================================
+   CORES DOS INDICADORES
+   ========================================================================== */
 
 .dado-presenca.presente .indicador {
     background: #22c55e;
@@ -400,21 +467,26 @@ body {
    ========================================================================== */
 
 .pendencias {
-    background: #cbd5e1;
+    background-color: var(--branco);
 
-    border-radius: 30px;
+    border-radius: 14px;
 
-    padding: 25px;
+    padding: 22px;
 
     box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.05);
+        0 8px 20px rgba(0, 0, 0, 0.22);
 
     min-width: 0;
 }
 
 
 .titulo-pendencias {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+
+    padding-bottom: 10px;
+
+    border-bottom:
+        1px solid var(--borda);
 }
 
 
@@ -429,6 +501,8 @@ body {
 
     gap: 12px;
 
+    flex-wrap: wrap;
+
     margin-bottom: 20px;
 }
 
@@ -440,9 +514,14 @@ body {
 
     width: 360px;
 
-    background: #f1f5f9;
+    max-width: 100%;
 
-    border-radius: 20px;
+    background-color: var(--cinza-claro);
+
+    border:
+        1px solid var(--borda);
+
+    border-radius: 8px;
 
     overflow: hidden;
 }
@@ -461,7 +540,9 @@ body {
 
     background: transparent;
 
-    color: #334155;
+    color: var(--texto-escuro);
+
+    font-family: inherit;
 
     font-size: 11px;
 
@@ -470,30 +551,37 @@ body {
 
 
 .pesquisa-aluno input::placeholder {
-    color: #64748b;
+    color: var(--texto-mutado);
 }
 
 
 .pesquisa-aluno button {
     width: 42px;
-    height: 38px;
+
+    height: 40px;
 
     border: none;
 
     background: transparent;
 
-    color: #334155;
+    color: var(--azul-barra-superior);
 
     cursor: pointer;
 
     font-size: 15px;
+
+    transition: 0.2s ease;
 }
 
 
 .pesquisa-aluno button:hover {
-    color: #0f172a;
+    color: var(--verde-turquesa);
 }
 
+
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
 
 .botao-filtrar,
 .botao-turma {
@@ -501,15 +589,17 @@ body {
 
     padding: 11px 18px;
 
-    border-radius: 18px;
+    border-radius: 8px;
 
-    background: #f1f5f9;
+    background-color: var(--azul-barra-superior);
 
-    color: #334155;
+    color: var(--branco);
+
+    font-family: inherit;
 
     font-size: 10px;
 
-    font-weight: 800;
+    font-weight: 700;
 
     cursor: pointer;
 
@@ -521,7 +611,7 @@ body {
 
 .botao-filtrar:hover,
 .botao-turma:hover {
-    background: #ffffff;
+    background-color: var(--verde-turquesa);
 
     transform: translateY(-1px);
 }
@@ -543,13 +633,16 @@ body {
 .tabela-pendencias {
     width: 100%;
 
-    background: #f1f5f9;
+    background-color: var(--cinza-claro);
 
-    border-radius: 20px;
+    border-radius: 12px;
 
     overflow-x: auto;
 
     overflow-y: hidden;
+
+    border:
+        1px solid var(--borda);
 }
 
 
@@ -572,19 +665,19 @@ body {
 
     padding: 15px 18px;
 
-    background: #94a3b8;
+    background-color: var(--azul-barra-superior);
 
-    color: #0f172a;
+    color: var(--branco);
 
     border-radius:
-        20px
-        20px
+        11px
+        11px
         0
         0;
 
     font-size: 10px;
 
-    font-weight: 800;
+    font-weight: 700;
 
     text-align: center;
 
@@ -598,7 +691,7 @@ body {
 
 
 /* ==========================================================================
-   LINHA DO ALUNO
+   LINHAS DOS ALUNOS
    ========================================================================== */
 
 .linha-aluno {
@@ -616,8 +709,10 @@ body {
 
     padding: 18px;
 
+    background-color: var(--branco);
+
     border-bottom:
-        1px solid #cbd5e1;
+        1px solid var(--borda);
 
     align-items: start;
 
@@ -649,6 +744,7 @@ body {
 
 .foto-aluno {
     width: 45px;
+
     height: 45px;
 
     flex-shrink: 0;
@@ -657,12 +753,16 @@ body {
 
     overflow: hidden;
 
-    background: #cbd5e1;
+    background-color: var(--cinza-claro);
+
+    border:
+        2px solid var(--azul-barra-superior);
 }
 
 
 .foto-aluno img {
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -670,11 +770,11 @@ body {
 
 
 .dados-aluno > span {
-    color: #334155;
+    color: var(--texto-escuro);
 
     font-size: 10px;
 
-    font-weight: 800;
+    font-weight: 700;
 
     line-height: 1.4;
 
@@ -708,17 +808,20 @@ body {
 
     padding: 4px 7px;
 
-    background: #e2e8f0;
+    background-color: var(--cinza-claro);
 
-    border-radius: 8px;
+    border-radius: 6px;
 
-    color: #475569;
+    color: var(--texto-mutado);
 
     font-size: 8px;
 
     font-weight: 700;
 
     text-align: center;
+
+    border:
+        1px solid var(--borda);
 }
 
 
@@ -750,11 +853,11 @@ body {
 
     padding: 4px 5px;
 
-    border-radius: 8px;
+    border-radius: 6px;
 
     font-size: 7px;
 
-    font-weight: 800;
+    font-weight: 700;
 
     text-align: center;
 
@@ -793,6 +896,7 @@ body {
     position: absolute;
 
     right: 18px;
+
     bottom: 12px;
 
     display: flex;
@@ -803,15 +907,16 @@ body {
 
 .acoes-pendencia button {
     width: 28px;
+
     height: 28px;
 
     border: none;
 
     border-radius: 50%;
 
-    background: #ffffff;
+    background-color: var(--cinza-claro);
 
-    color: #475569;
+    color: var(--azul-barra-superior);
 
     cursor: pointer;
 
@@ -829,9 +934,9 @@ body {
 
 
 .acoes-pendencia button:hover {
-    background: #334155;
+    background-color: var(--verde-turquesa);
 
-    color: #ffffff;
+    color: var(--branco);
 
     transform: scale(1.05);
 }
@@ -844,6 +949,8 @@ body {
 .rodape {
     grid-area: footer;
 
+    background-color: var(--cinza-rodape);
+
     display: flex;
 
     align-items: center;
@@ -852,15 +959,11 @@ body {
 
     gap: 30px;
 
-    padding:
-        25px
-        25px
-        25px
-        25px;
+    padding: 20px 24px;
 
-    min-height: 130px;
+    min-height: 90px;
 
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--branco);
 }
 
 
@@ -881,24 +984,222 @@ body {
 
 
 .contato a {
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--branco);
 
     text-decoration: none;
 }
 
 
 .contato a:hover {
-    color: #ffffff;
+    text-decoration: underline;
 }
 
 
 .logo-rodape img {
-    height: 50px;
+    height: 55px;
+
     width: auto;
 
-    background: #ffffff;
+    background-color: var(--branco);
 
-    padding: 6px;
+    padding: 5px 8px;
 
-    border-radius: 15px;
+    border-radius: 8px;
+
+    object-fit: contain;
+}
+
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 1050px) {
+
+    .area-grafico {
+        grid-template-columns:
+            1fr;
+
+        justify-items: center;
+
+        gap: 25px;
+    }
+
+    .dados-presenca {
+        max-width: 600px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    body {
+        grid-template-columns:
+            130px
+            minmax(0, 1fr);
+    }
+
+    .container-logo {
+        width: 130px;
+    }
+
+    .menu-lateral {
+        width: 130px;
+
+        padding-left: 8px;
+    }
+
+    .menu-lateral nav a {
+        font-size: 10px;
+
+        padding: 7px 5px;
+    }
+
+    .cabecalho {
+        padding-right: 16px;
+    }
+
+    .slogan {
+        font-size: 10px;
+
+        line-height: 1.3;
+    }
+
+    .conteudo-principal {
+        padding: 16px;
+    }
+
+    .relatorio-presenca,
+    .pendencias {
+        padding: 18px;
+    }
+
+    .pesquisa-aluno {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        display: block;
+    }
+
+    .cabecalho {
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 10px;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .container-logo {
+        width: 140px;
+
+        height: 60px;
+    }
+
+    .slogan {
+        text-align: center;
+
+        justify-content: center;
+
+        font-size: 9px;
+    }
+
+    .menu-lateral {
+        width: 100%;
+
+        padding: 10px;
+
+        background-color: var(--azul-barra-superior);
+    }
+
+    .menu-lateral nav {
+        border-radius: 12px;
+
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .menu-lateral nav a {
+        font-size: 9px;
+    }
+
+    .conteudo-principal {
+        padding: 15px;
+
+        gap: 15px;
+    }
+
+    .titulo-pagina h1 {
+        font-size: 16px;
+
+        letter-spacing: 2px;
+    }
+
+    .relatorio-presenca,
+    .pendencias {
+        padding: 15px;
+
+        border-radius: 12px;
+    }
+
+    .grafico-pizza {
+        width: 210px;
+
+        height: 210px;
+    }
+
+    #grafico-presenca {
+        width: 210px !important;
+
+        height: 210px !important;
+    }
+
+    .dados-presenca {
+        width: 100%;
+    }
+
+    .dado-presenca {
+        grid-template-columns:
+            14px
+            1fr
+            50px;
+
+        padding: 11px;
+    }
+
+    .filtros-pendencias {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .pesquisa-aluno,
+    .botao-filtrar,
+    .botao-turma {
+        width: 100%;
+    }
+
+    .botao-filtrar,
+    .botao-turma {
+        justify-content: center;
+    }
+
+    .rodape {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        min-height: auto;
+    }
 }
